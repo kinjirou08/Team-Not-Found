@@ -12,7 +12,7 @@ import com.revature.caseclothes.model.Products;
 import com.revature.caseclothes.services.ProductsService;
 
 @RestController
-public class CustomerController {
+public class ProductController {
 
 	@Autowired
 	private ProductsService ps;
@@ -25,7 +25,7 @@ public class CustomerController {
 		return ps.getAllProducts();
 	}
 	
-	@GetMapping(path = "/products/?name")
+	@GetMapping(path = "/products/")
 	public List<Products> getAllProductThatContains(@RequestParam("name") String name) {
 		return ps.getAllProductThatContains(name); 
 	}
