@@ -17,12 +17,24 @@ public class UserDao {
 	@PersistenceContext
 	private EntityManager em;
 	
-	//Add a new User
+	//Add a new Customer
 	@Transactional
-	public User addUser(AddUserDTO dto) {
+	public User addCustomer(AddUserDTO dto) {
 		UserRole customer = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'customer'").getSingleResult();
 		
 		User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(), dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), customer);
+		
+		em.persist(userToAdd);
+		
+		return userToAdd;
+	}
+	
+	//Add a new Admin
+	@Transactional
+	public User addAdmin(AddUserDTO dto) {
+		UserRole admin = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'admin'").getSingleResult();
+		
+		User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(), dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), admin);
 		
 		em.persist(userToAdd);
 		
