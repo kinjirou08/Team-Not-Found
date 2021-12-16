@@ -1,19 +1,12 @@
-package com.revature.caseclothes.model;
+package com.revature.caseclothes.dto;
 
 import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class User {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
+import com.revature.caseclothes.model.UserRole;
+
+public class AddUserDTO {
 	private String username;
 	private String password; 
 	private String firstName;
@@ -21,16 +14,13 @@ public class User {
 	private String email;
 	private String phoneNumber;
 	private String address;
-	
-	@ManyToOne
-	private UserRole role;
 
-	public User() {
+	public AddUserDTO() {
 		super();
 	}
 
-	public User(String username, String password, String firstName, String lastName, String email, String phoneNumber,
-			String address, UserRole role) {
+	public AddUserDTO(String username, String password, String firstName, String lastName, String email,
+			String phoneNumber, String address) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -39,15 +29,6 @@ public class User {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
-		this.role = role;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getUsername() {
@@ -106,17 +87,9 @@ public class User {
 		this.address = address;
 	}
 
-	public UserRole getRole() {
-		return role;
-	}
-
-	public void setRole(UserRole role) {
-		this.role = role;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, email, firstName, id, lastName, password, phoneNumber, role, username);
+		return Objects.hash(address, email, firstName, lastName, password, phoneNumber, username);
 	}
 
 	@Override
@@ -127,19 +100,18 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		AddUserDTO other = (AddUserDTO) obj;
 		return Objects.equals(address, other.address) && Objects.equals(email, other.email)
-				&& Objects.equals(firstName, other.firstName) && id == other.id
-				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
-				&& Objects.equals(phoneNumber, other.phoneNumber) && Objects.equals(role, other.role)
+				&& Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName)
+				&& Objects.equals(password, other.password) && Objects.equals(phoneNumber, other.phoneNumber)
 				&& Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
+		return "AddUserDTO [username=" + username + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", address="
-				+ address + ", role=" + role + "]";
+				+ address + "]";
 	}
 	
 }
