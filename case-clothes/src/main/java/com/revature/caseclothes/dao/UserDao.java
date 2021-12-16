@@ -70,8 +70,24 @@ public class UserDao {
 	}
 	
 	//Delete User by ID
+	@Transactional
+	public User deleteUserByID(int id) {
+		User user = em.createQuery("DELETE User u WHERE u.id = :userid", User.class)
+				.setParameter("userid", id)
+				.getSingleResult();
+		
+		return user;
+	}
 	
-	//Update current User
-	
+	//Update current User username
+	@Transactional
+	public User UpdateUsernameByID(int id, String updatedUN) {
+		User user = em.createQuery("UPDATE User u SET u.username = :usern WHERE u.id = :userid", User.class)
+				.setParameter("usern", updatedUN)
+				.setParameter("userid", id)
+				.getSingleResult();
+		
+		return user;
+	}
 	
 }
