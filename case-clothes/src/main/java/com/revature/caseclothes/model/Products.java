@@ -11,27 +11,40 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Products {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String name;
-	
+
 	@Column(name = "description", length = 500)
 	private String description;
 	private double price;
-	
+
 	@ManyToOne
 	private Category categories;
-	
+
 	private String imageURL;
 	private int totalQuantity;
-	
+
 	public Products() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+
+	public Products(int id, String name, String description, double price, Category categories, String imageURL,
+			int totalQuantity) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.categories = categories;
+		this.imageURL = imageURL;
+		this.totalQuantity = totalQuantity;
+	}
+
+
 
 	public Products(String name, String description, double price, Category categories, String imageURL,
 			int totalQuantity) {
@@ -42,7 +55,7 @@ public class Products {
 		this.imageURL = imageURL;
 		this.totalQuantity = totalQuantity;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -124,5 +137,5 @@ public class Products {
 		return "Products [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
 				+ ", categories=" + categories + ", imageURL=" + imageURL + ", totalQuantity=" + totalQuantity + "]";
 	}
-	
+
 }

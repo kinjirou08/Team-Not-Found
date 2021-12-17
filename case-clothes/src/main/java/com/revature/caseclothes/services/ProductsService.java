@@ -21,4 +21,18 @@ public class ProductsService {
 	public List<Products> getAllProductThatContains(String name) {
 		return pd.getAllProductThatContains(name);
 	}
+
+
+	public Products addNewProduct(Products productToAdd) {	
+		Products p = pd.insertNewProduct(productToAdd);
+		
+		return p;
+	}
+
+	public Products getProductById(int id) {
+		Products p = pd.selectProductById(id);
+		
+		return p;
+	}
+
 }
