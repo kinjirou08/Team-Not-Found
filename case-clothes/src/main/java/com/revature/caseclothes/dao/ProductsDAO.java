@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.Products;
+import com.revature.caseclothes.model.Quantities;
 
 @Repository
 public class ProductsDAO {
@@ -67,9 +68,9 @@ public class ProductsDAO {
 
 	@Transactional
 	public Carts selectACart(int id) {
-		String query = "SELECT p FROM Carts p";
+		String query = "SELECT c FROM Carts c WHERE c.cartId = :id";
 		TypedQuery<Carts> typedQuery = em.createQuery(query, Carts.class);
-		Carts cart = typedQuery.getSingleResult();
+		Carts cart = typedQuery.setParameter("id", id).getSingleResult();
 
 		return cart;
 
@@ -100,10 +101,24 @@ public class ProductsDAO {
 				.setParameter("imgURL", productToBeUpdated.getImageURL())
 				.setParameter("totalQuantity", productToBeUpdated.getTotalQuantity()).setParameter("id", id)
 				.executeUpdate();
-		
+
 		Products updatedProducts = this.selectProductById(id);
 
 		return updatedProducts;
 	}
+
+	@Transactional
+	public Carts insertToCart(Carts c, Quantities q) {
+
+		Session session = em.unwrap(Session.class);
+
+		session.persist(q);
+
+		session.saveOrUpdate(c);
+
+		return c;
+
+	}
+
 
 }

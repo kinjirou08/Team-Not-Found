@@ -1,12 +1,13 @@
 package com.revature.caseclothes.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 //import com.revature.caseclothes.dto.AddToCartDTO;
 
@@ -17,22 +18,18 @@ public class Carts {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cartId;
 
-	//OneToOne -> User/Customer
-	
-	@ManyToOne // should be @ManyToMany
-	private Products product;
-	// private AddToCartDTO product;
+	// OneToOne -> User/Customer
 
-//	private int quantity;
+	@OneToMany
+	private List<Quantities> quantities;
 
 	public Carts() {
 		super();
 	}
 
-	public Carts(Products product/* , int quantity */) {
+	public Carts(List<Quantities> quantities) {
 		super();
-		this.product = product;
-//		this.quantity = quantity;
+		this.quantities = quantities;
 	}
 
 	public int getCartId() {
@@ -43,17 +40,17 @@ public class Carts {
 		this.cartId = cartId;
 	}
 
-	public Products getProduct() {
-		return product;
+	public List<Quantities> getQuantities() {
+		return quantities;
 	}
 
-	public void setProduct(Products product) {
-		this.product = product;
+	public void setQuantities(List<Quantities> quantities) {
+		this.quantities = quantities;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cartId, product);
+		return Objects.hash(cartId, quantities);
 	}
 
 	@Override
@@ -65,44 +62,12 @@ public class Carts {
 		if (getClass() != obj.getClass())
 			return false;
 		Carts other = (Carts) obj;
-		return cartId == other.cartId && Objects.equals(product, other.product);
+		return cartId == other.cartId && Objects.equals(quantities, other.quantities);
 	}
 
 	@Override
 	public String toString() {
-		return "Carts [cartId=" + cartId + ", product=" + product + "]";
+		return "Carts [cartId=" + cartId + ", quantities=" + quantities + "]";
 	}
 	
-	
-
-//	public int getQuantity() {
-//		return quantity;
-//	}
-//
-//	public void setQuantity(int quantity) {
-//		this.quantity = quantity;
-//	}
-
-//	@Override
-//	public int hashCode() {
-//		return Objects.hash(cartId, product, quantity);
-//	}
-//
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-//		Carts other = (Carts) obj;
-//		return cartId == other.cartId && Objects.equals(product, other.product) && quantity == other.quantity;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "Carts [cartId=" + cartId + ", product=" + product + ", quantity=" + quantity + "]";
-//	}
-
 }

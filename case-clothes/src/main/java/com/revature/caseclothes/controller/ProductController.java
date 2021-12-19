@@ -1,5 +1,6 @@
 package com.revature.caseclothes.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.caseclothes.dao.ProductsDAO;
-import com.revature.caseclothes.dto.AddToCartDTO;
 import com.revature.caseclothes.exception.ProductNotFoundException;
 import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.Products;
-import com.revature.caseclothes.services.ProductsService;
+import com.revature.caseclothes.service.ProductsService;
 
 @RestController
 public class ProductController {
@@ -62,7 +62,7 @@ public class ProductController {
 	}
 
 	@PostMapping(path = "/products", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Object> addNewUser(@RequestBody Products productToAdd) {
+	public ResponseEntity<Object> addNewProduct(@RequestBody Products productToAdd) {
 
 		Products p = ps.addNewProduct(productToAdd);
 
@@ -70,24 +70,10 @@ public class ProductController {
 		// and also have a status code of 201
 	}
 
-	@PostMapping(path = "/carts")
-	public ResponseEntity<Object> addProductsToCart(@RequestBody Products searchProduct) throws ProductNotFoundException {
-
-		Products p = ps.getProductById(searchProduct.getId());
-		// AddToCartDTO addProductToCart = new AddToCartDTO(p.getId(), 1);
-
-		Carts carts = new Carts(p);
-		Carts insertedProduct = pd.insertProductToCart(carts);
-
-		System.out.println(insertedProduct);
-
-		return ResponseEntity.status(201).body(insertedProduct);
-	}
-
 	@GetMapping(path = "/carts/{id}")
 	public ResponseEntity<Object> getCart(@PathVariable("id") int id) {
 
-		Carts c = pd.selectACart(id);
+		Carts c = ps.getACart(id);
 
 		return ResponseEntity.status(201).body(c);
 	}
@@ -108,6 +94,28 @@ public class ProductController {
 		System.out.println(productToBeUpdated);
 
 		return ResponseEntity.status(200).body(updateProduct);
+	}
+
+	@PostMapping(path = "/carts") // path will be changed to "/user/{id}/carts" once we have the User feature
+	public ResponseEntity<Object> addProductsToCart(@RequestParam("productId") int productId,
+			@RequestParam("quantity") int quantity) throws ProductNotFoundException {
+
+		Carts c = ps.addProductsToCart(productId, quantity);
+
+		return ResponseEntity.status(201).body(c);
+	}
+
+	@PutMapping(path = "/carts/{id}")
+	public ResponseEntity<Object> addMoreProductToCart(@PathVariable("id") int id,
+			@RequestParam("productId") int productId, @RequestParam("quantity") int quantity)
+			throws ProductNotFoundException {
+		
+		Carts currentCart = ps.getACart(id);
+		
+		currentCart = ps.addMoreProductsToCart(currentCart, productId, quantity);
+		
+		return ResponseEntity.status(200).body(currentCart);
+
 	}
 
 }
