@@ -2,20 +2,26 @@ package com.revature.caseclothes.model;
 
 import java.util.Objects;
 
-import com.revature.caseclothes.dto.AddToCartDTO;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 //import com.revature.caseclothes.dto.AddToCartDTO;
 
-//@Entity
+@Entity
 public class Carts {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cartId;
 
-//	@ManyToOne
-//	private Products product;
-private AddToCartDTO product;
+	//OneToOne -> User/Customer
+	
+	@ManyToOne // should be @ManyToMany
+	private Products product;
+	// private AddToCartDTO product;
 
 //	private int quantity;
 
@@ -23,7 +29,7 @@ private AddToCartDTO product;
 		super();
 	}
 
-	public Carts(AddToCartDTO product/* , int quantity */) {
+	public Carts(Products product/* , int quantity */) {
 		super();
 		this.product = product;
 //		this.quantity = quantity;
@@ -37,11 +43,11 @@ private AddToCartDTO product;
 		this.cartId = cartId;
 	}
 
-	public AddToCartDTO getProduct() {
+	public Products getProduct() {
 		return product;
 	}
 
-	public void setProduct(AddToCartDTO product) {
+	public void setProduct(Products product) {
 		this.product = product;
 	}
 
@@ -66,6 +72,8 @@ private AddToCartDTO product;
 	public String toString() {
 		return "Carts [cartId=" + cartId + ", product=" + product + "]";
 	}
+	
+	
 
 //	public int getQuantity() {
 //		return quantity;
@@ -96,7 +104,5 @@ private AddToCartDTO product;
 //	public String toString() {
 //		return "Carts [cartId=" + cartId + ", product=" + product + ", quantity=" + quantity + "]";
 //	}
-	
-	
 
 }

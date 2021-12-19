@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.caseclothes.dao.ProductsDAO;
 import com.revature.caseclothes.dto.AddToCartDTO;
+import com.revature.caseclothes.exception.ProductNotFoundException;
 import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.Products;
 import com.revature.caseclothes.services.ProductsService;
@@ -34,14 +35,29 @@ public class ProductController {
 	}
 
 	@GetMapping(path = "/products/")
-	public List<Products> getAllProductThatContains(@RequestParam("name") String name) {
-		return ps.getAllProductThatContains(name);
+	public ResponseEntity<Object> getAllProductThatContains(@RequestParam("name") String name)
+			throws ProductNotFoundException {
+		try {
+			List<Products> p = ps.getAllProductThatContains(name);
+
+			return ResponseEntity.status(200).body(p);
+		} catch (ProductNotFoundException e) {
+			return ResponseEntity.status(404).body(e.getMessage());
+		}
+
 	}
 
 	@GetMapping(path = "/products/{id}")
-	public Products getProductById(@PathVariable("id") int id) {
+	public ResponseEntity<Object> getProductById(@PathVariable("id") int id) {
+		try {
 
-		return ps.getProductById(id);
+			Products p = ps.getProductById(id);
+
+			return ResponseEntity.status(200).body(p);
+
+		} catch (ProductNotFoundException e) {
+			return ResponseEntity.status(404).body(e.getMessage());
+		}
 
 	}
 
@@ -55,12 +71,12 @@ public class ProductController {
 	}
 
 	@PostMapping(path = "/carts")
-	public ResponseEntity<Object> addProductsToCart(@RequestBody Products searchProduct) {
+	public ResponseEntity<Object> addProductsToCart(@RequestBody Products searchProduct) throws ProductNotFoundException {
 
 		Products p = ps.getProductById(searchProduct.getId());
-		AddToCartDTO addProductToCart = new AddToCartDTO(p.getId(), 1);
+		// AddToCartDTO addProductToCart = new AddToCartDTO(p.getId(), 1);
 
-		Carts carts = new Carts(addProductToCart);
+		Carts carts = new Carts(p);
 		Carts insertedProduct = pd.insertProductToCart(carts);
 
 		System.out.println(insertedProduct);
@@ -85,13 +101,11 @@ public class ProductController {
 	}
 
 	@PutMapping(path = "/products/{id}")
-	public ResponseEntity<Object> updateAProduct(@PathVariable("id") int id,
-			@RequestBody Products productToBeUpdated) {
+	public ResponseEntity<Object> updateAProduct(@PathVariable("id") int id, @RequestBody Products productToBeUpdated) {
 
 		Products updateProduct = pd.updateAProduct(id, productToBeUpdated);
-		
+
 		System.out.println(productToBeUpdated);
-		
 
 		return ResponseEntity.status(200).body(updateProduct);
 	}
