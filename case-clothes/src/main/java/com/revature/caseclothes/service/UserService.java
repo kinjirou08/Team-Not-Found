@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.caseclothes.dao.UserDao;
 import com.revature.caseclothes.dto.AddUserDTO;
+import com.revature.caseclothes.exception.InvalidLoginException;
 import com.revature.caseclothes.exception.InvalidParametersException;
 import com.revature.caseclothes.exception.UnAuthorizedException;
 import com.revature.caseclothes.exception.UserNotFoundException;
@@ -103,8 +104,6 @@ public class UserService {
 			throw new UserNotFoundException("Current User is NULL");
 		}
 	}
-
-	private UserDAO ud;
 
 	public User login(String username, String password) throws InvalidLoginException {
 		try {
