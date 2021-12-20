@@ -23,10 +23,6 @@ public class ProductsDAO {
 	@Transactional
 	public List<Products> getAllProducts() {
 
-		// String query = "SELECT p.id, p.name, p.price, p.description, c.categories,
-		// p.imageURL, p.totalQuantity "
-		// + "FROM Products p JOIN p.categories c";
-		// TypedQuery<Products[]> typedQuery = em.createQuery(query, Products[].class);
 		String query = "SELECT p FROM Products p";
 		TypedQuery<Products> typedQuery = em.createQuery(query, Products.class);
 		List<Products> productsList = typedQuery.getResultList();
@@ -67,7 +63,7 @@ public class ProductsDAO {
 	}
 
 	@Transactional
-	public Carts selectACart(int id) {
+	public Carts selectACartById(int id) {
 		String query = "SELECT c FROM Carts c WHERE c.cartId = :id";
 		TypedQuery<Carts> typedQuery = em.createQuery(query, Carts.class);
 		Carts cart = typedQuery.setParameter("id", id).getSingleResult();
@@ -119,6 +115,5 @@ public class ProductsDAO {
 		return c;
 
 	}
-
 
 }
