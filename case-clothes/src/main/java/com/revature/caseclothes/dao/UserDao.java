@@ -17,89 +17,95 @@ import com.revature.caseclothes.model.UserRole;
 public class UserDao {
 	@PersistenceContext
 	private EntityManager em;
-	
-	//Add a new Customer
+
+	// Add a new Customer
 	@Transactional
 	public User addCustomer(AddUserDTO dto) {
-		UserRole customer = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'customer'").getSingleResult();
-		
-		User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(), dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), customer);
-		
+		UserRole customer = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'customer'")
+				.getSingleResult();
+
+		User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
+				dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), customer);
+
 		em.persist(userToAdd);
-		
+
 		return userToAdd;
 	}
-	
-	//Add a new Admin
+
+	// Add a new Admin
 	@Transactional
 	public User addAdmin(AddUserDTO dto) {
 		UserRole admin = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'admin'").getSingleResult();
-		
-		User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(), dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), admin);
-		
+
+		User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
+				dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), admin);
+
 		em.persist(userToAdd);
-		
+
 		return userToAdd;
 	}
-	
-	//Get all users
+
+	// Get all users
 	@Transactional
 	public List<User> getAllUsers() {
 		List<User> users = em.createQuery("FROM User a", User.class).getResultList();
-		
+
 		return users;
 	}
-	
-	//Get User by ID
+
+	// Get User by ID
 	@Transactional
 	public User getUserByID(int id) {
-		User user = em.createQuery("SELECT User u WHERE u.id = :userid", User.class)
-				.setParameter("userid", id)
+		User user = em.createQuery("SELECT u FROM User u WHERE u.id = :userid", User.class).setParameter("userid", id)
 				.getSingleResult();
-		
+
 		return user;
 	}
-	
-	//Get User by Username
+
+	// Get User by Username
 	@Transactional
 	public User getUserByUsername(String username) {
-		User user = em.createQuery("SELECT User u WHERE u.username = :user", User.class)
-				.setParameter("user", username)
+		User user = em.createQuery("SELECT u FROM User u WHERE u.username = :user", User.class).setParameter("user", username)
 				.getSingleResult();
-		
+
 		return user;
 	}
-	
-	//Delete User by ID
+
+	// Delete User by ID
 	@Transactional
 	public void deleteUserByID(int id) {
-		em.createQuery("DELETE User u WHERE u.id = :userid", User.class)
-				.setParameter("userid", id)
-				.getSingleResult();
 		
-		return;
+		User u = em.find(User.class, id);
+		
+		em.remove(u);
 	}
-	
-	//Update current User information
+
+	// Update current User information
 	@Transactional
 	public User UpdateUserByID(int id, User userToUpdate) {
 		Session session = em.unwrap(Session.class);
-		
+
 		String hqlUpdate = "UPDATE User u SET u.first_name = :firstName, u.last_name = :lastName, "
 				+ "u.email = :updateEmail, u.phone_number = :phoneNum, u.address = :updateAddress "
 				+ "WHERE u.id = :userid";
-		
-		session.createQuery(hqlUpdate, User.class)
-				.setParameter("firstName", userToUpdate.getFirstName())
+
+		session.createQuery(hqlUpdate, User.class).setParameter("firstName", userToUpdate.getFirstName())
 				.setParameter("lastName", userToUpdate.getLastName())
 				.setParameter("updateEmail", userToUpdate.getEmail())
 				.setParameter("phoneNum", userToUpdate.getPhoneNumber())
-				.setParameter("updateAddress", userToUpdate.getAddress())
-				.executeUpdate();
-		
+				.setParameter("updateAddress", userToUpdate.getAddress()).executeUpdate();
+
 		User updatedUser = this.getUserByID(id);
-		
+
 		return updatedUser;
 	}
-	
+
+	@Transactional
+	public User getUsernameAndPassword(String username, String password) {
+		User user = em.createQuery("FROM User u WHERE u.username = :user AND u.password = :pass", User.class)
+				.setParameter("user", username).setParameter("pass", password).getSingleResult();
+
+		return user;
+	}
+
 }

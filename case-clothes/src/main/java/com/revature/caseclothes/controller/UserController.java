@@ -25,65 +25,66 @@ import com.revature.caseclothes.service.UserService;
 @RestController
 @CrossOrigin(originPatterns = "*", allowCredentials = "true")
 public class UserController {
-	
+
 	@Autowired
 	private HttpServletRequest req;
-	
+
 	@Autowired
 	private UserService us;
-	
-	//Add User
-	@PostMapping(path = "/users")
+
+	// Add User
+	@PostMapping(path = "/users") // needs fixing
 	public ResponseEntity<Object> addUser(@RequestBody AddUserDTO dto) {
 		User currenLoggedInUser = (User) req.getSession().getAttribute("currentuser");
-		
+
 		User addedUser = us.addUser(currenLoggedInUser, dto);
-		
+
 		return ResponseEntity.status(201).body(addedUser);
 	}
-	
-	//Get All Users if Admin
+
+	// Get All Users if Admin
 	@GetMapping(path = "/users")
 	public ResponseEntity<Object> getAllUsers() throws UnAuthorizedException {
 		HttpSession session = req.getSession();
-		
+
 		User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
-		
-		if(currentlyLoggedInUser == null) {
+
+		if (currentlyLoggedInUser == null) {
 			return ResponseEntity.status(401).body("You are not logged in");
 		}
-		
+
 		List<User> usersToList = us.getAllUsers(currentlyLoggedInUser);
-		
+
 		return ResponseEntity.status(200).body(usersToList);
 	}
-	
-	//Get User by ID if Admin
+
+	// Get User by ID if Admin
 	@GetMapping(path = "/users/{id}")
-	public ResponseEntity<Object> getUserByID(@PathVariable("id") int id) throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
+	public ResponseEntity<Object> getUserByID(@PathVariable("id") int id)
+			throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
 		HttpSession session = req.getSession();
-		
+
 		User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
-		
-		if(currentlyLoggedInUser == null) {
+
+		if (currentlyLoggedInUser == null) {
 			return ResponseEntity.status(401).body("You are not logged in");
 		}
-		
+
 		User userFound = us.getUserByID(currentlyLoggedInUser, id);
-		
+
 		return ResponseEntity.status(200).body(userFound);
 	}
-	
+
 	@DeleteMapping(value = "/users")
 	public ResponseEntity<Object> deleteUserByID() throws UserNotFoundException {
 		HttpSession session = req.getSession();
-		
+
 		User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
-		
-		if(currentlyLoggedInUser == null) {
+
+		if (currentlyLoggedInUser == null) {
 			throw new UserNotFoundException("User was not found or is not logged in");
 		}
-		
+
 		int id = currentlyLoggedInUser.getId();
 		us.deleteUserByID(currentlyLoggedInUser);
 		return ResponseEntity.status(200).body("Successfully Deleted User of id: " + id);
