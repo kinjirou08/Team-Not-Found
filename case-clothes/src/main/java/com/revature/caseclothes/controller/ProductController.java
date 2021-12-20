@@ -139,13 +139,13 @@ public class ProductController {
 		} 
 	}
 
-	@PutMapping(path = "/carts/{id}")
+	@PostMapping(path = "/carts/{id}")
 	public ResponseEntity<Object> addMoreProductToCart(@PathVariable("id") String CartId,
 			@RequestParam("productId") String productId, @RequestParam("quantity") String quantity)
 			throws ProductNotFoundException, CartNotFoundException {
 
 		try {
-			Carts currentCart = new Carts();
+			Carts currentCart = null;
 			if (CartId.matches(PATTERN) || quantity.matches(PATTERN) || productId.matches(PATTERN)) {
 				currentCart = ps.addMoreProductsToCart(currentCart, CartId, productId, quantity);
 				return ResponseEntity.status(200).body(currentCart);

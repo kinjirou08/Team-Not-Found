@@ -97,7 +97,7 @@ public class ProductsService {
 		}
 	}
 
-	public Carts addMoreProductsToCart(Carts currentCart, String productId, String quantity, String CartId)
+	public Carts addMoreProductsToCart(Carts currentCart, String CartId, String productId, String quantity)
 			throws ProductNotFoundException, CartNotFoundException {
 
 		currentCart = this.getACartById(CartId);
