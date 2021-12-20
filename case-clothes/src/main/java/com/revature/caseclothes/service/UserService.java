@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.revature.caseclothes.dao.UserDao;
@@ -11,6 +12,7 @@ import com.revature.caseclothes.dto.AddUserDTO;
 import com.revature.caseclothes.exception.InvalidParametersException;
 import com.revature.caseclothes.exception.UnAuthorizedException;
 import com.revature.caseclothes.exception.UserNotFoundException;
+
 import com.revature.caseclothes.model.User;
 
 @Service
@@ -101,5 +103,16 @@ public class UserService {
 			throw new UserNotFoundException("Current User is NULL");
 		}
 	}
-	
+
+	private UserDAO ud;
+
+	public User login(String username, String password) throws InvalidLoginException {
+		try {
+			User user = this.ud.getUsernameAndPassword(username, password);
+			
+			return user;
+		}catch(DataAccessException e) {
+			throw new InvalidLoginException("Username and/or password is incorrect");
+		}
+	}
 }
