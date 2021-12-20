@@ -82,4 +82,24 @@ public class UserService {
 		}
 	}
 	
+	//Delete user if currentUserId = userToBeDeleted
+	public void deleteUserByID(User currentUser) throws UserNotFoundException {
+		if(currentUser != null) {
+			int currentUserID = currentUser.getId();
+			ud.deleteUserByID(currentUserID);
+		} else {
+			throw new UserNotFoundException("Current User is NULL");
+		}
+	}
+	
+	//Update Information of currentUser
+	public void UpdateUserByID(User currentUser) throws UserNotFoundException {
+		if(currentUser != null) {
+			int currentUserID = currentUser.getId();
+			ud.UpdateUserByID(currentUserID, currentUser);
+		} else {
+			throw new UserNotFoundException("Current User is NULL");
+		}
+	}
+	
 }

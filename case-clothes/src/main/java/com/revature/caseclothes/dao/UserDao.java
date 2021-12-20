@@ -80,7 +80,7 @@ public class UserDao {
 		return;
 	}
 	
-	//Update current User username
+	//Update current User information
 	@Transactional
 	public User UpdateUserByID(int id, User userToUpdate) {
 		Session session = em.unwrap(Session.class);

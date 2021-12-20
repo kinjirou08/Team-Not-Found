@@ -8,7 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,8 +59,8 @@ public class UserController {
 	}
 	
 	//Get User by ID if Admin
-	@GetMapping(path = "/users")
-	public ResponseEntity<Object> getUserByID(@RequestBody int id) throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
+	@GetMapping(path = "/users/{id}")
+	public ResponseEntity<Object> getUserByID(@PathVariable("id") int id) throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
 		HttpSession session = req.getSession();
 		
 		User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
@@ -70,5 +72,20 @@ public class UserController {
 		User userFound = us.getUserByID(currentlyLoggedInUser, id);
 		
 		return ResponseEntity.status(200).body(userFound);
+	}
+	
+	@DeleteMapping(value = "/users")
+	public ResponseEntity<Object> deleteUserByID() throws UserNotFoundException {
+		HttpSession session = req.getSession();
+		
+		User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
+		
+		if(currentlyLoggedInUser == null) {
+			throw new UserNotFoundException("User was not found or is not logged in");
+		}
+		
+		int id = currentlyLoggedInUser.getId();
+		us.deleteUserByID(currentlyLoggedInUser);
+		return ResponseEntity.status(200).body("Successfully Deleted User of id: " + id);
 	}
 }
