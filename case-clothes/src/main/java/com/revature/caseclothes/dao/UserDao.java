@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -71,23 +72,34 @@ public class UserDao {
 	
 	//Delete User by ID
 	@Transactional
-	public User deleteUserByID(int id) {
-		User user = em.createQuery("DELETE User u WHERE u.id = :userid", User.class)
+	public void deleteUserByID(int id) {
+		em.createQuery("DELETE User u WHERE u.id = :userid", User.class)
 				.setParameter("userid", id)
 				.getSingleResult();
 		
-		return user;
+		return;
 	}
 	
 	//Update current User username
 	@Transactional
-	public User UpdateUsernameByID(int id, String updatedUN) {
-		User user = em.createQuery("UPDATE User u SET u.username = :usern WHERE u.id = :userid", User.class)
-				.setParameter("usern", updatedUN)
-				.setParameter("userid", id)
-				.getSingleResult();
+	public User UpdateUserByID(int id, User userToUpdate) {
+		Session session = em.unwrap(Session.class);
 		
-		return user;
+		String hqlUpdate = "UPDATE User u SET u.first_name = :firstName, u.last_name = :lastName, "
+				+ "u.email = :updateEmail, u.phone_number = :phoneNum, u.address = :updateAddress "
+				+ "WHERE u.id = :userid";
+		
+		session.createQuery(hqlUpdate, User.class)
+				.setParameter("firstName", userToUpdate.getFirstName())
+				.setParameter("lastName", userToUpdate.getLastName())
+				.setParameter("updateEmail", userToUpdate.getEmail())
+				.setParameter("phoneNum", userToUpdate.getPhoneNumber())
+				.setParameter("updateAddress", userToUpdate.getAddress())
+				.executeUpdate();
+		
+		User updatedUser = this.getUserByID(id);
+		
+		return updatedUser;
 	}
 	
 }
