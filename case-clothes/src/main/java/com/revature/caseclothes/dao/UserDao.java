@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.caseclothes.dto.AddUserDTO;
-import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.User;
 import com.revature.caseclothes.model.UserRole;
 
@@ -20,31 +19,31 @@ public class UserDao {
 	private EntityManager em;
 
 	// Add a new Customer
-	@Transactional
-	public User addCustomer(AddUserDTO dto, Carts c) {
-//		UserRole customer = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'customer'")
-//				.getSingleResult();
-//
-//		User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
-//				dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), customer);
+		@Transactional
+		public User addCustomer(AddUserDTO dto) {
+			UserRole customer = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'customer'")
+					.getSingleResult();
 
-		em.persist(c);
+			User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
+					dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), customer);
 
-		return new User();
-	}
+			em.persist(userToAdd);
 
-	// Add a new Admin
-	@Transactional
-	public User addAdmin(AddUserDTO dto) {
-		UserRole admin = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'admin'").getSingleResult();
+			return userToAdd;
+		}
 
-		User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
-				dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), admin);
+		// Add a new Admin
+		@Transactional
+		public User addAdmin(AddUserDTO dto) {
+			UserRole admin = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'admin'").getSingleResult();
 
-		em.persist(userToAdd);
+			User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
+					dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), admin);
 
-		return userToAdd;
-	}
+			em.persist(userToAdd);
+
+			return userToAdd;
+		}
 
 	// Get all users
 	@Transactional
@@ -104,8 +103,10 @@ public class UserDao {
 	@Transactional
 	public User getUsernameAndPassword(String username, String password) {
 		User user = em.createQuery("FROM User u WHERE u.username = :user AND u.password = :pass", User.class)
-				.setParameter("user", username).setParameter("pass", password).getSingleResult();
-
+				.setParameter("user", username)
+				.setParameter("pass", password)
+				.getSingleResult();
+		
 		return user;
 	}
 

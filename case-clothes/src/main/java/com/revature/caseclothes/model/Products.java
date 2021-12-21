@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Products {
-
+  
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -123,5 +123,4 @@ public class Products {
 		return "Products [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
 				+ ", categories=" + categories + ", imageURL=" + imageURL + ", totalQuantity=" + totalQuantity + "]";
 	}
-
 }

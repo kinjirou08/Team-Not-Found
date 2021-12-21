@@ -16,7 +16,7 @@ import com.revature.caseclothes.model.Quantities;
 
 @Repository
 public class ProductsDAO {
-
+  
 	@PersistenceContext
 	private EntityManager em;
 
@@ -46,7 +46,7 @@ public class ProductsDAO {
 		List<Products> productsList = typedQuery.getResultList();
 		return productsList;
 	}
-
+  
 	@Transactional
 	public Products insertNewProduct(Products productToAdd) {
 
@@ -54,7 +54,7 @@ public class ProductsDAO {
 
 		return productToAdd;
 	}
-
+  
 	@Transactional
 	public Products updateAProduct(Products productToBeUpdated) {
 
