@@ -97,24 +97,6 @@ public class ProductsService {
 		}
 	}
 
-	public Carts addMoreProductsToCart(Carts currentCart, String CartId, String productId, String quantity)
-			throws ProductNotFoundException, CartNotFoundException {
-
-		currentCart = this.getACartById(CartId);
-		Products p = this.getProductById(productId);
-		int quantityToBuy = Integer.parseInt(quantity);
-		Quantities q = new Quantities(p, quantityToBuy);
-
-		List<Quantities> currentQuantitiesInTheCart = currentCart.getQuantities();
-		currentQuantitiesInTheCart.add(q);
-
-		currentCart.setQuantities(currentQuantitiesInTheCart);
-
-		currentCart = pd.insertToCart(currentCart, q);
-
-		return currentCart;
-	}
-
 	public void deleteProductById(String id) {
 
 		int productId = Integer.parseInt(id);
@@ -129,13 +111,77 @@ public class ProductsService {
 		try {
 			if (checkProductIfExist == null) {
 				throw new ProductNotFoundException("No product with the id of " + id);
+			} else {
+				productToBeUpdated.setId(productId);
 			}
 		} catch (ProductNotFoundException e) {
 			e.getMessage();
 		}
 
-		return pd.updateAProduct(productId, productToBeUpdated);
+		return pd.updateAProduct(productToBeUpdated);
 
+	}
+
+	public Carts addMoreProductsToCart(Carts currentCart, String cartId, String productId, String quantity)
+			throws ProductNotFoundException, CartNotFoundException {
+
+		currentCart = this.getACartById(cartId);
+		Products p = this.getProductById(productId);
+		int quantityToBuy = Integer.parseInt(quantity);
+		Quantities q = new Quantities(p, quantityToBuy);
+
+		List<Quantities> currentQuantitiesInTheCart = currentCart.getQuantities();
+		currentQuantitiesInTheCart.add(q);
+
+		currentCart.setQuantities(currentQuantitiesInTheCart);
+
+		currentCart = pd.insertToCart(currentCart, q);
+
+		return currentCart;
+	}
+
+	public Carts updateProductQuantityInCart(Carts currentCart, String cartId, String productId, String quantity)
+			throws CartNotFoundException, ProductNotFoundException {
+
+		currentCart = this.getACartById(cartId);
+		int prodId = Integer.parseInt(productId);
+		int quantityToBuy = Integer.parseInt(quantity);
+		List<Quantities> currentProductList = currentCart.getQuantities();
+		for (Quantities q : currentProductList) {
+			if (q.getProduct().getId() == prodId) {
+				q.setQuantity(quantityToBuy);
+			} else {
+				throw new ProductNotFoundException ("Product not found on this cart");
+			}
+		}
+		currentCart.setQuantities(currentProductList);
+
+		currentCart = pd.updateProductsInTheCart(currentCart);
+
+		return currentCart;
+	}
+
+	public Carts delteteProductInCart(Carts currentCart, String cartId, String productId)
+			throws CartNotFoundException, ProductNotFoundException {
+
+		currentCart = this.getACartById(cartId);
+		int prodId = Integer.parseInt(productId);
+		
+		List<Quantities> currentProductList = currentCart.getQuantities();
+		int quantityToDelete = 0;
+		for (Quantities q : currentProductList) {
+			if (q.getProduct().getId() == prodId) {
+				currentProductList.remove(q);
+			} else {
+				throw new ProductNotFoundException ("Product not found on this cart");
+			}
+			quantityToDelete = q.getQuantityId();
+		}
+		currentCart.setQuantities(currentProductList);
+		
+		currentCart = pd.deleteAProductInTheCart(currentCart, quantityToDelete);
+		
+		return currentCart;
 	}
 
 }

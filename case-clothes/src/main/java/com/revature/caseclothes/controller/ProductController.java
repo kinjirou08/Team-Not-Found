@@ -52,7 +52,7 @@ public class ProductController {
 		try {
 			if (id.matches(PATTERN)) {
 				Products p = ps.getProductById(id);
-				return ResponseEntity.status(200).body(p);		
+				return ResponseEntity.status(200).body(p);
 			} else {
 				throw new NumberFormatException("id must be of type int!");
 			}
@@ -136,18 +136,18 @@ public class ProductController {
 			return ResponseEntity.status(400).body(e.getMessage());
 		} catch (ProductNotFoundException e) {
 			return ResponseEntity.status(404).body(e.getMessage());
-		} 
+		}
 	}
 
 	@PostMapping(path = "/carts/{id}")
-	public ResponseEntity<Object> addMoreProductToCart(@PathVariable("id") String CartId,
+	public ResponseEntity<Object> addMoreProductToCart(@PathVariable("id") String cartId,
 			@RequestParam("productId") String productId, @RequestParam("quantity") String quantity)
 			throws ProductNotFoundException, CartNotFoundException {
 
 		try {
 			Carts currentCart = null;
-			if (CartId.matches(PATTERN) || quantity.matches(PATTERN) || productId.matches(PATTERN)) {
-				currentCart = ps.addMoreProductsToCart(currentCart, CartId, productId, quantity);
+			if (cartId.matches(PATTERN) || quantity.matches(PATTERN) || productId.matches(PATTERN)) {
+				currentCart = ps.addMoreProductsToCart(currentCart, cartId, productId, quantity);
 				return ResponseEntity.status(200).body(currentCart);
 			} else {
 				throw new NumberFormatException("product id or quantity must be of type int!");
@@ -156,6 +156,46 @@ public class ProductController {
 			return ResponseEntity.status(400).body(e.getMessage());
 		} catch (CartNotFoundException e) {
 			return ResponseEntity.status(404).body(e.getMessage());
+		} catch (ProductNotFoundException e) {
+			return ResponseEntity.status(404).body(e.getMessage());
+		}
+	}
+
+	@PutMapping(path = "/carts/{id}")
+	public ResponseEntity<Object> updateProductQuantityInCart(@PathVariable("id") String cartId,
+			@RequestParam("productId") String productId, @RequestParam("quantity") String quantity)
+			throws ProductNotFoundException, CartNotFoundException {
+
+		try {
+			Carts currentCart = null;
+			if (cartId.matches(PATTERN) || quantity.matches(PATTERN) || productId.matches(PATTERN)) {
+				currentCart = ps.updateProductQuantityInCart(currentCart, cartId, productId, quantity);
+				return ResponseEntity.status(200).body(currentCart);
+			} else {
+				throw new NumberFormatException("cart id/product id/quantity must be of type int!");
+			}
+		} catch (NumberFormatException e) {
+			return ResponseEntity.status(400).body(e.getMessage());
+		} catch (ProductNotFoundException e) {
+			return ResponseEntity.status(404).body(e.getMessage());
+		}
+
+	}
+
+	@DeleteMapping(path = "/carts/{id}")
+	public ResponseEntity<Object> delteteProductInCart(@PathVariable("id") String cartId,
+			@RequestParam("productId") String productId) throws ProductNotFoundException, CartNotFoundException {
+
+		try {
+			Carts currentCart = null;
+			if (cartId.matches(PATTERN) || productId.matches(PATTERN)) {
+				currentCart = ps.delteteProductInCart(currentCart, cartId, productId);
+				return ResponseEntity.status(200).body(currentCart);
+			} else {
+				throw new NumberFormatException("cart id/product id must be of type int!");
+			}
+		} catch (NumberFormatException e) {
+			return ResponseEntity.status(400).body(e.getMessage());
 		} catch (ProductNotFoundException e) {
 			return ResponseEntity.status(404).body(e.getMessage());
 		}
