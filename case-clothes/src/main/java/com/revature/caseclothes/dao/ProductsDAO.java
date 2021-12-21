@@ -21,12 +21,16 @@ public class ProductsDAO {
 	private EntityManager em;
 
 	@Transactional
+	public Products selectProductById(int id) {
+
+		Products p = em.find(Products.class, id);
+
+		return p;
+	}
+
+	@Transactional
 	public List<Products> getAllProducts() {
 
-		// String query = "SELECT p.id, p.name, p.price, p.description, c.categories,
-		// p.imageURL, p.totalQuantity "
-		// + "FROM Products p JOIN p.categories c";
-		// TypedQuery<Products[]> typedQuery = em.createQuery(query, Products[].class);
 		String query = "SELECT p FROM Products p";
 		TypedQuery<Products> typedQuery = em.createQuery(query, Products.class);
 		List<Products> productsList = typedQuery.getResultList();
@@ -52,30 +56,15 @@ public class ProductsDAO {
 	}
 
 	@Transactional
-	public Products selectProductById(int id) {
-		Products p = em.find(Products.class, id);
+	public Products updateAProduct(Products productToBeUpdated) {
 
-		return p;
+		Session session = em.unwrap(Session.class);
+
+		session.merge(productToBeUpdated);
+
+		return productToBeUpdated;
 	}
-
-	@Transactional
-	public Carts insertProductToCart(Carts addToCart) {
-
-		em.persist(addToCart);
-
-		return addToCart;
-	}
-
-	@Transactional
-	public Carts selectACart(int id) {
-		String query = "SELECT c FROM Carts c WHERE c.cartId = :id";
-		TypedQuery<Carts> typedQuery = em.createQuery(query, Carts.class);
-		Carts cart = typedQuery.setParameter("id", id).getSingleResult();
-
-		return cart;
-
-	}
-
+	
 	@Transactional
 	public void deleteProductById(int id) {
 
@@ -86,25 +75,13 @@ public class ProductsDAO {
 	}
 
 	@Transactional
-	public Products updateAProduct(int id, Products productToBeUpdated) {
+	public Carts selectACartById(int id) {
+		
+		String query = "SELECT c FROM Carts c WHERE c.cartId = :id";
+		TypedQuery<Carts> typedQuery = em.createQuery(query, Carts.class);
+		Carts cart = typedQuery.setParameter("id", id).getSingleResult();
 
-		Session session = em.unwrap(Session.class);
-
-		String hqlUpdate = "update Products p set p.name = :newName, p.price = :price, p.description = :description, "
-				+ "p.categories = :categories, p.imageURL = :imgURL, p.totalQuantity = :totalQuantity "
-				+ "where p.id = :id";
-
-		session.createQuery(hqlUpdate).setParameter("newName", productToBeUpdated.getName())
-				.setParameter("description", productToBeUpdated.getDescription())
-				.setParameter("price", productToBeUpdated.getPrice())
-				.setParameter("categories", productToBeUpdated.getCategories())
-				.setParameter("imgURL", productToBeUpdated.getImageURL())
-				.setParameter("totalQuantity", productToBeUpdated.getTotalQuantity()).setParameter("id", id)
-				.executeUpdate();
-
-		Products updatedProducts = this.selectProductById(id);
-
-		return updatedProducts;
+		return cart;
 	}
 
 	@Transactional
@@ -120,5 +97,28 @@ public class ProductsDAO {
 
 	}
 
+	@Transactional
+	public Carts updateProductsInTheCart(Carts currentCart) {
+		
+		Session session = em.unwrap(Session.class);
+
+		session.merge(currentCart);
+
+		return currentCart;
+	}
+
+	@Transactional
+	public Carts deleteAProductInTheCart(Carts currentCart, int quantityToDelete) {
+		
+		Session session = em.unwrap(Session.class);
+		
+		Quantities toBeDeleted = session.find(Quantities.class, quantityToDelete);
+		
+		session.remove(toBeDeleted);
+
+		session.merge(currentCart);
+
+		return currentCart;
+	}
 
 }
