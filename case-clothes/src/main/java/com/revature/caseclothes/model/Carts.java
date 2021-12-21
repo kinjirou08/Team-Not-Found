@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 //import com.revature.caseclothes.dto.AddToCartDTO;
 
@@ -18,7 +19,8 @@ public class Carts {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cartId;
 
-	// OneToOne -> User/Customer
+	@OneToOne
+	private User user;
 
 	@OneToMany
 	private List<Quantities> quantities;
@@ -30,6 +32,11 @@ public class Carts {
 	public Carts(List<Quantities> quantities) {
 		super();
 		this.quantities = quantities;
+	}
+	
+	public Carts(User user) {
+		super();
+		this.user = user;
 	}
 
 	public int getCartId() {
