@@ -13,7 +13,7 @@ public class UserRole {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String role;
+	private String role; // 1 - customer, 2 - admin
 
 	public UserRole() {
 		super();
