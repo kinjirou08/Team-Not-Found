@@ -22,15 +22,15 @@ public class UserDao {
 	// Add a new Customer
 	@Transactional
 	public User addCustomer(AddUserDTO dto, Carts c) {
-		UserRole customer = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'customer'")
-				.getSingleResult();
+//		UserRole customer = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'customer'")
+//				.getSingleResult();
+//
+//		User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
+//				dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), customer);
 
-		User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
-				dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), customer);
+		em.persist(c);
 
-		em.persist(userToAdd);
-
-		return userToAdd;
+		return new User();
 	}
 
 	// Add a new Admin

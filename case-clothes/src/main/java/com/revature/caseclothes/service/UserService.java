@@ -30,8 +30,7 @@ public class UserService {
 		Carts c = new Carts();
 		System.out.println(c);
 		
-		//return ud.addCustomer(dto, c);
-		return null;
+		return ud.addCustomer(dto, c);
 	}
 	
 	//Get all users if Admin
