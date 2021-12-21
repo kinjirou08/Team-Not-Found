@@ -68,21 +68,39 @@ public class ProductsService {
 
 	}
 
-	public Carts addProductsToCart(String id, String quantity) throws ProductNotFoundException {
+//	public Carts addProductsToCart(String id, String quantity) throws ProductNotFoundException {
+//
+//		Carts c = new Carts();
+//		Products p = this.getProductById(id);
+//		int quantityToBuy = Integer.parseInt(quantity);
+//
+//		Quantities q = new Quantities(p, quantityToBuy);
+//
+//		List<Quantities> q1 = new ArrayList<>();
+//		q1.add(q);
+//
+//		c.setQuantities(q1);
+//		c = pd.insertToCart(c, q);
+//
+//		return c;
+//	}
+	
+	public Carts addMoreProductsToCart(Carts currentCart, String cartId, String productId, String quantity)
+			throws ProductNotFoundException, CartNotFoundException {
 
-		Carts c = new Carts();
-		Products p = this.getProductById(id);
+		currentCart = this.getACartById(cartId);
+		Products p = this.getProductById(productId);
 		int quantityToBuy = Integer.parseInt(quantity);
-
 		Quantities q = new Quantities(p, quantityToBuy);
 
-		List<Quantities> q1 = new ArrayList<>();
-		q1.add(q);
+		List<Quantities> currentQuantitiesInTheCart = currentCart.getQuantities();
+		currentQuantitiesInTheCart.add(q);
 
-		c.setQuantities(q1);
-		c = pd.insertToCart(c, q);
+		currentCart.setQuantities(currentQuantitiesInTheCart);
 
-		return c;
+		currentCart = pd.insertToCart(currentCart, q);
+
+		return currentCart;
 	}
 
 	public Carts getACartById(String id) throws CartNotFoundException {
@@ -122,23 +140,7 @@ public class ProductsService {
 
 	}
 
-	public Carts addMoreProductsToCart(Carts currentCart, String cartId, String productId, String quantity)
-			throws ProductNotFoundException, CartNotFoundException {
 
-		currentCart = this.getACartById(cartId);
-		Products p = this.getProductById(productId);
-		int quantityToBuy = Integer.parseInt(quantity);
-		Quantities q = new Quantities(p, quantityToBuy);
-
-		List<Quantities> currentQuantitiesInTheCart = currentCart.getQuantities();
-		currentQuantitiesInTheCart.add(q);
-
-		currentCart.setQuantities(currentQuantitiesInTheCart);
-
-		currentCart = pd.insertToCart(currentCart, q);
-
-		return currentCart;
-	}
 
 	public Carts updateProductQuantityInCart(Carts currentCart, String cartId, String productId, String quantity)
 			throws CartNotFoundException, ProductNotFoundException {

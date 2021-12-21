@@ -35,22 +35,24 @@ public class UserController {
 	private UserService us;
 
 	// Add User
-		@PostMapping(path = "/users") // needs fixing
-		public ResponseEntity<Object> addUser(@RequestBody AddUserDTO dto) throws UnAuthorizedException {
-			HttpSession session = req.getSession();
+	@PostMapping(path = "/users") // needs fixing
+	public ResponseEntity<Object> addUser(@RequestBody AddUserDTO dto) throws UnAuthorizedException {
+		HttpSession session = req.getSession();
 
-			User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
-			
-			if (currentlyLoggedInUser != null) {
-				User addedUser = us.addAdmin(currentlyLoggedInUser, dto);
+		User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
 
-				return ResponseEntity.status(201).body(addedUser);
-			}
+		if (currentlyLoggedInUser != null) {
+			User addedUser = us.addAdmin(currentlyLoggedInUser, dto);
+			return ResponseEntity.status(201).body(addedUser);
+
+		} else {
 
 			User addedUser = us.addCustomer(dto);
 
 			return ResponseEntity.status(201).body(addedUser);
 		}
+
+	}
 
 	// Get All Users if Admin
 	@GetMapping(path = "/users")
@@ -84,9 +86,9 @@ public class UserController {
 
 		return ResponseEntity.status(200).body(userFound);
 	}
-	
+
 	// Get User by Username if Admin
-	@GetMapping(path = "/users/{id}")
+	@GetMapping(path = "/users/{username}")
 	public ResponseEntity<Object> getUserByUsername(@PathVariable("username") String username)
 			throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
 		HttpSession session = req.getSession();
@@ -102,7 +104,7 @@ public class UserController {
 		return ResponseEntity.status(200).body(userFound);
 	}
 
-	//Delete User if you are the User
+	// Delete User if you are the User
 	@DeleteMapping(value = "/users")
 	public ResponseEntity<Object> deleteUserByID() throws UserNotFoundException {
 		HttpSession session = req.getSession();
@@ -117,9 +119,9 @@ public class UserController {
 		us.deleteUserByID(currentlyLoggedInUser);
 		return ResponseEntity.status(200).body("Successfully Deleted User of id: " + id);
 	}
-	
-	//Update User if you are the user
-	@PutMapping(path= "/users")
+
+	// Update User if you are the user
+	@PutMapping(path = "/users")
 	public ResponseEntity<Object> updateUserByID() throws UserNotFoundException {
 		HttpSession session = req.getSession();
 
@@ -131,7 +133,7 @@ public class UserController {
 
 		int id = currentlyLoggedInUser.getId();
 		User user = us.UpdateUserByID(currentlyLoggedInUser);
-		
+
 		return ResponseEntity.status(200).body(user);
 	}
 }

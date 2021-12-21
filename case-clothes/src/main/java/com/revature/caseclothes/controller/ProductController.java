@@ -122,23 +122,23 @@ public class ProductController {
 		}
 	}
 
-	@PostMapping(path = "/carts") // path will be changed to "/user/{id}/carts" once we have the User feature
-	public ResponseEntity<Object> addProductsToCart(@RequestParam("productId") String productId,
-			@RequestParam("quantity") String quantity) throws ProductNotFoundException {
-
-		try {
-			if (productId.matches(PATTERN) || quantity.matches(PATTERN)) {
-				Carts c = ps.addProductsToCart(productId, quantity);
-				return ResponseEntity.status(201).body(c);
-			} else {
-				throw new NumberFormatException("product id or quantity must be of type int!");
-			}
-		} catch (NumberFormatException e) {
-			return ResponseEntity.status(400).body(e.getMessage());
-		} catch (ProductNotFoundException e) {
-			return ResponseEntity.status(404).body(e.getMessage());
-		}
-	}
+//	@PostMapping(path = "/carts") // path will be changed to "/user/{id}/carts" once we have the User feature
+//	public ResponseEntity<Object> addProductsToCart(@RequestParam("productId") String productId,
+//			@RequestParam("quantity") String quantity) throws ProductNotFoundException {
+//
+//		try {
+//			if (productId.matches(PATTERN) || quantity.matches(PATTERN)) {
+//				Carts c = ps.addProductsToCart(productId, quantity);
+//				return ResponseEntity.status(201).body(c);
+//			} else {
+//				throw new NumberFormatException("product id or quantity must be of type int!");
+//			}
+//		} catch (NumberFormatException e) {
+//			return ResponseEntity.status(400).body(e.getMessage());
+//		} catch (ProductNotFoundException e) {
+//			return ResponseEntity.status(404).body(e.getMessage());
+//		}
+//	}
 
 	@PostMapping(path = "/carts/{id}")
 	public ResponseEntity<Object> addMoreProductToCart(@PathVariable("id") String cartId,
