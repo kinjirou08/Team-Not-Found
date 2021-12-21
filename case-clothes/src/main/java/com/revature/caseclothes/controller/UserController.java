@@ -35,9 +35,9 @@ public class UserController {
 	// Add User
 	@PostMapping(path = "/users") // needs fixing
 	public ResponseEntity<Object> addUser(@RequestBody AddUserDTO dto) {
-		User currenLoggedInUser = (User) req.getSession().getAttribute("currentuser");
+		//User currenLoggedInUser = (User) req.getSession().getAttribute("currentuser");
 
-		User addedUser = us.addUser(currenLoggedInUser, dto);
+		User addedUser = us.addUser(/* currenLoggedInUser, */dto);
 
 		return ResponseEntity.status(201).body(addedUser);
 	}

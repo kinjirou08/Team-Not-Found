@@ -13,7 +13,7 @@ import com.revature.caseclothes.exception.InvalidLoginException;
 import com.revature.caseclothes.exception.InvalidParametersException;
 import com.revature.caseclothes.exception.UnAuthorizedException;
 import com.revature.caseclothes.exception.UserNotFoundException;
-
+import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.User;
 
 @Service
@@ -23,12 +23,15 @@ public class UserService {
 	private UserDao ud;
 	
 	//Attempt to put addAdmin and addCustomer in the same function
-	public User addUser(User currentUser, AddUserDTO dto) {
-		if(currentUser.getRole().getRole().equals("admin")) {
-			return ud.addAdmin(dto);
-		}
+	public User addUser(/* User currentUser, */AddUserDTO dto) {
+//		if(currentUser.getRole().getRole().equals("admin")) {
+//			return ud.addAdmin(dto);
+//		}
+		Carts c = new Carts();
+		System.out.println(c);
 		
-		return ud.addCustomer(dto);
+		//return ud.addCustomer(dto, c);
+		return null;
 	}
 	
 	//Get all users if Admin
