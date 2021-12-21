@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.caseclothes.dao.UserDao;
 import com.revature.caseclothes.dto.AddUserDTO;
 import com.revature.caseclothes.exception.InvalidParametersException;
 import com.revature.caseclothes.exception.UnAuthorizedException;
@@ -34,10 +36,18 @@ public class UserController {
 
 	// Add User
 	@PostMapping(path = "/users") // needs fixing
-	public ResponseEntity<Object> addUser(@RequestBody AddUserDTO dto) {
-		User currenLoggedInUser = (User) req.getSession().getAttribute("currentuser");
+	public ResponseEntity<Object> addUser(@RequestBody AddUserDTO dto) throws UnAuthorizedException {
+		HttpSession session = req.getSession();
 
-		User addedUser = us.addUser(currenLoggedInUser, dto);
+		User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
+		
+		if (currentlyLoggedInUser != null) {
+			User addedUser = us.addAdmin(currentlyLoggedInUser, dto);
+
+			return ResponseEntity.status(201).body(addedUser);
+		}
+
+		User addedUser = us.addCustomer(dto);
 
 		return ResponseEntity.status(201).body(addedUser);
 	}
@@ -74,7 +84,25 @@ public class UserController {
 
 		return ResponseEntity.status(200).body(userFound);
 	}
+	
+	// Get User by Username if Admin
+	@GetMapping(path = "/users/{id}")
+	public ResponseEntity<Object> getUserByUsername(@PathVariable("username") String username)
+			throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
+		HttpSession session = req.getSession();
 
+		User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
+
+		if (currentlyLoggedInUser == null) {
+			return ResponseEntity.status(401).body("You are not logged in");
+		}
+
+		User userFound = us.getUserByUsername(currentlyLoggedInUser, username);
+
+		return ResponseEntity.status(200).body(userFound);
+	}
+
+	//Delete User if you are the User
 	@DeleteMapping(value = "/users")
 	public ResponseEntity<Object> deleteUserByID() throws UserNotFoundException {
 		HttpSession session = req.getSession();
@@ -88,5 +116,22 @@ public class UserController {
 		int id = currentlyLoggedInUser.getId();
 		us.deleteUserByID(currentlyLoggedInUser);
 		return ResponseEntity.status(200).body("Successfully Deleted User of id: " + id);
+	}
+	
+	//Update User if you are the user
+	@PutMapping(path= "/users")
+	public ResponseEntity<Object> updateUserByID() throws UserNotFoundException {
+		HttpSession session = req.getSession();
+
+		User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
+
+		if (currentlyLoggedInUser == null) {
+			throw new UserNotFoundException("User was not found or is not logged in");
+		}
+
+		int id = currentlyLoggedInUser.getId();
+		User user = us.UpdateUserByID(currentlyLoggedInUser);
+		
+		return ResponseEntity.status(200).body(user);
 	}
 }

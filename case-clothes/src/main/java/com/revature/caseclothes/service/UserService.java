@@ -22,12 +22,17 @@ public class UserService {
 	@Autowired
 	private UserDao ud;
 	
-	//Attempt to put addAdmin and addCustomer in the same function
-	public User addUser(User currentUser, AddUserDTO dto) {
-		if(currentUser.getRole().getRole().equals("admin")) {
+	//Add Admin if you are logged in as Admin
+	public User addAdmin(User currentlyLoggedInUser, AddUserDTO dto) throws UnAuthorizedException {
+		if(currentlyLoggedInUser.getRole().getRole().equals("admin")) {
 			return ud.addAdmin(dto);
+		}else {
+			throw new UnAuthorizedException("You must be an Admin to use this while you are logged in.");
 		}
-		
+	}
+	
+	//Add customer
+	public User addCustomer(AddUserDTO dto) {
 		return ud.addCustomer(dto);
 	}
 	
@@ -96,13 +101,16 @@ public class UserService {
 	}
 	
 	//Update Information of currentUser
-	public void UpdateUserByID(User currentUser) throws UserNotFoundException {
+	public User UpdateUserByID(User currentUser) throws UserNotFoundException {
+		User user;
 		if(currentUser != null) {
 			int currentUserID = currentUser.getId();
-			ud.UpdateUserByID(currentUserID, currentUser);
+			user = ud.UpdateUserByID(currentUserID, currentUser);
 		} else {
 			throw new UserNotFoundException("Current User is NULL");
 		}
+		
+		return user;
 	}
 
 	public User login(String username, String password) throws InvalidLoginException {
