@@ -26,7 +26,6 @@ public class UserDao {
 					.setParameter("role", "customer")
 					.getSingleResult();
 
-
 			User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
 					dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), customer);
 
@@ -41,7 +40,9 @@ public class UserDao {
 		// Add a new Admin
 		@Transactional
 		public User addAdmin(AddUserDTO dto) {
-			UserRole admin = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'admin'").getSingleResult();
+			UserRole admin = (UserRole) em.createQuery("SELECT a FROM UserRole a WHERE a.role = :role")
+					.setParameter("role", "admin")
+					.getSingleResult();
 
 			User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
 					dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), admin);
