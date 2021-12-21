@@ -104,8 +104,10 @@ public class UserDao {
 	@Transactional
 	public User getUsernameAndPassword(String username, String password) {
 		User user = em.createQuery("FROM User u WHERE u.username = :user AND u.password = :pass", User.class)
-				.setParameter("user", username).setParameter("pass", password).getSingleResult();
-
+				.setParameter("user", username)
+				.setParameter("pass", password)
+				.getSingleResult();
+		
 		return user;
 	}
 
