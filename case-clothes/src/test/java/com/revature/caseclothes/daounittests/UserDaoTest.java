@@ -10,7 +10,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.caseclothes.dao.UserDAO;
+import com.revature.caseclothes.dao.UserDao;
 import com.revature.caseclothes.model.User;
 import com.revature.caseclothes.model.UserRole;
 
@@ -22,7 +22,7 @@ public class UserDaoTest {
 	private EntityManager em;
 	
 	@Autowired
-	private UserDAO sut;
+	private UserDao sut;
 	
 	@Test
 	@Transactional
