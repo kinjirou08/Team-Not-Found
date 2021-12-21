@@ -14,8 +14,8 @@ import com.revature.caseclothes.exception.InvalidParametersException;
 import com.revature.caseclothes.exception.UnAuthorizedException;
 import com.revature.caseclothes.exception.UserNotFoundException;
 import com.revature.caseclothes.model.Carts;
-//import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.User;
+
 
 @Service
 public class UserService {
