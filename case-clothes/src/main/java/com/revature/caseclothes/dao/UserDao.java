@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.caseclothes.dto.AddUserDTO;
-import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.User;
 import com.revature.caseclothes.model.UserRole;
 
@@ -21,7 +20,7 @@ public class UserDao {
 
 	// Add a new Customer
 	@Transactional
-	public User addCustomer(AddUserDTO dto, Carts c) {
+	public User addCustomer(AddUserDTO dto) {
 		UserRole customer = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'customer'")
 				.getSingleResult();
 
