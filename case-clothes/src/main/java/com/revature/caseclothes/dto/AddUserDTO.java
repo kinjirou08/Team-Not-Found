@@ -3,6 +3,10 @@ package com.revature.caseclothes.dto;
 import java.util.Objects;
 
 
+import javax.persistence.ManyToOne;
+
+import com.revature.caseclothes.model.UserRole;
+
 public class AddUserDTO {
 	private String username;
 	private String password; 
@@ -109,6 +113,7 @@ public class AddUserDTO {
 		return "AddUserDTO [username=" + username + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", address="
 				+ address + "]";
-	}
-	
+		}
+
 }
+
