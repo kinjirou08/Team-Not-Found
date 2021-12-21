@@ -13,7 +13,7 @@ import com.revature.caseclothes.exception.InvalidLoginException;
 import com.revature.caseclothes.exception.InvalidParametersException;
 import com.revature.caseclothes.exception.UnAuthorizedException;
 import com.revature.caseclothes.exception.UserNotFoundException;
-
+//import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.User;
 
 @Service
@@ -30,7 +30,7 @@ public class UserService {
 			throw new UnAuthorizedException("You must be an Admin to use this while you are logged in.");
 		}
 	}
-	
+		
 	//Add customer
 	public User addCustomer(AddUserDTO dto) {
 		return ud.addCustomer(dto);

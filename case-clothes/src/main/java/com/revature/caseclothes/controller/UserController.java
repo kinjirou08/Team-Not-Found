@@ -35,22 +35,22 @@ public class UserController {
 	private UserService us;
 
 	// Add User
-	@PostMapping(path = "/users") // needs fixing
-	public ResponseEntity<Object> addUser(@RequestBody AddUserDTO dto) throws UnAuthorizedException {
-		HttpSession session = req.getSession();
+		@PostMapping(path = "/users") // needs fixing
+		public ResponseEntity<Object> addUser(@RequestBody AddUserDTO dto) throws UnAuthorizedException {
+			HttpSession session = req.getSession();
 
-		User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
-		
-		if (currentlyLoggedInUser != null) {
-			User addedUser = us.addAdmin(currentlyLoggedInUser, dto);
+			User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
+			
+			if (currentlyLoggedInUser != null) {
+				User addedUser = us.addAdmin(currentlyLoggedInUser, dto);
+
+				return ResponseEntity.status(201).body(addedUser);
+			}
+
+			User addedUser = us.addCustomer(dto);
 
 			return ResponseEntity.status(201).body(addedUser);
 		}
-
-		User addedUser = us.addCustomer(dto);
-
-		return ResponseEntity.status(201).body(addedUser);
-	}
 
 	// Get All Users if Admin
 	@GetMapping(path = "/users")

@@ -75,5 +75,5 @@ public class Quantities {
 	public String toString() {
 		return "Quantities [quantityId=" + quantityId + ", product=" + product + ", quantity=" + quantity + "]";
 	}
-
 }
+

@@ -1,5 +1,6 @@
 package com.revature.caseclothes.service;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.caseclothes.dao.ProductsDAO;
+import com.revature.caseclothes.exception.CartNotFoundException;
 import com.revature.caseclothes.exception.ProductNotFoundException;
 import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.Products;
@@ -33,52 +35,100 @@ public class ProductsService {
 	}
 
 	public Products addNewProduct(Products productToAdd) {
-		Products p = pd.insertNewProduct(productToAdd);
 
-		return p;
-	}
-
-	public Products getProductById(int id) throws ProductNotFoundException {
-		Products p = pd.selectProductById(id);
-
-		if (p == null) {
-			throw new ProductNotFoundException("No product with the id of " + id);
+		String convertPriceToString = String.valueOf(productToAdd.getPrice());
+		if (productToAdd.getName().equals("")) {
+			System.out.println(productToAdd.getName());
+			throw new InvalidParameterException("Name of the product must be included!");
+		} else if (productToAdd.getDescription().equals("")) {
+			throw new InvalidParameterException("Description of the product must be included!");
+		} else if (convertPriceToString.trim().equals("")) {
+			throw new InvalidParameterException("Price of the product must be included!");
+		} else if (convertPriceToString.trim().matches("^[a-zA-Z]*$")) {
+			throw new InvalidParameterException("Price of the product cannot contain alphabets!");
+		} else if (productToAdd.getPrice() <= 0) {
+			throw new InvalidParameterException("Price of the product cannot be less than zero");
 		} else {
-			return pd.selectProductById(id);
+			Products p = pd.insertNewProduct(productToAdd);
+			return p;
 		}
 
 	}
 
-	public Carts addProductsToCart(int productId, int quantity) throws ProductNotFoundException {
+	public Products getProductById(String id) throws ProductNotFoundException {
+
+		int productId = Integer.parseInt(id);
+		Products p = pd.selectProductById(productId);
+
+		if (p == null) {
+			throw new ProductNotFoundException("No product with the id of " + id);
+		} else {
+			return pd.selectProductById(productId);
+		}
+
+	}
+
+	public Carts addProductsToCart(String id, String quantity) throws ProductNotFoundException {
 
 		Carts c = new Carts();
+		Products p = this.getProductById(id);
+		int quantityToBuy = Integer.parseInt(quantity);
 
-		Products p = this.getProductById(productId);
-
-		Quantities q = new Quantities(p, quantity);
+		Quantities q = new Quantities(p, quantityToBuy);
 
 		List<Quantities> q1 = new ArrayList<>();
-
 		q1.add(q);
 
 		c.setQuantities(q1);
-
 		c = pd.insertToCart(c, q);
 
 		return c;
 	}
 
-	public Carts getACart(int id) {
+	public Carts getACartById(String id) throws CartNotFoundException {
 
-		Carts selectedCart = pd.selectACart(id);
+		int cartId = Integer.parseInt(id);
+		Carts selectedCart = pd.selectACartById(cartId);
 
-		return selectedCart;
+		if (selectedCart == null) {
+			throw new CartNotFoundException("No Cart with the id of " + id);
+		} else {
+			return pd.selectACartById(cartId);
+		}
 	}
 
-	public Carts addMoreProductsToCart(Carts currentCart, int productId, int quantity) throws ProductNotFoundException {
+	public void deleteProductById(String id) {
 
+		int productId = Integer.parseInt(id);
+		pd.deleteProductById(productId);
+
+	}
+
+	public Products updateAProduct(String id, Products productToBeUpdated) throws ProductNotFoundException {
+
+		int productId = Integer.parseInt(id);
+		Products checkProductIfExist = this.getProductById(id);
+		try {
+			if (checkProductIfExist == null) {
+				throw new ProductNotFoundException("No product with the id of " + id);
+			} else {
+				productToBeUpdated.setId(productId);
+			}
+		} catch (ProductNotFoundException e) {
+			e.getMessage();
+		}
+
+		return pd.updateAProduct(productToBeUpdated);
+
+	}
+
+	public Carts addMoreProductsToCart(Carts currentCart, String cartId, String productId, String quantity)
+			throws ProductNotFoundException, CartNotFoundException {
+
+		currentCart = this.getACartById(cartId);
 		Products p = this.getProductById(productId);
-		Quantities q = new Quantities(p, quantity);
+		int quantityToBuy = Integer.parseInt(quantity);
+		Quantities q = new Quantities(p, quantityToBuy);
 
 		List<Quantities> currentQuantitiesInTheCart = currentCart.getQuantities();
 		currentQuantitiesInTheCart.add(q);
@@ -87,6 +137,50 @@ public class ProductsService {
 
 		currentCart = pd.insertToCart(currentCart, q);
 
+		return currentCart;
+	}
+
+	public Carts updateProductQuantityInCart(Carts currentCart, String cartId, String productId, String quantity)
+			throws CartNotFoundException, ProductNotFoundException {
+
+		currentCart = this.getACartById(cartId);
+		int prodId = Integer.parseInt(productId);
+		int quantityToBuy = Integer.parseInt(quantity);
+		List<Quantities> currentProductList = currentCart.getQuantities();
+		for (Quantities q : currentProductList) {
+			if (q.getProduct().getId() == prodId) {
+				q.setQuantity(quantityToBuy);
+			} else {
+				throw new ProductNotFoundException ("Product not found on this cart");
+			}
+		}
+		currentCart.setQuantities(currentProductList);
+
+		currentCart = pd.updateProductsInTheCart(currentCart);
+
+		return currentCart;
+	}
+
+	public Carts delteteProductInCart(Carts currentCart, String cartId, String productId)
+			throws CartNotFoundException, ProductNotFoundException {
+
+		currentCart = this.getACartById(cartId);
+		int prodId = Integer.parseInt(productId);
+		
+		List<Quantities> currentProductList = currentCart.getQuantities();
+		int quantityToDelete = 0;
+		for (Quantities q : currentProductList) {
+			if (q.getProduct().getId() == prodId) {
+				currentProductList.remove(q);
+			} else {
+				throw new ProductNotFoundException ("Product not found on this cart");
+			}
+			quantityToDelete = q.getQuantityId();
+		}
+		currentCart.setQuantities(currentProductList);
+		
+		currentCart = pd.deleteAProductInTheCart(currentCart, quantityToDelete);
+		
 		return currentCart;
 	}
 
