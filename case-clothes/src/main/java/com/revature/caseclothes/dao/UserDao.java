@@ -89,22 +89,17 @@ public class UserDao {
 
 	// Update current User information
 	@Transactional
-	public User UpdateUserByID(int id, User userToUpdate) {
+	public User UpdateUser(int id, User updatedUserInfo) {
+		
 		Session session = em.unwrap(Session.class);
+		
+		User currentlyLoggedIn = session.find(User.class, id);
+		
+		currentlyLoggedIn = updatedUserInfo;
+		
+		session.merge(currentlyLoggedIn);
 
-		String hqlUpdate = "UPDATE User u SET u.first_name = :firstName, u.last_name = :lastName, "
-				+ "u.email = :updateEmail, u.phone_number = :phoneNum, u.address = :updateAddress "
-				+ "WHERE u.id = :userid";
-
-		session.createQuery(hqlUpdate, User.class).setParameter("firstName", userToUpdate.getFirstName())
-				.setParameter("lastName", userToUpdate.getLastName())
-				.setParameter("updateEmail", userToUpdate.getEmail())
-				.setParameter("phoneNum", userToUpdate.getPhoneNumber())
-				.setParameter("updateAddress", userToUpdate.getAddress()).executeUpdate();
-
-		User updatedUser = this.getUserByID(id);
-
-		return updatedUser;
+		return currentlyLoggedIn;
 	}
 
 	@Transactional

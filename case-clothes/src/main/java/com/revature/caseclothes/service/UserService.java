@@ -105,16 +105,33 @@ public class UserService {
 	}
 
 	// Update Information of currentUser
-	public User UpdateUserByID(User currentUser) throws UserNotFoundException {
-		User user;
-		if (currentUser != null) {
-			int currentUserID = currentUser.getId();
-			user = ud.UpdateUserByID(currentUserID, currentUser);
-		} else {
-			throw new UserNotFoundException("Current User is NULL");
+	public User UpdateUser(User currentUser, User updatedUserInfo) throws InvalidParametersException {
+		
+		if (updatedUserInfo.getFirstName().trim().equals("")) {
+			throw new InvalidParametersException("First Name is required to update your account!");
 		}
+		if (updatedUserInfo.getLastName().trim().equals("")) {
+			throw new InvalidParametersException("Last Name is required to update your account!");
+		}
+		if (updatedUserInfo.getEmail().trim().equals("")) {
+			throw new InvalidParametersException("Email is required to update your account!");
+		}
+		if (updatedUserInfo.getPhoneNumber().trim().equals("")) {
+			throw new InvalidParametersException("Phone Number is required to update your account!");
+		}
+		if (updatedUserInfo.getAddress().trim().equals("")) {
+			throw new InvalidParametersException("Address is required to update your account!");
+		}
+		
 
-		return user;
+		int currentUserID = currentUser.getId();
+		updatedUserInfo.setId(currentUserID);
+		updatedUserInfo.setUsername(currentUser.getUsername());
+		updatedUserInfo.setPassword(currentUser.getPassword());
+		updatedUserInfo.setRole(currentUser.getRole());
+		updatedUserInfo = ud.UpdateUser(currentUserID, updatedUserInfo);
+
+		return updatedUserInfo;
 	}
 
 	public User login(String username, String password) throws InvalidLoginException {

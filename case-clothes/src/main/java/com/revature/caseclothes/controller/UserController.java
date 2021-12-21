@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.caseclothes.dao.UserDao;
 import com.revature.caseclothes.dto.AddUserDTO;
 import com.revature.caseclothes.exception.InvalidParametersException;
 import com.revature.caseclothes.exception.UnAuthorizedException;
@@ -121,19 +120,17 @@ public class UserController {
 	}
 
 	// Update User if you are the user
-	@PutMapping(path = "/users")
-	public ResponseEntity<Object> updateUserByID() throws UserNotFoundException {
-		HttpSession session = req.getSession();
-
-		User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
-
-		if (currentlyLoggedInUser == null) {
-			throw new UserNotFoundException("User was not found or is not logged in");
+	@PutMapping(path = "/users") //needs fixing
+	public ResponseEntity<Object> updateUser(@RequestBody User user) throws InvalidParametersException {
+		
+		try {
+			HttpSession session = req.getSession();
+			User currentlyLoggedInUser = (User) session.getAttribute("currentuser");
+			User userToBeUpdated = us.UpdateUser(currentlyLoggedInUser, user);
+			return ResponseEntity.status(200).body(userToBeUpdated);
+		} catch (InvalidParametersException e) {
+			return ResponseEntity.status(400).body(e.getMessage());
 		}
-
-		int id = currentlyLoggedInUser.getId();
-		User user = us.UpdateUserByID(currentlyLoggedInUser);
-
-		return ResponseEntity.status(200).body(user);
+		
 	}
 }
