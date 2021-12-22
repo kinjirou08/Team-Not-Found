@@ -23,8 +23,6 @@ import com.revature.caseclothes.model.Quantities;
 import com.revature.caseclothes.model.User;
 import com.revature.caseclothes.model.UserRole;
 
-
-
 @SpringBootTest
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class ProductDaoTest {
