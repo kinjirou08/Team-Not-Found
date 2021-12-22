@@ -57,7 +57,9 @@ public class ProductDaoTest {
 		Products expected2 = new Products("T-Shirts","Slim-fitting style",22.3,c2," ",100);
 		expected2.setId(2);
 		
-		List<Products> expectedProducts = List.of(expected1,expected2);
+		List<Products> expectedProducts = new ArrayList<>();
+		expectedProducts.add(expected1);
+		expectedProducts.add(expected2);
 		
 		Assertions.assertEquals(expectedProducts, actual);
 		
@@ -105,7 +107,9 @@ public class ProductDaoTest {
 		Products expected2= new Products("tshirt","Your perfect pack for everyday",109.95,c1," ",100);
 		expected2.setId(2);
 		
-		List<Products> expectedList = List.of(expected1,expected2);
+		List<Products> expectedList = new ArrayList<>();
+		expectedList.add(expected1);
+		expectedList.add(expected2);
 		
 		List<Products> actualList = this.sut.getAllProductThatContains("tshirt");
 		

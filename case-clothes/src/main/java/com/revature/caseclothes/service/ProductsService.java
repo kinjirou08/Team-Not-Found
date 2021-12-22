@@ -2,6 +2,7 @@ package com.revature.caseclothes.service;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,7 +85,7 @@ public class ProductsService {
 //
 //		return c;
 //	}
-	
+
 	public Carts addMoreProductsToCart(Carts currentCart, String cartId, String productId, String quantity)
 			throws ProductNotFoundException, CartNotFoundException {
 
@@ -94,13 +95,33 @@ public class ProductsService {
 		Quantities q = new Quantities(p, quantityToBuy);
 
 		List<Quantities> currentQuantitiesInTheCart = currentCart.getQuantities();
-		currentQuantitiesInTheCart.add(q);
-
-		currentCart.setQuantities(currentQuantitiesInTheCart);
+		boolean checkProduct = checkProductInTheCart(currentQuantitiesInTheCart, p);
+		if (checkProduct == false) {
+			currentQuantitiesInTheCart.add(q);
+			currentCart.setQuantities(currentQuantitiesInTheCart);
+		} else if (checkProduct == true) {
+			for (Quantities q1 : currentQuantitiesInTheCart) {
+				if (q1.getProduct() == p) {
+					q1.setQuantity(q1.getQuantity() + quantityToBuy);
+					q = q1;
+				}
+			}
+		}
 
 		currentCart = pd.insertToCart(currentCart, q);
 
 		return currentCart;
+	}
+
+	private boolean checkProductInTheCart(List<Quantities> currentQuantitiesInTheCart, Products p) {
+		boolean result = false;
+		for (Quantities q1 : currentQuantitiesInTheCart) {
+			if (q1.getProduct() == p) {
+				result = true;
+			}
+		}
+		return result;
+
 	}
 
 	public Carts getACartById(String id) throws CartNotFoundException {
@@ -140,8 +161,6 @@ public class ProductsService {
 
 	}
 
-
-
 	public Carts updateProductQuantityInCart(Carts currentCart, String cartId, String productId, String quantity)
 			throws CartNotFoundException, ProductNotFoundException {
 
@@ -153,7 +172,7 @@ public class ProductsService {
 			if (q.getProduct().getId() == prodId) {
 				q.setQuantity(quantityToBuy);
 			} else {
-				throw new ProductNotFoundException ("Product not found on this cart");
+				throw new ProductNotFoundException("Product not found on this cart");
 			}
 		}
 		currentCart.setQuantities(currentProductList);
@@ -171,13 +190,18 @@ public class ProductsService {
 		
 		List<Quantities> currentProductList = currentCart.getQuantities();
 		int quantityToDelete = 0;
-		for (Quantities q : currentProductList) {
-			if (q.getProduct().getId() == prodId) {
-				currentProductList.remove(q);
+
+		Iterator <Quantities> iter = currentProductList.iterator();
+		Quantities q1 = null;
+		while (iter.hasNext()) {
+			q1 = iter.next();
+			if (q1.getProduct().getId() == prodId) {
+				iter.remove();
+				quantityToDelete = q1.getQuantityId();
+				break;
 			} else {
-				throw new ProductNotFoundException ("Product not found on this cart");
+				throw new ProductNotFoundException("Product not found on this cart");
 			}
-			quantityToDelete = q.getQuantityId();
 		}
 		currentCart.setQuantities(currentProductList);
 		

@@ -2,6 +2,7 @@ package com.revature.caseclothes.daounittests;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,11 +16,10 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.caseclothes.dao.UserDao;
 import com.revature.caseclothes.dto.AddUserDTO;
 import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.Category;
-
-import com.revature.caseclothes.dao.UserDao;
 import com.revature.caseclothes.model.User;
 import com.revature.caseclothes.model.UserRole;
 
@@ -156,7 +156,12 @@ public class UserDaoTest {
 		User expected4 = new User("tanveer_singh","password12","Tanveer","Singh","t_singh@list.com","3458976","345 Test",customer);
 		expected4.setId(4);
 	
-		List<User> expectedUsers = List.of(expected1,expected2,expected3,expected4);
+		List<User> expectedUsers = new ArrayList<>();
+		expectedUsers.add(expected1);
+		expectedUsers.add(expected2);
+		expectedUsers.add(expected3);
+		expectedUsers.add(expected4);
+
 		
 		Assertions.assertEquals(expectedUsers, actual);
 	}

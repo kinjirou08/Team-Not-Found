@@ -16,7 +16,7 @@ import com.revature.caseclothes.model.Quantities;
 
 @Repository
 public class ProductsDAO {
-  
+
 	@PersistenceContext
 	private EntityManager em;
 
@@ -46,7 +46,7 @@ public class ProductsDAO {
 		List<Products> productsList = typedQuery.getResultList();
 		return productsList;
 	}
-  
+
 	@Transactional
 	public Products insertNewProduct(Products productToAdd) {
 
@@ -54,7 +54,7 @@ public class ProductsDAO {
 
 		return productToAdd;
 	}
-  
+
 	@Transactional
 	public Products updateAProduct(Products productToBeUpdated) {
 
@@ -64,7 +64,7 @@ public class ProductsDAO {
 
 		return productToBeUpdated;
 	}
-	
+
 	@Transactional
 	public void deleteProductById(int id) {
 
@@ -76,7 +76,7 @@ public class ProductsDAO {
 
 	@Transactional
 	public Carts selectACartById(int id) {
-		
+
 		String query = "SELECT c FROM Carts c WHERE c.cartId = :id";
 		TypedQuery<Carts> typedQuery = em.createQuery(query, Carts.class);
 		Carts cart = typedQuery.setParameter("id", id).getSingleResult();
@@ -89,7 +89,7 @@ public class ProductsDAO {
 
 		Session session = em.unwrap(Session.class);
 
-		session.persist(q);
+		session.saveOrUpdate(q);
 
 		session.saveOrUpdate(c);
 
@@ -99,21 +99,21 @@ public class ProductsDAO {
 
 	@Transactional
 	public Carts updateProductsInTheCart(Carts currentCart) {
-		
+
 		Session session = em.unwrap(Session.class);
 
-		session.merge(currentCart);
+		session.saveOrUpdate(currentCart);
 
 		return currentCart;
 	}
 
 	@Transactional
 	public Carts deleteAProductInTheCart(Carts currentCart, int quantityToDelete) {
-		
+
 		Session session = em.unwrap(Session.class);
-		
+
 		Quantities toBeDeleted = session.find(Quantities.class, quantityToDelete);
-		
+
 		session.remove(toBeDeleted);
 
 		session.merge(currentCart);
