@@ -86,7 +86,7 @@ public class UserController {
 	}
 	
 	// Get User by Username if Admin
-	@GetMapping(path = "/users/{id}")
+	@GetMapping(path = "/users/{username}")
 	public ResponseEntity<Object> getUserByUsername(@PathVariable("username") String username)
 			throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
 		HttpSession session = req.getSession();
