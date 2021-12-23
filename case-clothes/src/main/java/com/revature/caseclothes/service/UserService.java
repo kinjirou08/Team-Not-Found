@@ -1,5 +1,6 @@
 package com.revature.caseclothes.service;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,12 @@ public class UserService {
 	
 	//Add Admin if you are logged in as Admin
 	public User addAdmin(User currentlyLoggedInUser, AddUserDTO dto) throws UnAuthorizedException {
+		if(dto.getUsername().trim().equals("") || dto.getPassword().trim().equals("") || dto.getFirstName().trim().equals("") 
+				|| dto.getLastName().trim().equals("") || dto.getPhoneNumber().equals("") || dto.getEmail().equals("") 
+				|| dto.getAddress().equals("")) {
+			throw new InvalidParameterException("Do not leave any information blank");
+		}
+		
 		if(currentlyLoggedInUser.getRole().getRole().equals("admin")) {
 			return ud.addAdmin(dto);
 		}else {
@@ -33,6 +40,12 @@ public class UserService {
 		
 	//Add customer
 	public User addCustomer(AddUserDTO dto) {
+		if(dto.getUsername().trim().equals("") || dto.getPassword().trim().equals("") || dto.getFirstName().trim().equals("") 
+				|| dto.getLastName().trim().equals("") || dto.getPhoneNumber().equals("") || dto.getEmail().equals("") 
+				|| dto.getAddress().equals("")) {
+			throw new InvalidParameterException("Do not leave any information blank");
+		}
+		
 		return ud.addCustomer(dto);
 	}
 	

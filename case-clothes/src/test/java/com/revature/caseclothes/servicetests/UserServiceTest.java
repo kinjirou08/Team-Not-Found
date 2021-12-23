@@ -1,19 +1,15 @@
 package com.revature.caseclothes.servicetests;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.EntityManager;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.caseclothes.dao.UserDao;
 import com.revature.caseclothes.dto.AddUserDTO;
@@ -24,6 +20,8 @@ import com.revature.caseclothes.exception.UserNotFoundException;
 import com.revature.caseclothes.model.User;
 import com.revature.caseclothes.model.UserRole;
 import com.revature.caseclothes.service.UserService;
+
+//@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 
 @ActiveProfiles("UserService-test")
 @SpringBootTest
@@ -61,7 +59,18 @@ public class UserServiceTest {
 		Assertions.assertThrows(UnAuthorizedException.class, () -> {
 			us.addAdmin(user, dto);
 		});
+	}
+	
+	@Test
+	public void testAddAdmin_negative() throws UnAuthorizedException {
+		UserRole admin = new UserRole("admin");
+		User user = new User("j_doe", "password1", "John", "Doe", "j_doe@gmail.com", "7367486273", "4042 Blvd", admin);
+		user.setId(1);
+		AddUserDTO dto = new AddUserDTO("jane_d", "   ", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave");
 		
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			us.addAdmin(user, dto);
+		});
 	}
 
 	@Test
@@ -77,6 +86,16 @@ public class UserServiceTest {
 		User expected = new User("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave", customer);
 		
 		Assertions.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testAddCustomer_negative() throws UnAuthorizedException {
+		UserRole customer = new UserRole("customer");
+		AddUserDTO dto = new AddUserDTO("jane_d", "password2", "   ", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave");
+		
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			us.addCustomer(dto);
+		});
 	}
 	
 	@Test
@@ -210,17 +229,15 @@ public class UserServiceTest {
 		us.deleteUserByID(user);
 	}
 	
-//	//Test Doesn't work
 //	@Test
 //	public void testDeleteUserByID_negative() throws UserNotFoundException {
 //		User user = new User();
 //		
-//	//System says nothing was thrown
 //		Assertions.assertThrows(UserNotFoundException.class, () -> {
 //			us.deleteUserByID(user);
 //		});
 //	}
-//
+
 	@Test
 	public void testUpdateUserByID() throws UserNotFoundException {
 		UserRole customer = new UserRole("customer");
@@ -272,13 +289,10 @@ public class UserServiceTest {
 		Assertions.assertEquals(expected, actual);
 	}
 	
-//	//Test doesn't work
 //	@Test
 //	public void testLogin_negative() throws UserNotFoundException, InvalidLoginException {
-//		//Nothing was thrown
 //		Assertions.assertThrows(UserNotFoundException.class, () -> {
 //			us.login("bach_tran", "password");
 //		});
 //	}
-	
 }
