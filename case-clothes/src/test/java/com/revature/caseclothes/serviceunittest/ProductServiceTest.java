@@ -1,5 +1,6 @@
 package com.revature.caseclothes.serviceunittest;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -126,17 +127,107 @@ public class ProductServiceTest {
 
 		Assertions.assertEquals(expectedList, actual);
 	}
-	
+
 	@Test // Sad Path
 	void getAllProductThatContains_NoValidProduct() {
-		
+
 		Assertions.assertThrows(ProductNotFoundException.class, () -> {
-			
+
 			productsService.getAllProductThatContains("shirt");
-			
+
+		});
+	}
+
+	/*
+	 * ProductsService's addNewProduct() test
+	 */
+
+	@Test // Happy Path
+	void addNewProduct_PositiveTest() {
+
+		Category c1 = new Category("Men's clothing");
+		c1.setCategoryId(1);
+
+		Products newProduct = new Products("Mens Casual Slim Fit",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		newProduct.setId(1);
+		
+		Mockito.when(productsDao.insertNewProduct(newProduct)).thenReturn(new Products("Mens Casual Slim Fit",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100));
+		
+		Products actual = productsService.addNewProduct(newProduct);
+		actual.setId(1);
+		
+		Products expected = new Products("Mens Casual Slim Fit",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		expected.setId(1);
+		
+		Assertions.assertEquals(expected, actual);
+	}
+	
+	@Test // Sad Path
+	void addNewProduct_NoNameInputAllFieldsValid_NegativeTest() {
+		
+		Category c1 = new Category("Men's clothing");
+		c1.setCategoryId(1);
+		
+		Products p = new Products("",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			productsService.addNewProduct(p);			
+		});	
+	}
+
+	@Test // Sad Path
+	void addNewProduct_NoDescriptionInputAllFieldsValid_NegativeTest() {
+		
+		Category c1 = new Category("Men's clothing");
+		c1.setCategoryId(1);
+		
+		Products p = new Products("Mens Casual Slim Fit",
+				"", 15.99, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			productsService.addNewProduct(p);		
 		});	
 	}
 	
+	@Test // Sad Path
+	void addNewProduct_NoPriceInputAllFieldsValid_NegativeTest() {
+		
+		Category c1 = new Category("Men's Clothing");
+		c1.setCategoryId(1);
+		
+		Products p = new Products("Mens Casual Slim Fit",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 0, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		
+		
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			productsService.addNewProduct(p);		
+		});	
+	}
 	
-
+	@Test // Sad Path
+	void addNewProduct_PriceIsEmptyOrPriceInputIsOfNotAnIntegerField_NegativeTest() {
+		
+		Category c1 = new Category("Men's Clothing");
+		c1.setCategoryId(1);
+		
+		Products p = new Products("Mens Casual Slim Fit",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", Double.NaN, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			productsService.addNewProduct(p);		
+		});
+		
+		
+	}
 }

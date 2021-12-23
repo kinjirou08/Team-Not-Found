@@ -49,10 +49,8 @@ public class ProductsService {
 		} else if (productToAdd.getPrice() <= 0) {
 			throw new InvalidParameterException("Price of the product cannot be less than zero");
 		} else {
-			Products p = pd.insertNewProduct(productToAdd);
-			return p;
+			return pd.insertNewProduct(productToAdd);
 		}
-
 	}
 
 	public Products getProductById(String id) throws ProductNotFoundException {
