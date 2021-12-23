@@ -156,12 +156,20 @@ public class UserDaoTest {
 		User expected4 = new User("tanveer_singh","password12","Tanveer","Singh","t_singh@list.com","3458976","345 Test",customer);
 		expected4.setId(4);
 	
+<<<<<<< HEAD
 		List<User> expectedUsers = new ArrayList<>();
+=======
+		ArrayList<User> expectedUsers = new ArrayList<User>();
+		//(expected1,expected2,expected3,expected4)
+>>>>>>> 28d3561 (Merging Changes)
 		expectedUsers.add(expected1);
 		expectedUsers.add(expected2);
 		expectedUsers.add(expected3);
 		expectedUsers.add(expected4);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 28d3561 (Merging Changes)
 		
 		Assertions.assertEquals(expectedUsers, actual);
 	}
