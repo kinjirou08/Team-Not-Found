@@ -354,22 +354,53 @@ public class ProductDaoTest {
 		Category c1 = new Category("Men's Clothing");
 		this.em.persist(c1);
 		
-		UserRole admin = new UserRole("admin");
-		this.em.persist(admin);
+		UserRole customer = new UserRole("customer");
+		this.em.persist(customer);
 		
 		User user = new User("tanveer_singh", "password1","tanveer","singh","singhtanveer67@list.com",
-				"2608979876","232 West", admin);
+				"2608979876","232 West", customer);
 		this.em.persist(user);
+		
+		Carts cart = new Carts(user);
+		this.em.persist(cart);
 		
 		Products product = new Products("tshirt","Your perfect pack for everyday",109.95,c1," ",100);
 		this.em.persist(product);
 		
-		this.em.flush();
-		this.sut.deleteProductById(1);
 		
+		
+		Quantities q1 = new Quantities(product,4);
+		this.em.persist(q1);
+		Quantities q2 = new Quantities(product,7);
+		this.em.persist(q2);
+		Quantities q3 = new Quantities(product,10);
+		this.em.persist(q3);
+		
+		List<Quantities> listOfQuantities = new ArrayList<>();
+		listOfQuantities.add(q1);
+		listOfQuantities.add(q2);
+		listOfQuantities.add(q3);
+		
+		cart = new Carts(listOfQuantities);
+		
+		this.em.persist(cart);
+		
+	
 		Quantities quantitiesToBeDeleted = em.find(Quantities.class,1);
+		quantitiesToBeDeleted.setQuantityId(1);
 		
-		assertThat(quantitiesToBeDeleted).isNull();
+		//this.em.remove(quantitiesToBeDeleted);
+		
+		Carts expected = new Carts(listOfQuantities);
+		expected.setCartId(1);
+		
+		System.out.println(expected);
+		
+		this.em.merge(cart);
+		
+		Carts actual = this.sut.deleteAProductInTheCart(expected, 1);
+		
+		Assertions.assertEquals(expected, actual);
 	}
 	
 	

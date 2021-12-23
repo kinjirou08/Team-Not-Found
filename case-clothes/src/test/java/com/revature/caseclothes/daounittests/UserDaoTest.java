@@ -72,6 +72,7 @@ public class UserDaoTest {
 		});
 	}
 	
+	
 	@Test
 	@Transactional  //Happy Path
 	public void testAddCustomer() {
