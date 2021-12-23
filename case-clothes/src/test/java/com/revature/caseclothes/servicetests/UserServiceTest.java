@@ -52,7 +52,6 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	@Transactional
 	public void testAddAdminNegative() throws UnAuthorizedException {
 		UserRole customer = new UserRole("customer");
 		User user = new User("j_doe", "password1", "John", "Doe", "j_doe@gmail.com", "7367486273", "4042 Blvd", customer);
@@ -66,7 +65,6 @@ public class UserServiceTest {
 	}
 
 	@Test
-	@Transactional
 	public void testAddCustomer() throws UnAuthorizedException {
 		UserRole customer = new UserRole("customer");
 		
@@ -82,13 +80,12 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	@Transactional
 	public void testGetAllUsers_positive() throws UnAuthorizedException {
 		UserRole admin = new UserRole("admin");
 		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", admin);
 		user.setId(1);
-		UserRole customer = new UserRole("customer");
 		
+		UserRole customer = new UserRole("customer");
 		User user1 = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
 		user1.setId(2);
 		User user2 = new User("j_doe", "password2", "John", "Doe", "j_doe@gmail.com", "6542347754", "4043 Ave", customer);
@@ -116,201 +113,172 @@ public class UserServiceTest {
 		
 		Assertions.assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void testGetAllUsers_negative() throws UnAuthorizedException {
+		UserRole customer = new UserRole("customer");
+		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
+		user.setId(1);
+		
+		Assertions.assertThrows(UnAuthorizedException.class, () -> {
+			us.getAllUsers(user);
+		});
+		
+	}
+
+	@Test
+	public void testGetUserByID_positive() throws UnAuthorizedException, UserNotFoundException, InvalidParametersException {
+		UserRole admin = new UserRole("admin");
+		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", admin);
+		user.setId(1);
+		
+		UserRole customer = new UserRole("customer");
+		User user1 = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
+		user1.setId(2);
+		
+		Mockito.when(ud.getUserByID(2)).thenReturn(user1);
+		
+		User actual = us.getUserByID(user, 2);
+		
+		User expected = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
+		expected.setId(2);
+		
+		Assertions.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserByID_negative() throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
+		UserRole customer = new UserRole("customer");
+		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
+		user.setId(1);
+		User user1 = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
+		user1.setId(2);
+		
+		Assertions.assertThrows(UnAuthorizedException.class, () -> {
+			us.getUserByID(user, 2);
+		});
+	}
+
+	@Test
+	public void testGetUserByUsername_positive() throws UnAuthorizedException, UserNotFoundException, InvalidParametersException {
+		UserRole admin = new UserRole("admin");
+		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", admin);
+		user.setId(1);
+		
+		UserRole customer = new UserRole("customer");
+		User user1 = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
+		user1.setId(2);
+		
+		Mockito.when(ud.getUserByUsername("jane_d")).thenReturn(user1);
+		
+		User actual = us.getUserByUsername(user, "jane_d");
+		
+		User expected = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
+		expected.setId(2);
+		
+		Assertions.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserByUsername_negative() throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
+		UserRole customer = new UserRole("customer");
+		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
+		user.setId(1);
+		User user1 = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
+		user1.setId(2);
+		
+		Assertions.assertThrows(UnAuthorizedException.class, () -> {
+			us.getUserByUsername(user, "jane_d");
+		});
+	}
+	
+	@Test
+	public void testDeleteUserByID_admin() throws UserNotFoundException {
+		UserRole admin = new UserRole("admin");
+		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", admin);
+		user.setId(1);
+		
+		us.deleteUserByID(user);
+	}
+	
+	@Test
+	public void testDeleteUserByID_customer() throws UserNotFoundException {
+		UserRole customer = new UserRole("customer");
+		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
+		user.setId(1);
+		
+		us.deleteUserByID(user);
+	}
+	
+//	//Test Doesn't work
+//	@Test
+//	public void testDeleteUserByID_negative() throws UserNotFoundException {
+//		User user = new User();
+//		
+//	//System says nothing was thrown
+//		Assertions.assertThrows(UserNotFoundException.class, () -> {
+//			us.deleteUserByID(user);
+//		});
+//	}
+//
+	@Test
+	public void testUpdateUserByID() throws UserNotFoundException {
+		UserRole customer = new UserRole("customer");
+		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
+		user.setId(1);
+		
+		User updatedUser = new User("bach_tran", "password", "Bruce", "Banner", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
+		updatedUser.setId(1);
+		
+		Mockito.when(ud.UpdateUserByID(1, user)).thenReturn(updatedUser);
+		
+		User actual = us.UpdateUserByID(user);
+		
+		User expected = new User("bach_tran", "password", "Bruce", "Banner", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
+		expected.setId(1);
+		
+		Assertions.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testLogin_admin() throws UserNotFoundException, InvalidLoginException {
+		UserRole admin = new UserRole("admin");
+		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", admin);
+		user.setId(1);
+		
+		Mockito.when(ud.getUsernameAndPassword("bach_tran", "password")).thenReturn(user);
+		
+		User actual = us.login("bach_tran", "password");
+		
+		User expected = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", admin);
+		expected.setId(1);
+		
+		Assertions.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testLogin_customer() throws UserNotFoundException, InvalidLoginException {
+		UserRole customer = new UserRole("customer");
+		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
+		user.setId(1);
+		
+		Mockito.when(ud.getUsernameAndPassword("bach_tran", "password")).thenReturn(user);
+		
+		User actual = us.login("bach_tran", "password");
+		
+		User expected = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
+		expected.setId(1);
+		
+		Assertions.assertEquals(expected, actual);
+	}
+	
+//	//Test doesn't work
+//	@Test
+//	public void testLogin_negative() throws UserNotFoundException, InvalidLoginException {
+//		//Nothing was thrown
+//		Assertions.assertThrows(UserNotFoundException.class, () -> {
+//			us.login("bach_tran", "password");
+//		});
+//	}
+	
 }
-////	@Test
-////	@Transactional
-////	public void testGetAllUsers_negative() throws UnAuthorizedException {
-////		UserRole customer = new UserRole("customer");
-////		this.em.persist(customer);
-////		
-////		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-////		this.em.persist(dtsero);
-////		
-////		User user1 = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
-////		User user2 = new User("j_doe", "password2", "John", "Doe", "j_doe@gmail.com", "6542347754", "4043 Ave", customer);
-////		User user3 = new User("leah_d", "password3", "Leah", "Doe", "leah_d@gmail.com", "9762436313", "4043 Street", customer);
-////		
-////		this.em.persist(user1);
-////		this.em.persist(user2);
-////		this.em.persist(user3);
-////		
-////		List<User> actual = this.us.getAllUsers(user);
-////		
-////		//assert throw
-////	}
-//	
-//	@Test
-//	@Transactional
-//	public void testGetUserByID_positive() throws UnAuthorizedException, UserNotFoundException, InvalidParametersException {
-//		UserRole admin = new UserRole("admin");
-//		this.em.persist(admin);
-//		
-//		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", admin);
-//		this.em.persist(user);
-//		
-//		UserRole customer = new UserRole("customer");
-//		this.em.persist(customer);
-//		
-//		User user1 = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
-//		this.em.persist(user1);
-//		
-//		User actual = this.us.getUserByID(user, 2);
-//		
-//		User expected = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
-//		expected.setId(2);
-//		
-//		Assertions.assertEquals(expected, actual);
-//	}
-//	
-////	@Test
-////	@Transactional
-////	public void testGetUserByID_negative() throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
-////		
-////		UserRole customer = new UserRole("customer");
-////		this.em.persist(customer);
-////		
-////		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-////		this.em.persist(user);
-////		
-////		User user1 = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
-////		
-////		this.em.persist(user1);
-////		
-////		User actual = this.us.getUserByID(user, 2);
-////		
-////		//assert throw
-////	}
-//	
-//	@Test
-//	@Transactional
-//	public void testGetUserByUsername_positive() throws UnAuthorizedException, UserNotFoundException, InvalidParametersException {
-//		UserRole admin = new UserRole("admin");
-//		this.em.persist(admin);
-//		
-//		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", admin);
-//		this.em.persist(user);
-//		
-//		UserRole customer = new UserRole("customer");
-//		this.em.persist(customer);
-//		
-//		User user1 = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
-//		this.em.persist(user1);
-//		
-//		User actual = this.us.getUserByUsername(user, "jane_d");
-//		
-//		User expected = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
-//		expected.setId(1);
-//		
-//		Assertions.assertEquals(expected, actual);
-//	}
-//	
-////	@Test
-////	@Transactional
-////	public void testGetUserByUsername_negative() throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
-////		
-////		UserRole customer = new UserRole("customer");
-////		this.em.persist(customer);
-////		
-////		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-////		this.em.persist(user);
-////		
-////		User user1 = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd", customer);
-////		
-////		this.em.persist(user1);
-////		
-////		User actual = this.us.getUserByUsername(user, "jane_d);
-////		
-////		//assert throw
-////	}
-//	
-//	@Test
-//	@Transactional
-//	public void testDeleteUserByID_admin() throws UserNotFoundException {
-//		UserRole admin = new UserRole("admin");
-//		this.em.persist(admin);
-//		
-//		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", admin);
-//		this.em.persist(user);
-//		
-//		this.us.deleteUserByID(user);
-//	}
-//	
-//	@Test
-//	@Transactional
-//	public void testDeleteUserByID_customer() throws UserNotFoundException {
-//		UserRole customer = new UserRole("customer");
-//		this.em.persist(customer);
-//		
-//		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-//		this.em.persist(user);
-//		
-//		this.us.deleteUserByID(user);
-//	}
-//	
-////	@Test
-////	@Transactional
-////	public void testDeleteUserByID_negative() throws UserNotFoundException {
-////		User user = new User();
-////		this.em.persist(user);
-////		
-////		this.us.deleteUserByID(user);
-////		
-////		//assert throw
-////	}
-//	
-////	@Test
-////	@Transactional
-////	public void testUpdateUserByID() {
-////		UserRole customer = new UserRole("customer");
-////		this.em.persist(customer);
-////		
-////		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-////		this.em.persist(user);
-////		
-////		//Im not sure how to go about this test
-////	}
-//	
-//	@Test
-//	@Transactional
-//	public void testLogin_admin() throws UserNotFoundException, InvalidLoginException {
-//		UserRole admin = new UserRole("admin");
-//		this.em.persist(admin);
-//		
-//		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", admin);
-//		this.em.persist(user);
-//		
-//		User actual = this.us.login("bach_tran", "password");
-//		
-//		User expected = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", admin);
-//		expected.setId(1);
-//		
-//		Assertions.assertEquals(expected, actual);
-//	}
-//	
-//	@Test
-//	@Transactional
-//	public void testLogin_customer() throws UserNotFoundException, InvalidLoginException {
-//		UserRole customer = new UserRole("customer");
-//		this.em.persist(customer);
-//		
-//		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-//		this.em.persist(user);
-//		
-//		User actual = this.us.login("bach_tran", "password");
-//		
-//		User expected = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-//		expected.setId(1);
-//		
-//		Assertions.assertEquals(expected, actual);
-//	}
-//	
-////	@Test
-////	@Transactional
-////	public void testLogin_negative() throws UserNotFoundException, InvalidLoginException {
-////		
-////		User actual = this.us.login("bach_tran", "password");
-////		
-////		//assert throw
-////	}
-//	
-//}
