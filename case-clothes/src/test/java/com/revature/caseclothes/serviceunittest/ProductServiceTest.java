@@ -152,89 +152,82 @@ public class ProductServiceTest {
 				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 		newProduct.setId(1);
-
-		Mockito.when(productsDao.insertNewProduct(newProduct))
-				.thenReturn(new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
-						15.99, c1, "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100));
-
+		
+		Mockito.when(productsDao.insertNewProduct(newProduct)).thenReturn(new Products("Mens Casual Slim Fit",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100));
+		
 		Products actual = productsService.addNewProduct(newProduct);
 		actual.setId(1);
-
-		Products expected = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
-				15.99, c1, "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		
+		Products expected = new Products("Mens Casual Slim Fit",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 		expected.setId(1);
-
+		
 		Assertions.assertEquals(expected, actual);
 	}
-
+	
 	@Test // Sad Path
 	void addNewProduct_NoNameInputAllFieldsValid_NegativeTest() {
-
+		
 		Category c1 = new Category("Men's clothing");
 		c1.setCategoryId(1);
-
-		Products p = new Products("", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
+		
+		Products p = new Products("",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
-
+		
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
-			productsService.addNewProduct(p);
-		});
+			productsService.addNewProduct(p);			
+		});	
 	}
 
 	@Test // Sad Path
 	void addNewProduct_NoDescriptionInputAllFieldsValid_NegativeTest() {
-
+		
 		Category c1 = new Category("Men's clothing");
 		c1.setCategoryId(1);
-
-		Products p = new Products("Mens Casual Slim Fit", "", 15.99, c1,
+		
+		Products p = new Products("Mens Casual Slim Fit",
+				"", 15.99, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
-
+		
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
-			productsService.addNewProduct(p);
-		});
+			productsService.addNewProduct(p);		
+		});	
 	}
-
+	
 	@Test // Sad Path
 	void addNewProduct_NoPriceInputAllFieldsValid_NegativeTest() {
-
+		
 		Category c1 = new Category("Men's Clothing");
 		c1.setCategoryId(1);
-
-		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 0, c1,
+		
+		Products p = new Products("Mens Casual Slim Fit",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 0, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
-
+		
+		
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
-			productsService.addNewProduct(p);
-		});
+			productsService.addNewProduct(p);		
+		});	
 	}
-
+	
 	@Test // Sad Path
 	void addNewProduct_PriceIsEmptyField_NegativeTest() {
-
+		
 		Category c1 = new Category("Men's Clothing");
 		c1.setCategoryId(1);
-
-		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
-				Double.NaN, c1, "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
-
+		
+		Products p = new Products("Mens Casual Slim Fit",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", Double.NaN, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
-			productsService.addNewProduct(p);
-		});
+			productsService.addNewProduct(p);		
+		});		
 	}
-
-	@Test // Sad Path
-	void addNewProduct_PriceIsNotOfADoubleInputField_NegativeTest() {
-
-		Category c1 = new Category("Men's Clothing");
-		c1.setCategoryId(1);
-
-		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
-				Double.parseDouble(String.valueOf("")), c1, "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
-				100);
-
-		Assertions.assertThrows(NumberFormatException.class, () -> {
-			productsService.addNewProduct(p);
-		});
-	}
+	
+	
 }

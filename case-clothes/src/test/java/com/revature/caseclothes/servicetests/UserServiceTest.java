@@ -17,6 +17,7 @@ import com.revature.caseclothes.exception.InvalidLoginException;
 import com.revature.caseclothes.exception.InvalidParametersException;
 import com.revature.caseclothes.exception.UnAuthorizedException;
 import com.revature.caseclothes.exception.UserNotFoundException;
+import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.User;
 import com.revature.caseclothes.model.UserRole;
 import com.revature.caseclothes.service.UserService;
@@ -76,10 +77,11 @@ public class UserServiceTest {
 	@Test
 	public void testAddCustomer() throws UnAuthorizedException {
 		UserRole customer = new UserRole("customer");
+		Carts c = null;
 		
 		AddUserDTO dto = new AddUserDTO("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave");
 		
-		Mockito.when(ud.addCustomer(dto)).thenReturn(new User("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave", customer));
+		Mockito.when(ud.addCustomer(dto, c)).thenReturn(new User("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave", customer));
 		
 		User actual = us.addCustomer(dto);
 		
@@ -128,7 +130,11 @@ public class UserServiceTest {
 		User expected2 = new User("j_doe", "password2", "John", "Doe", "j_doe@gmail.com", "6542347754", "4043 Ave", customer);
 		expected2.setId(3);
 		
-		List<User> expected = List.of(expected0, expected1, expected2);
+		List<User> expected = new ArrayList<>();
+		//List.of(expected0, expected1, expected2);
+		expected.add(expected0);
+		expected.add(expected1);
+		expected.add(expected2);
 		
 		Assertions.assertEquals(expected, actual);
 	}
@@ -239,7 +245,7 @@ public class UserServiceTest {
 //	}
 
 	@Test
-	public void testUpdateUserByID() throws UserNotFoundException {
+	public void testUpdateUserByID() throws UserNotFoundException, InvalidParametersException {
 		UserRole customer = new UserRole("customer");
 		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
 		user.setId(1);
@@ -247,9 +253,9 @@ public class UserServiceTest {
 		User updatedUser = new User("bach_tran", "password", "Bruce", "Banner", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
 		updatedUser.setId(1);
 		
-		Mockito.when(ud.UpdateUserByID(1, user)).thenReturn(updatedUser);
+		Mockito.when(ud.UpdateUser(user.getId(), updatedUser)).thenReturn(updatedUser);
 		
-		User actual = us.UpdateUserByID(user);
+		User actual = us.UpdateUser(user, updatedUser);
 		
 		User expected = new User("bach_tran", "password", "Bruce", "Banner", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
 		expected.setId(1);
