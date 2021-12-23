@@ -1,5 +1,8 @@
 package com.revature.caseclothes.serviceunittest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -26,8 +29,12 @@ public class ProductServiceTest {
 	@Autowired
 	ProductsDAO productsDao;
 
-	@Test
-	void getProductById() throws ProductNotFoundException {
+	/*
+	 * ProductService's getProductById() test
+	 */
+
+	@Test // Happy Path
+	void getProductById_PositiveTest() throws ProductNotFoundException {
 
 		Mockito.when(productsDao.selectProductById(1)).thenReturn(new Products("tshirt",
 				"Your perfect pack for everyday", 109.95, new Category("Men's Clothing"), " ", 100));
@@ -37,15 +44,99 @@ public class ProductServiceTest {
 		Assertions.assertEquals(new Products("tshirt", "Your perfect pack for everyday", 109.95,
 				new Category("Men's Clothing"), " ", 100), actual);
 	}
-	
-	@Test
+
+	@Test // Sad Path
 	void getProductById_Negative() {
-		
+
 		Assertions.assertThrows(ProductNotFoundException.class, () -> {
 
-			productsService.getProductById("1");	
-			
+			productsService.getProductById("1");
+
 		});
 	}
+
+	/*
+	 * ProductService's getAllProducts() test
+	 */
+
+	@Test // Happy Path
+	void getAllProducts_PositiveTest() {
+
+		Products p1 = new Products("tshirt", "Your perfect pack for everyday", 109.95, new Category("Men's Clothing"),
+				"imageURL", 100);
+		p1.setId(1);
+		Products p2 = new Products("Jacket", "Perfect clothing for cold season", 109.95,
+				new Category("Women's Clothing"), "imageURL", 100);
+		p2.setId(2);
+
+		List<Products> productList = new ArrayList<>();
+		productList.add(p1);
+		productList.add(p2);
+
+		Mockito.when(productsDao.getAllProducts()).thenReturn(productList);
+
+		Products expectedp1 = new Products("tshirt", "Your perfect pack for everyday", 109.95,
+				new Category("Men's Clothing"), "imageURL", 100);
+		expectedp1.setId(1);
+		Products expectedp2 = new Products("Jacket", "Perfect clothing for cold season", 109.95,
+				new Category("Women's Clothing"), "imageURL", 100);
+		expectedp2.setId(2);
+
+		List<Products> expectedList = new ArrayList<>();
+		expectedList.add(expectedp1);
+		expectedList.add(expectedp2);
+
+		List<Products> actual = productsService.getAllProducts();
+
+		Assertions.assertEquals(expectedList, actual);
+	}
+
+	/*
+	 * ProductsService's getAllProductThatContains() test
+	 */
+
+	@Test // Happy Path
+	void getAllProductThatContains_PositiveTest() throws ProductNotFoundException {
+
+		Products p1 = new Products("tshirt", "Your perfect pack for everyday", 109.95, new Category("Men's Clothing"),
+				"imageURL", 100);
+		p1.setId(1);
+		Products p2 = new Products("tshirt", "Perfect clothing for warm season", 109.95,
+				new Category("Women's Clothing"), "imageURL", 100);
+		p2.setId(2);
+
+		List<Products> productList = new ArrayList<>();
+		productList.add(p1);
+		productList.add(p2);
+
+		Mockito.when(productsDao.getAllProductThatContains("shirt")).thenReturn(productList);
+
+		Products expectedp1 = new Products("tshirt", "Your perfect pack for everyday", 109.95,
+				new Category("Men's Clothing"), "imageURL", 100);
+		expectedp1.setId(1);
+		Products expectedp2 = new Products("tshirt", "Perfect clothing for warm season", 109.95,
+				new Category("Women's Clothing"), "imageURL", 100);
+		expectedp2.setId(2);
+
+		List<Products> expectedList = new ArrayList<>();
+		expectedList.add(expectedp1);
+		expectedList.add(expectedp2);
+
+		List<Products> actual = productsService.getAllProductThatContains("shirt");
+
+		Assertions.assertEquals(expectedList, actual);
+	}
+	
+	@Test // Sad Path
+	void getAllProductThatContains_NoValidProduct() {
+		
+		Assertions.assertThrows(ProductNotFoundException.class, () -> {
+			
+			productsService.getAllProductThatContains("shirt");
+			
+		});	
+	}
+	
+	
 
 }

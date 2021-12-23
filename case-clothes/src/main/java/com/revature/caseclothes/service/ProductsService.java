@@ -39,7 +39,6 @@ public class ProductsService {
 
 		String convertPriceToString = String.valueOf(productToAdd.getPrice());
 		if (productToAdd.getName().equals("")) {
-			System.out.println(productToAdd.getName());
 			throw new InvalidParameterException("Name of the product must be included!");
 		} else if (productToAdd.getDescription().equals("")) {
 			throw new InvalidParameterException("Description of the product must be included!");
@@ -68,23 +67,6 @@ public class ProductsService {
 		}
 
 	}
-
-//	public Carts addProductsToCart(String id, String quantity) throws ProductNotFoundException {
-//
-//		Carts c = new Carts();
-//		Products p = this.getProductById(id);
-//		int quantityToBuy = Integer.parseInt(quantity);
-//
-//		Quantities q = new Quantities(p, quantityToBuy);
-//
-//		List<Quantities> q1 = new ArrayList<>();
-//		q1.add(q);
-//
-//		c.setQuantities(q1);
-//		c = pd.insertToCart(c, q);
-//
-//		return c;
-//	}
 
 	public Carts addMoreProductsToCart(Carts currentCart, String cartId, String productId, String quantity)
 			throws ProductNotFoundException, CartNotFoundException {
@@ -150,10 +132,24 @@ public class ProductsService {
 		try {
 			if (checkProductIfExist == null) {
 				throw new ProductNotFoundException("No product with the id of " + id);
+			}
+			String convertPriceToString = String.valueOf(productToBeUpdated.getPrice());
+			if (productToBeUpdated.getName().equals("")) {
+				throw new InvalidParameterException("Name of the product must be included!");
+			} else if (productToBeUpdated.getDescription().equals("")) {
+				throw new InvalidParameterException("Description of the product must be included!");
+			} else if (convertPriceToString.trim().equals("")) {
+				throw new InvalidParameterException("Price of the product must be included!");
+			} else if (convertPriceToString.trim().matches("^[a-zA-Z]*$")) {
+				throw new InvalidParameterException("Price of the product cannot contain alphabets!");
+			} else if (productToBeUpdated.getPrice() <= 0) {
+				throw new InvalidParameterException("Price of the product cannot be less than zero");
 			} else {
 				productToBeUpdated.setId(productId);
 			}
 		} catch (ProductNotFoundException e) {
+			e.getMessage();
+		} catch (InvalidParameterException e) {
 			e.getMessage();
 		}
 
@@ -187,11 +183,11 @@ public class ProductsService {
 
 		currentCart = this.getACartById(cartId);
 		int prodId = Integer.parseInt(productId);
-		
+
 		List<Quantities> currentProductList = currentCart.getQuantities();
 		int quantityToDelete = 0;
 
-		Iterator <Quantities> iter = currentProductList.iterator();
+		Iterator<Quantities> iter = currentProductList.iterator();
 		Quantities q1 = null;
 		while (iter.hasNext()) {
 			q1 = iter.next();
@@ -204,9 +200,9 @@ public class ProductsService {
 			}
 		}
 		currentCart.setQuantities(currentProductList);
-		
+
 		currentCart = pd.deleteAProductInTheCart(currentCart, quantityToDelete);
-		
+
 		return currentCart;
 	}
 
