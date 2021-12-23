@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 //import com.revature.caseclothes.dto.AddToCartDTO;
 
@@ -18,7 +19,8 @@ public class Carts {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cartId;
 
-	// OneToOne -> User/Customer
+	@OneToOne
+	private User user;
 
 	@OneToMany
 	private List<Quantities> quantities;
@@ -31,6 +33,11 @@ public class Carts {
 		super();
 		this.quantities = quantities;
 	}
+	
+	public Carts(User user) {
+		super();
+		this.user = user;
+	}
 
 	public int getCartId() {
 		return cartId;
@@ -38,6 +45,14 @@ public class Carts {
 
 	public void setCartId(int cartId) {
 		this.cartId = cartId;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public List<Quantities> getQuantities() {
@@ -50,7 +65,7 @@ public class Carts {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cartId, quantities);
+		return Objects.hash(cartId, quantities, user);
 	}
 
 	@Override
@@ -62,12 +77,14 @@ public class Carts {
 		if (getClass() != obj.getClass())
 			return false;
 		Carts other = (Carts) obj;
-		return cartId == other.cartId && Objects.equals(quantities, other.quantities);
+		return cartId == other.cartId && Objects.equals(quantities, other.quantities)
+				&& Objects.equals(user, other.user);
 	}
 
 	@Override
 	public String toString() {
-		return "Carts [cartId=" + cartId + ", quantities=" + quantities + "]";
+		return "Carts [cartId=" + cartId + ", user=" + user + ", quantities=" + quantities + "]";
 	}
-	
+
+
 }

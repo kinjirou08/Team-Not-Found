@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.caseclothes.dto.AddUserDTO;
+import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.User;
 import com.revature.caseclothes.model.UserRole;
 
@@ -19,31 +20,37 @@ public class UserDao {
 	private EntityManager em;
 
 	// Add a new Customer
-	@Transactional
-	public User addCustomer(AddUserDTO dto) {
-		UserRole customer = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'customer'")
-				.getSingleResult();
+		@Transactional
+		public User addCustomer(AddUserDTO dto, Carts c) {
+			UserRole customer = (UserRole) em.createQuery("SELECT a FROM UserRole a WHERE a.role = :role")
+					.setParameter("role", "customer")
+					.getSingleResult();
 
-		User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
-				dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), customer);
+			User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
+					dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), customer);
 
-		em.persist(userToAdd);
+			em.persist(userToAdd);
+			
+			c = new Carts(userToAdd);
+			em.persist(c);
+			
+			return userToAdd;
+		}
 
-		return userToAdd;
-	}
+		// Add a new Admin
+		@Transactional
+		public User addAdmin(AddUserDTO dto) {
+			UserRole admin = (UserRole) em.createQuery("SELECT a FROM UserRole a WHERE a.role = :role")
+					.setParameter("role", "admin")
+					.getSingleResult();
 
-	// Add a new Admin
-	@Transactional
-	public User addAdmin(AddUserDTO dto) {
-		UserRole admin = (UserRole) em.createQuery("FROM UserRole a WHERE a.user_role = 'admin'").getSingleResult();
+			User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
+					dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), admin);
 
-		User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),
-				dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), admin);
+			em.persist(userToAdd);
 
-		em.persist(userToAdd);
-
-		return userToAdd;
-	}
+			return userToAdd;
+		}
 
 	// Get all users
 	@Transactional
@@ -82,22 +89,17 @@ public class UserDao {
 
 	// Update current User information
 	@Transactional
-	public User UpdateUserByID(int id, User userToUpdate) {
+	public User UpdateUser(int id, User updatedUserInfo) {
+		
 		Session session = em.unwrap(Session.class);
+		
+		User currentlyLoggedIn = session.find(User.class, id);
+		
+		currentlyLoggedIn = updatedUserInfo;
+		
+		session.merge(currentlyLoggedIn);
 
-		String hqlUpdate = "UPDATE User u SET u.first_name = :firstName, u.last_name = :lastName, "
-				+ "u.email = :updateEmail, u.phone_number = :phoneNum, u.address = :updateAddress "
-				+ "WHERE u.id = :userid";
-
-		session.createQuery(hqlUpdate, User.class).setParameter("firstName", userToUpdate.getFirstName())
-				.setParameter("lastName", userToUpdate.getLastName())
-				.setParameter("updateEmail", userToUpdate.getEmail())
-				.setParameter("phoneNum", userToUpdate.getPhoneNumber())
-				.setParameter("updateAddress", userToUpdate.getAddress()).executeUpdate();
-
-		User updatedUser = this.getUserByID(id);
-
-		return updatedUser;
+		return currentlyLoggedIn;
 	}
 
 	@Transactional

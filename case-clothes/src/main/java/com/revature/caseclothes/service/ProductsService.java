@@ -2,6 +2,7 @@ package com.revature.caseclothes.service;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,21 +39,18 @@ public class ProductsService {
 
 		String convertPriceToString = String.valueOf(productToAdd.getPrice());
 		if (productToAdd.getName().equals("")) {
-			System.out.println(productToAdd.getName());
 			throw new InvalidParameterException("Name of the product must be included!");
 		} else if (productToAdd.getDescription().equals("")) {
 			throw new InvalidParameterException("Description of the product must be included!");
 		} else if (convertPriceToString.trim().equals("")) {
-			throw new InvalidParameterException("Price of the product must be included!");
+			throw new NumberFormatException("Price of the product must be included!");
 		} else if (convertPriceToString.trim().matches("^[a-zA-Z]*$")) {
 			throw new InvalidParameterException("Price of the product cannot contain alphabets!");
 		} else if (productToAdd.getPrice() <= 0) {
 			throw new InvalidParameterException("Price of the product cannot be less than zero");
 		} else {
-			Products p = pd.insertNewProduct(productToAdd);
-			return p;
+			return pd.insertNewProduct(productToAdd);
 		}
-
 	}
 
 	public Products getProductById(String id) throws ProductNotFoundException {
@@ -68,21 +66,42 @@ public class ProductsService {
 
 	}
 
-	public Carts addProductsToCart(String id, String quantity) throws ProductNotFoundException {
+	public Carts addMoreProductsToCart(Carts currentCart, String cartId, String productId, String quantity)
+			throws ProductNotFoundException, CartNotFoundException {
 
-		Carts c = new Carts();
-		Products p = this.getProductById(id);
+		currentCart = this.getACartById(cartId);
+		Products p = this.getProductById(productId);
 		int quantityToBuy = Integer.parseInt(quantity);
-
 		Quantities q = new Quantities(p, quantityToBuy);
 
-		List<Quantities> q1 = new ArrayList<>();
-		q1.add(q);
+		List<Quantities> currentQuantitiesInTheCart = currentCart.getQuantities();
+		boolean checkProduct = checkProductInTheCart(currentQuantitiesInTheCart, p);
+		if (checkProduct == false) {
+			currentQuantitiesInTheCart.add(q);
+			currentCart.setQuantities(currentQuantitiesInTheCart);
+		} else if (checkProduct == true) {
+			for (Quantities q1 : currentQuantitiesInTheCart) {
+				if (q1.getProduct() == p) {
+					q1.setQuantity(q1.getQuantity() + quantityToBuy);
+					q = q1;
+				}
+			}
+		}
 
-		c.setQuantities(q1);
-		c = pd.insertToCart(c, q);
+		currentCart = pd.insertToCart(currentCart, q);
 
-		return c;
+		return currentCart;
+	}
+
+	private boolean checkProductInTheCart(List<Quantities> currentQuantitiesInTheCart, Products p) {
+		boolean result = false;
+		for (Quantities q1 : currentQuantitiesInTheCart) {
+			if (q1.getProduct() == p) {
+				result = true;
+			}
+		}
+		return result;
+
 	}
 
 	public Carts getACartById(String id) throws CartNotFoundException {
@@ -111,33 +130,29 @@ public class ProductsService {
 		try {
 			if (checkProductIfExist == null) {
 				throw new ProductNotFoundException("No product with the id of " + id);
+			}
+			String convertPriceToString = String.valueOf(productToBeUpdated.getPrice());
+			if (productToBeUpdated.getName().equals("")) {
+				throw new InvalidParameterException("Name of the product must be included!");
+			} else if (productToBeUpdated.getDescription().equals("")) {
+				throw new InvalidParameterException("Description of the product must be included!");
+			} else if (convertPriceToString.trim().equals("")) {
+				throw new InvalidParameterException("Price of the product must be included!");
+			} else if (convertPriceToString.trim().matches("^[a-zA-Z]*$")) {
+				throw new InvalidParameterException("Price of the product cannot contain alphabets!");
+			} else if (productToBeUpdated.getPrice() <= 0) {
+				throw new InvalidParameterException("Price of the product cannot be less than zero");
 			} else {
 				productToBeUpdated.setId(productId);
 			}
 		} catch (ProductNotFoundException e) {
 			e.getMessage();
+		} catch (InvalidParameterException e) {
+			e.getMessage();
 		}
 
 		return pd.updateAProduct(productToBeUpdated);
 
-	}
-
-	public Carts addMoreProductsToCart(Carts currentCart, String cartId, String productId, String quantity)
-			throws ProductNotFoundException, CartNotFoundException {
-
-		currentCart = this.getACartById(cartId);
-		Products p = this.getProductById(productId);
-		int quantityToBuy = Integer.parseInt(quantity);
-		Quantities q = new Quantities(p, quantityToBuy);
-
-		List<Quantities> currentQuantitiesInTheCart = currentCart.getQuantities();
-		currentQuantitiesInTheCart.add(q);
-
-		currentCart.setQuantities(currentQuantitiesInTheCart);
-
-		currentCart = pd.insertToCart(currentCart, q);
-
-		return currentCart;
 	}
 
 	public Carts updateProductQuantityInCart(Carts currentCart, String cartId, String productId, String quantity)
@@ -151,7 +166,7 @@ public class ProductsService {
 			if (q.getProduct().getId() == prodId) {
 				q.setQuantity(quantityToBuy);
 			} else {
-				throw new ProductNotFoundException ("Product not found on this cart");
+				throw new ProductNotFoundException("Product not found on this cart");
 			}
 		}
 		currentCart.setQuantities(currentProductList);
@@ -166,21 +181,26 @@ public class ProductsService {
 
 		currentCart = this.getACartById(cartId);
 		int prodId = Integer.parseInt(productId);
-		
+
 		List<Quantities> currentProductList = currentCart.getQuantities();
 		int quantityToDelete = 0;
-		for (Quantities q : currentProductList) {
-			if (q.getProduct().getId() == prodId) {
-				currentProductList.remove(q);
+
+		Iterator<Quantities> iter = currentProductList.iterator();
+		Quantities q1 = null;
+		while (iter.hasNext()) {
+			q1 = iter.next();
+			if (q1.getProduct().getId() == prodId) {
+				iter.remove();
+				quantityToDelete = q1.getQuantityId();
+				break;
 			} else {
-				throw new ProductNotFoundException ("Product not found on this cart");
+				throw new ProductNotFoundException("Product not found on this cart");
 			}
-			quantityToDelete = q.getQuantityId();
 		}
 		currentCart.setQuantities(currentProductList);
-		
+
 		currentCart = pd.deleteAProductInTheCart(currentCart, quantityToDelete);
-		
+
 		return currentCart;
 	}
 
