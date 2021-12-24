@@ -46,7 +46,7 @@ public class ProductServiceTest {
 		Products actual = productsService.getProductById("1");
 
 		Assertions.assertEquals(new Products("tshirt", "Your perfect pack for everyday", 109.95,
-				new Category("Men's Clothing"), " ", 100), actual);
+				new Category("Men's Clothing"), "imageURL", 100), actual);
 	}
 
 	@Test // Sad Path
@@ -265,15 +265,25 @@ public class ProductServiceTest {
 	void addMoreProductsToCart_CartNotFound_NegativeTest() {
 		
 		Assertions.assertThrows(CartNotFoundException.class, () -> {
-				productsService.addMoreProductsToCart(new Carts(), "1", "1", "1");
+				productsService.addMoreProductsToCart(null, "1", "1", "1");
 		});	
 	}
 	
 	@Test // Sad Path
 	void addMoreProductsToCart_ProductNotFound_NegativeTest() {
 		
+		List<Quantities> quantityList = new ArrayList<>();
+		Carts currentCart = new Carts(quantityList);
+		currentCart.setCartId(1);
+		Mockito.when(productsDao.selectACartById(1)).thenReturn(currentCart);
+		
 		Assertions.assertThrows(ProductNotFoundException.class, () -> {
-				productsService.addMoreProductsToCart(new Carts(), "1", "1", "1");
+				productsService.addMoreProductsToCart(currentCart, "1", "1", "1");
 		});	
+	}
+	
+	@Test // Happy Path 
+	void checkProductInTheCart_PositiveTest() {
+
 	}
 }
