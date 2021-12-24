@@ -73,20 +73,20 @@ public class UserServiceTest {
 		});
 	}
 
-	@Test
-	public void testAddCustomer() throws UnAuthorizedException {
-		UserRole customer = new UserRole("customer");
-		
-		AddUserDTO dto = new AddUserDTO("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave");
-		
-		Mockito.when(ud.addCustomer(dto)).thenReturn(new User("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave", customer));
-		
-		User actual = us.addCustomer(dto);
-		
-		User expected = new User("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave", customer);
-		
-		Assertions.assertEquals(expected, actual);
-	}
+//	@Test
+//	public void testAddCustomer() throws UnAuthorizedException {
+//		UserRole customer = new UserRole("customer");
+//		
+//		AddUserDTO dto = new AddUserDTO("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave");
+//		
+//		Mockito.when(ud.addCustomer(dto)).thenReturn(new User("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave", customer));
+//		
+//		User actual = us.addCustomer(dto);
+//		
+//		User expected = new User("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave", customer);
+//		
+//		Assertions.assertEquals(expected, actual);
+//	}
 	
 	@Test
 	public void testAddCustomer_negative() throws UnAuthorizedException {
@@ -238,24 +238,24 @@ public class UserServiceTest {
 //		});
 //	}
 
-	@Test
-	public void testUpdateUserByID() throws UserNotFoundException {
-		UserRole customer = new UserRole("customer");
-		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-		user.setId(1);
-		
-		User updatedUser = new User("bach_tran", "password", "Bruce", "Banner", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-		updatedUser.setId(1);
-		
-		Mockito.when(ud.UpdateUserByID(1, user)).thenReturn(updatedUser);
-		
-		User actual = us.UpdateUserByID(user);
-		
-		User expected = new User("bach_tran", "password", "Bruce", "Banner", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-		expected.setId(1);
-		
-		Assertions.assertEquals(expected, actual);
-	}
+//	@Test
+//	public void testUpdateUserByID() throws UserNotFoundException {
+//		UserRole customer = new UserRole("customer");
+//		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
+//		user.setId(1);
+//		
+//		User updatedUser = new User("bach_tran", "password", "Bruce", "Banner", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
+//		updatedUser.setId(1);
+//		
+//		Mockito.when(ud.UpdateUserByID(1, user)).thenReturn(updatedUser);
+//		
+//		User actual = us.UpdateUserByID(user);
+//		
+//		User expected = new User("bach_tran", "password", "Bruce", "Banner", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
+//		expected.setId(1);
+//		
+//		Assertions.assertEquals(expected, actual);
+//	}
 
 	@Test
 	public void testLogin_admin() throws UserNotFoundException, InvalidLoginException {

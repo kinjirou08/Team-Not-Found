@@ -57,12 +57,7 @@ public class ProductDaoTest {
 		Products expected2 = new Products("T-Shirts","Slim-fitting style",22.3,c2," ",100);
 		expected2.setId(2);
 		
-<<<<<<< HEAD
 		List<Products> expectedProducts = new ArrayList<>();
-=======
-		List<Products> expectedProducts = new ArrayList<Products>();
-		//(expected1,expected2)
->>>>>>> 28d3561 (Merging Changes)
 		expectedProducts.add(expected1);
 		expectedProducts.add(expected2);
 		
@@ -112,12 +107,7 @@ public class ProductDaoTest {
 		Products expected2= new Products("tshirt","Your perfect pack for everyday",109.95,c1," ",100);
 		expected2.setId(2);
 		
-<<<<<<< HEAD
 		List<Products> expectedList = new ArrayList<>();
-=======
-		List<Products> expectedList = new ArrayList<Products>();
-		//(expected1,expected2)
->>>>>>> 28d3561 (Merging Changes)
 		expectedList.add(expected1);
 		expectedList.add(expected2);
 		
