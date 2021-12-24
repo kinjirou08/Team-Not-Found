@@ -42,8 +42,6 @@ public class ProductsService {
 			throw new InvalidParameterException("Name of the product must be included!");
 		} else if (productToAdd.getDescription().equals("")) {
 			throw new InvalidParameterException("Description of the product must be included!");
-		} else if (convertPriceToString.trim().equals("")) {
-			throw new NumberFormatException("Price of the product must be included!");
 		} else if (convertPriceToString.trim().matches("^[a-zA-Z]*$")) {
 			throw new InvalidParameterException("Price of the product cannot contain alphabets!");
 		} else if (productToAdd.getPrice() <= 0) {
@@ -101,7 +99,6 @@ public class ProductsService {
 			}
 		}
 		return result;
-
 	}
 
 	public Carts getACartById(String id) throws CartNotFoundException {

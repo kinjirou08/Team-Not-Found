@@ -1,4 +1,4 @@
-package com.revature.caseclothes.serviceunittest;
+package com.revature.caseclothes.servicetests;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
@@ -14,9 +14,12 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.revature.caseclothes.dao.ProductsDAO;
+import com.revature.caseclothes.exception.CartNotFoundException;
 import com.revature.caseclothes.exception.ProductNotFoundException;
+import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.Category;
 import com.revature.caseclothes.model.Products;
+import com.revature.caseclothes.model.Quantities;
 import com.revature.caseclothes.service.ProductsService;
 
 @ActiveProfiles("ProductService-test")
@@ -31,14 +34,14 @@ public class ProductServiceTest {
 	ProductsDAO productsDao;
 
 	/*
-	 * ProductService's getProductById() test
+	 * getProductById() test
 	 */
 
 	@Test // Happy Path
 	void getProductById_PositiveTest() throws ProductNotFoundException {
 
 		Mockito.when(productsDao.selectProductById(1)).thenReturn(new Products("tshirt",
-				"Your perfect pack for everyday", 109.95, new Category("Men's Clothing"), " ", 100));
+				"Your perfect pack for everyday", 109.95, new Category("Men's Clothing"), "imageURL", 100));
 
 		Products actual = productsService.getProductById("1");
 
@@ -57,7 +60,7 @@ public class ProductServiceTest {
 	}
 
 	/*
-	 * ProductService's getAllProducts() test
+	 * getAllProducts() test
 	 */
 
 	@Test // Happy Path
@@ -93,7 +96,7 @@ public class ProductServiceTest {
 	}
 
 	/*
-	 * ProductsService's getAllProductThatContains() test
+	 * getAllProductThatContains() test
 	 */
 
 	@Test // Happy Path
@@ -152,82 +155,125 @@ public class ProductServiceTest {
 				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 		newProduct.setId(1);
-		
-		Mockito.when(productsDao.insertNewProduct(newProduct)).thenReturn(new Products("Mens Casual Slim Fit",
-				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
-				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100));
-		
+
+		Mockito.when(productsDao.insertNewProduct(newProduct))
+				.thenReturn(new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
+						15.99, c1, "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100));
+
 		Products actual = productsService.addNewProduct(newProduct);
 		actual.setId(1);
-		
-		Products expected = new Products("Mens Casual Slim Fit",
-				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
-				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+
+		Products expected = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
+				15.99, c1, "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 		expected.setId(1);
-		
+
+		Assertions.assertEquals(expected, actual);
+	}
+
+	@Test // Sad Path
+	void addNewProduct_NoNameInputAllFieldsValid_NegativeTest() {
+
+		Category c1 = new Category("Men's clothing");
+		c1.setCategoryId(1);
+
+		Products p = new Products("", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			productsService.addNewProduct(p);
+		});
+	}
+
+	@Test // Sad Path
+	void addNewProduct_NoDescriptionInputOtherFieldsValid_NegativeTest() {
+
+		Category c1 = new Category("Men's clothing");
+		c1.setCategoryId(1);
+
+		Products p = new Products("Mens Casual Slim Fit", "", 15.99, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			productsService.addNewProduct(p);
+		});
+	}
+
+	@Test // Sad Path
+	void addNewProduct_NoPriceInputOtherFieldsValid_NegativeTest() {
+
+		Category c1 = new Category("Men's Clothing");
+		c1.setCategoryId(1);
+
+		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 0, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			productsService.addNewProduct(p);
+		});
+	}
+
+	@Test // Sad Path
+	void addNewProduct_PriceIsNotADoubleInputOtherFieldsValid_NegativeTest() {
+
+		Category c1 = new Category("Men's Clothing");
+		c1.setCategoryId(1);
+
+		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
+				Double.NaN, c1, "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			productsService.addNewProduct(p);
+		});
+	}
+
+	/*
+	 * addMoreProductsToCart() test
+	 */
+
+	@Test // Happy Path
+	void addMoreProductsToCart_PostiveTest() throws ProductNotFoundException, CartNotFoundException {
+
+		List<Quantities> quantityList = new ArrayList<>();
+
+		Carts currentCart = new Carts(quantityList);
+		currentCart.setCartId(1);
+
+		Mockito.when(productsDao.selectACartById(1)).thenReturn(currentCart);
+
+		Products productToAdd = new Products("Jacket", "Perfect clothing for cold season", 109.95,
+				new Category("Women's Clothing"), "imageURL", 100);
+		productToAdd.setId(2);
+		Quantities q2 = new Quantities(productToAdd, 1);
+		q2.setQuantityId(2);
+
+		Mockito.when(productsDao.selectProductById(2)).thenReturn(productToAdd);
+
+		List<Quantities> currentQuantitiesInTheCart = currentCart.getQuantities();
+		currentQuantitiesInTheCart.add(q2);
+		currentCart.setQuantities(currentQuantitiesInTheCart);
+
+		Mockito.when(productsDao.insertToCart(currentCart, q2)).thenReturn(currentCart);
+
+		Carts actual = productsService.addMoreProductsToCart(currentCart, "1", "2", "1");
+
+		Carts expected = currentCart;
+
 		Assertions.assertEquals(expected, actual);
 	}
 	
 	@Test // Sad Path
-	void addNewProduct_NoNameInputAllFieldsValid_NegativeTest() {
+	void addMoreProductsToCart_CartNotFound_NegativeTest() {
 		
-		Category c1 = new Category("Men's clothing");
-		c1.setCategoryId(1);
-		
-		Products p = new Products("",
-				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
-				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
-		
-		Assertions.assertThrows(InvalidParameterException.class, () -> {
-			productsService.addNewProduct(p);			
-		});	
-	}
-
-	@Test // Sad Path
-	void addNewProduct_NoDescriptionInputAllFieldsValid_NegativeTest() {
-		
-		Category c1 = new Category("Men's clothing");
-		c1.setCategoryId(1);
-		
-		Products p = new Products("Mens Casual Slim Fit",
-				"", 15.99, c1,
-				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
-		
-		Assertions.assertThrows(InvalidParameterException.class, () -> {
-			productsService.addNewProduct(p);		
+		Assertions.assertThrows(CartNotFoundException.class, () -> {
+				productsService.addMoreProductsToCart(new Carts(), "1", "1", "1");
 		});	
 	}
 	
 	@Test // Sad Path
-	void addNewProduct_NoPriceInputAllFieldsValid_NegativeTest() {
+	void addMoreProductsToCart_ProductNotFound_NegativeTest() {
 		
-		Category c1 = new Category("Men's Clothing");
-		c1.setCategoryId(1);
-		
-		Products p = new Products("Mens Casual Slim Fit",
-				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 0, c1,
-				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
-		
-		
-		Assertions.assertThrows(InvalidParameterException.class, () -> {
-			productsService.addNewProduct(p);		
+		Assertions.assertThrows(ProductNotFoundException.class, () -> {
+				productsService.addMoreProductsToCart(new Carts(), "1", "1", "1");
 		});	
 	}
-	
-	@Test // Sad Path
-	void addNewProduct_PriceIsEmptyField_NegativeTest() {
-		
-		Category c1 = new Category("Men's Clothing");
-		c1.setCategoryId(1);
-		
-		Products p = new Products("Mens Casual Slim Fit",
-				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", Double.NaN, c1,
-				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
-		
-		Assertions.assertThrows(InvalidParameterException.class, () -> {
-			productsService.addNewProduct(p);		
-		});		
-	}
-	
-	
 }
