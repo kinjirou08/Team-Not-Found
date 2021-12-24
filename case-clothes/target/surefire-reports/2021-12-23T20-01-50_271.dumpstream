@@ -1,8 +1,5 @@
-<<<<<<< HEAD:case-clothes/target/surefire-reports/2021-12-23T20-17-30_207.dumpstream
 # Created at 2021-12-23T20:17:30.696
-=======
-# Created at 2021-12-23T20:01:50.722
->>>>>>> jymm-branch:case-clothes/target/surefire-reports/2021-12-23T20-01-50_271.dumpstream
+
 Boot Manifest-JAR contains absolute paths in classpath 'D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes\target\test-classes'
 Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 

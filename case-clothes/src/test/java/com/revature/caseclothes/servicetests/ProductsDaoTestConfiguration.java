@@ -1,4 +1,4 @@
-package com.revature.caseclothes.serviceunittest;
+package com.revature.caseclothes.servicetests;
 
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
