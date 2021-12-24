@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.revature.caseclothes.servicetests.ProductServiceTest
 -------------------------------------------------------------------------------
-Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.499 s - in com.revature.caseclothes.servicetests.ProductServiceTest
+Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.548 s - in com.revature.caseclothes.servicetests.ProductServiceTest

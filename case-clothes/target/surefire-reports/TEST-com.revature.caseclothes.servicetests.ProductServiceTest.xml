@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.revature.caseclothes.servicetests.ProductServiceTest" time="9.499" tests="22" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.revature.caseclothes.servicetests.ProductServiceTest" time="9.548" tests="22" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_301\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\jymmm\AppData\Local\Temp\surefire8851757706761747729\surefirebooter4404297016873937588.jar C:\Users\jymmm\AppData\Local\Temp\surefire8851757706761747729 2021-12-23T21-35-25_704-jvmRun1 surefire8566862861567544769tmp surefire_05425021604940795079tmp"/>
+    <property name="sun.java.command" value="C:\Users\jymmm\AppData\Local\Temp\surefire3421187947946184155\surefirebooter8628300953228006181.jar C:\Users\jymmm\AppData\Local\Temp\surefire3421187947946184155 2021-12-23T23-04-36_309-jvmRun1 surefire5483058559447353626tmp surefire_03495229564518330415tmp"/>
     <property name="surefire.test.class.path" value="D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes\target\test-classes;D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes\target\classes;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\2.6.1\spring-boot-starter-data-jpa-2.6.1.jar;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot-starter-aop\2.6.1\spring-boot-starter-aop-2.6.1.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-aop\5.3.13\spring-aop-5.3.13.jar;C:\Users\jymmm\.m2\repository\org\aspectj\aspectjweaver\1.9.7\aspectjweaver-1.9.7.jar;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\2.6.1\spring-boot-starter-jdbc-2.6.1.jar;C:\Users\jymmm\.m2\repository\com\zaxxer\HikariCP\4.0.3\HikariCP-4.0.3.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-jdbc\5.3.13\spring-jdbc-5.3.13.jar;C:\Users\jymmm\.m2\repository\jakarta\transaction\jakarta.transaction-api\1.3.3\jakarta.transaction-api-1.3.3.jar;C:\Users\jymmm\.m2\repository\jakarta\persistence\jakarta.persistence-api\2.2.3\jakarta.persistence-api-2.2.3.jar;C:\Users\jymmm\.m2\repository\org\hibernate\hibernate-core\5.6.1.Final\hibernate-core-5.6.1.Final.jar;C:\Users\jymmm\.m2\repository\org\jboss\logging\jboss-logging\3.4.2.Final\jboss-logging-3.4.2.Final.jar;C:\Users\jymmm\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\jymmm\.m2\repository\org\jboss\jandex\2.2.3.Final\jandex-2.2.3.Final.jar;C:\Users\jymmm\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\jymmm\.m2\repository\org\hibernate\common\hibernate-commons-annotations\5.1.2.Final\hibernate-commons-annotations-5.1.2.Final.jar;C:\Users\jymmm\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.5\jaxb-runtime-2.3.5.jar;C:\Users\jymmm\.m2\repository\org\glassfish\jaxb\txw2\2.3.5\txw2-2.3.5.jar;C:\Users\jymmm\.m2\repository\com\sun\istack\istack-commons-runtime\3.0.12\istack-commons-runtime-3.0.12.jar;C:\Users\jymmm\.m2\repository\com\sun\activation\jakarta.activation\1.2.2\jakarta.activation-1.2.2.jar;C:\Users\jymmm\.m2\repository\org\springframework\data\spring-data-jpa\2.6.0\spring-data-jpa-2.6.0.jar;C:\Users\jymmm\.m2\repository\org\springframework\data\spring-data-commons\2.6.0\spring-data-commons-2.6.0.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-orm\5.3.13\spring-orm-5.3.13.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-context\5.3.13\spring-context-5.3.13.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-tx\5.3.13\spring-tx-5.3.13.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-beans\5.3.13\spring-beans-5.3.13.jar;C:\Users\jymmm\.m2\repository\org\slf4j\slf4j-api\1.7.32\slf4j-api-1.7.32.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-aspects\5.3.13\spring-aspects-5.3.13.jar;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot-starter-web\2.6.1\spring-boot-starter-web-2.6.1.jar;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot-starter\2.6.1\spring-boot-starter-2.6.1.jar;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot\2.6.1\spring-boot-2.6.1.jar;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\2.6.1\spring-boot-autoconfigure-2.6.1.jar;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot-starter-logging\2.6.1\spring-boot-starter-logging-2.6.1.jar;C:\Users\jymmm\.m2\repository\ch\qos\logback\logback-classic\1.2.7\logback-classic-1.2.7.jar;C:\Users\jymmm\.m2\repository\ch\qos\logback\logback-core\1.2.7\logback-core-1.2.7.jar;C:\Users\jymmm\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.14.1\log4j-to-slf4j-2.14.1.jar;C:\Users\jymmm\.m2\repository\org\apache\logging\log4j\log4j-api\2.14.1\log4j-api-2.14.1.jar;C:\Users\jymmm\.m2\repository\org\slf4j\jul-to-slf4j\1.7.32\jul-to-slf4j-1.7.32.jar;C:\Users\jymmm\.m2\repository\jakarta\annotation\jakarta.annotation-api\1.3.5\jakarta.annotation-api-1.3.5.jar;C:\Users\jymmm\.m2\repository\org\yaml\snakeyaml\1.29\snakeyaml-1.29.jar;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot-starter-json\2.6.1\spring-boot-starter-json-2.6.1.jar;C:\Users\jymmm\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.0\jackson-databind-2.13.0.jar;C:\Users\jymmm\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.0\jackson-annotations-2.13.0.jar;C:\Users\jymmm\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.0\jackson-core-2.13.0.jar;C:\Users\jymmm\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.13.0\jackson-datatype-jdk8-2.13.0.jar;C:\Users\jymmm\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.13.0\jackson-datatype-jsr310-2.13.0.jar;C:\Users\jymmm\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.13.0\jackson-module-parameter-names-2.13.0.jar;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\2.6.1\spring-boot-starter-tomcat-2.6.1.jar;C:\Users\jymmm\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\9.0.55\tomcat-embed-core-9.0.55.jar;C:\Users\jymmm\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\9.0.55\tomcat-embed-el-9.0.55.jar;C:\Users\jymmm\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\9.0.55\tomcat-embed-websocket-9.0.55.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-web\5.3.13\spring-web-5.3.13.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-webmvc\5.3.13\spring-webmvc-5.3.13.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-expression\5.3.13\spring-expression-5.3.13.jar;C:\Users\jymmm\.m2\repository\org\postgresql\postgresql\42.3.1\postgresql-42.3.1.jar;C:\Users\jymmm\.m2\repository\org\checkerframework\checker-qual\3.5.0\checker-qual-3.5.0.jar;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot-starter-test\2.6.1\spring-boot-starter-test-2.6.1.jar;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot-test\2.6.1\spring-boot-test-2.6.1.jar;C:\Users\jymmm\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\2.6.1\spring-boot-test-autoconfigure-2.6.1.jar;C:\Users\jymmm\.m2\repository\com\jayway\jsonpath\json-path\2.6.0\json-path-2.6.0.jar;C:\Users\jymmm\.m2\repository\net\minidev\json-smart\2.4.7\json-smart-2.4.7.jar;C:\Users\jymmm\.m2\repository\net\minidev\accessors-smart\2.4.7\accessors-smart-2.4.7.jar;C:\Users\jymmm\.m2\repository\org\ow2\asm\asm\9.1\asm-9.1.jar;C:\Users\jymmm\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\2.3.3\jakarta.xml.bind-api-2.3.3.jar;C:\Users\jymmm\.m2\repository\jakarta\activation\jakarta.activation-api\1.2.2\jakarta.activation-api-1.2.2.jar;C:\Users\jymmm\.m2\repository\org\assertj\assertj-core\3.21.0\assertj-core-3.21.0.jar;C:\Users\jymmm\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\jymmm\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.1\junit-jupiter-5.8.1.jar;C:\Users\jymmm\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.1\junit-jupiter-params-5.8.1.jar;C:\Users\jymmm\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\jymmm\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\jymmm\.m2\repository\org\mockito\mockito-junit-jupiter\4.0.0\mockito-junit-jupiter-4.0.0.jar;C:\Users\jymmm\.m2\repository\org\skyscreamer\jsonassert\1.5.0\jsonassert-1.5.0.jar;C:\Users\jymmm\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-core\5.3.13\spring-core-5.3.13.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-jcl\5.3.13\spring-jcl-5.3.13.jar;C:\Users\jymmm\.m2\repository\org\springframework\spring-test\5.3.13\spring-test-5.3.13.jar;C:\Users\jymmm\.m2\repository\org\xmlunit\xmlunit-core\2.8.3\xmlunit-core-2.8.3.jar;C:\Users\jymmm\.m2\repository\com\h2database\h2\1.4.200\h2-1.4.200.jar;C:\Users\jymmm\.m2\repository\org\mockito\mockito-core\4.0.0\mockito-core-4.0.0.jar;C:\Users\jymmm\.m2\repository\net\bytebuddy\byte-buddy\1.11.22\byte-buddy-1.11.22.jar;C:\Users\jymmm\.m2\repository\net\bytebuddy\byte-buddy-agent\1.11.22\byte-buddy-agent-1.11.22.jar;C:\Users\jymmm\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;C:\Users\jymmm\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\jymmm\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\jymmm\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\jymmm\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\jymmm"/>
@@ -33,7 +33,7 @@
     <property name="FILE_LOG_CHARSET" value="windows-1252"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="C:\Users\jymmm\AppData\Local\Temp\surefire8851757706761747729\surefirebooter4404297016873937588.jar;C:\\Users\\jymmm\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.7\\org.jacoco.agent-0.8.7-runtime.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\jymmm\AppData\Local\Temp\surefire3421187947946184155\surefirebooter8628300953228006181.jar;C:\\Users\\jymmm\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.7\\org.jacoco.agent-0.8.7-runtime.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_301\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_301\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_301\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_301\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_301\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_301\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_301\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_301\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -49,12 +49,12 @@
     <property name="localRepository" value="C:\Users\jymmm\.m2\repository"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\jymmm\AppData\Local\Temp\"/>
-    <property name="com.zaxxer.hikari.pool_number" value="45"/>
+    <property name="com.zaxxer.hikari.pool_number" value="55"/>
     <property name="java.version" value="1.8.0_301"/>
     <property name="user.dir" value="D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="19668"/>
+    <property name="PID" value="17660"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="CONSOLE_LOG_CHARSET" value="windows-1252"/>
@@ -66,13 +66,13 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="updateAProduct_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.442">
-    <system-out><![CDATA[2021-12-23 21:35:44.950  INFO 19668 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.revature.caseclothes.servicetests.ProductServiceTest], using SpringBootContextLoader
-2021-12-23 21:35:44.950  INFO 19668 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.revature.caseclothes.servicetests.ProductServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2021-12-23 21:35:44.950  INFO 19668 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.revature.caseclothes.servicetests.ProductServiceTest]: ProductServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2021-12-23 21:35:44.955  INFO 19668 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.revature.caseclothes.CaseClothesApplication for test class com.revature.caseclothes.servicetests.ProductServiceTest
-2021-12-23 21:35:44.956  INFO 19668 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2021-12-23 21:35:44.957  INFO 19668 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@60782d5c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@179bd78e, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@71dacf6, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6fda0ad4, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4e69d8be, org.springframework.test.context.support.DirtiesContextTestExecutionListener@787415a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6d972740, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@52a40c8c, org.springframework.test.context.event.EventPublishingTestExecutionListener@5288924e, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6f3884d4, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3b410354, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4973b8dc, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5f7f495e, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@74ca7841, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@47229e2f]
+  <testcase name="updateAProduct_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.474">
+    <system-out><![CDATA[2021-12-23 23:05:02.214  INFO 17660 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.revature.caseclothes.servicetests.ProductServiceTest], using SpringBootContextLoader
+2021-12-23 23:05:02.214  INFO 17660 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.revature.caseclothes.servicetests.ProductServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-12-23 23:05:02.214  INFO 17660 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.revature.caseclothes.servicetests.ProductServiceTest]: ProductServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2021-12-23 23:05:02.218  INFO 17660 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.revature.caseclothes.CaseClothesApplication for test class com.revature.caseclothes.servicetests.ProductServiceTest
+2021-12-23 23:05:02.219  INFO 17660 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-12-23 23:05:02.220  INFO 17660 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6468ab2a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@71cd535, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@16e0171b, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@d0206a9, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2c12cdd8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4dc60012, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5b089e7e, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4622fcf8, org.springframework.test.context.event.EventPublishingTestExecutionListener@7ce495e9, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@15fccf7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1e3b59cc, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4f2fb3cf, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@173c2c1e, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@68fb627a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@2c4ab390]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -82,22 +82,22 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:44.968  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:44.968  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:45.047  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:45.049  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:45.105  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Starting...
-2021-12-23 21:35:45.105  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Start completed.
-2021-12-23 21:35:45.112  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:45.115  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:45.155  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:45.155  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:45.319  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:45.476  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.518 seconds (JVM running for 19.219)
-2021-12-23 21:35:45.478  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:45.478  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:45.479  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Shutdown initiated...
-2021-12-23 21:35:45.480  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Shutdown completed.
+2021-12-23 23:05:02.230  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:02.230  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:02.305  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:02.307  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:02.370  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-33 - Starting...
+2021-12-23 23:05:02.371  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-33 - Start completed.
+2021-12-23 23:05:02.379  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:02.383  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:02.420  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:02.420  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:02.581  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:02.739  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.517 seconds (JVM running for 25.9)
+2021-12-23 23:05:02.741  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:02.741  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:02.743  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-33 - Shutdown initiated...
+2021-12-23 23:05:02.744  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-33 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -107,25 +107,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:45.492  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:45.492  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:45.566  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:45.568  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:45.623  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Starting...
-2021-12-23 21:35:45.624  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Start completed.
-2021-12-23 21:35:45.631  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:45.633  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:45.678  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:45.679  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:45.736  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:45.885  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.4 seconds (JVM running for 19.628)
+2021-12-23 23:05:02.761  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:02.761  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:02.844  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:02.846  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:02.899  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-34 - Starting...
+2021-12-23 23:05:02.899  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-34 - Start completed.
+2021-12-23 23:05:02.906  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:02.908  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:02.942  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:02.942  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:02.995  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:03.176  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.43 seconds (JVM running for 26.338)
 ]]></system-out>
   </testcase>
-  <testcase name="addMoreProductsToCart_ProductNotFound_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.415">
-    <system-out><![CDATA[2021-12-23 21:35:45.921  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:45.921  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:45.923  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Shutdown initiated...
-2021-12-23 21:35:45.932  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Shutdown completed.
+  <testcase name="addMoreProductsToCart_ProductNotFound_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.422">
+    <system-out><![CDATA[2021-12-23 23:05:03.215  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:03.215  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:03.217  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-34 - Shutdown initiated...
+2021-12-23 23:05:03.218  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-34 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -135,25 +135,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:45.945  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:45.945  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:46.018  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:46.020  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:46.070  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-25 - Starting...
-2021-12-23 21:35:46.071  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-25 - Start completed.
-2021-12-23 21:35:46.078  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:46.080  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:46.119  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:46.119  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:46.178  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:46.329  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.396 seconds (JVM running for 20.073)
+2021-12-23 23:05:03.230  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:03.231  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:03.305  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:03.307  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:03.372  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-35 - Starting...
+2021-12-23 23:05:03.372  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-35 - Start completed.
+2021-12-23 23:05:03.379  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:03.382  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:03.427  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:03.427  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:03.484  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:03.630  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.41 seconds (JVM running for 26.792)
 ]]></system-out>
   </testcase>
   <testcase name="updateAProduct_EmptyPriceInput_OtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.402">
-    <system-out><![CDATA[2021-12-23 21:35:46.337  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:46.337  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:46.339  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-25 - Shutdown initiated...
-2021-12-23 21:35:46.340  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-25 - Shutdown completed.
+    <system-out><![CDATA[2021-12-23 23:05:03.638  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:03.638  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:03.640  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-35 - Shutdown initiated...
+2021-12-23 23:05:03.640  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-35 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -163,25 +163,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:46.353  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:46.353  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:46.429  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:46.431  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:46.481  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-26 - Starting...
-2021-12-23 21:35:46.481  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-26 - Start completed.
-2021-12-23 21:35:46.488  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:46.490  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:46.530  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:46.530  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:46.588  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:46.733  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.391 seconds (JVM running for 20.476)
+2021-12-23 23:05:03.655  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:03.655  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:03.729  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:03.731  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:03.785  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-36 - Starting...
+2021-12-23 23:05:03.786  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-36 - Start completed.
+2021-12-23 23:05:03.793  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:03.795  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:03.835  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:03.835  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:03.893  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:04.035  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.393 seconds (JVM running for 27.197)
 ]]></system-out>
   </testcase>
-  <testcase name="getAllProducts_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.427">
-    <system-out><![CDATA[2021-12-23 21:35:46.739  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:46.739  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:46.741  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-26 - Shutdown initiated...
-2021-12-23 21:35:46.742  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-26 - Shutdown completed.
+  <testcase name="getAllProducts_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.394">
+    <system-out><![CDATA[2021-12-23 23:05:04.041  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:04.041  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:04.042  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-36 - Shutdown initiated...
+2021-12-23 23:05:04.043  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-36 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -191,25 +191,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:46.757  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:46.757  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:46.839  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:46.841  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:46.894  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-27 - Starting...
-2021-12-23 21:35:46.894  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-27 - Start completed.
-2021-12-23 21:35:46.901  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:46.903  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:46.938  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:46.938  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:46.994  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:47.162  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.418 seconds (JVM running for 20.905)
+2021-12-23 23:05:04.054  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:04.054  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:04.126  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:04.128  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:04.193  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-37 - Starting...
+2021-12-23 23:05:04.194  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-37 - Start completed.
+2021-12-23 23:05:04.200  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:04.202  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:04.238  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:04.238  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:04.290  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:04.430  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.385 seconds (JVM running for 27.591)
 ]]></system-out>
   </testcase>
-  <testcase name="deleteProductInTheCart" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.393">
-    <system-out><![CDATA[2021-12-23 21:35:47.168  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:47.168  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:47.169  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-27 - Shutdown initiated...
-2021-12-23 21:35:47.170  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-27 - Shutdown completed.
+  <testcase name="deleteProductInTheCart" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.4">
+    <system-out><![CDATA[2021-12-23 23:05:04.435  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:04.435  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:04.436  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-37 - Shutdown initiated...
+2021-12-23 23:05:04.437  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-37 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -219,25 +219,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:47.182  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:47.182  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:47.254  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:47.256  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:47.308  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-28 - Starting...
-2021-12-23 21:35:47.308  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-28 - Start completed.
-2021-12-23 21:35:47.315  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:47.317  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:47.352  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:47.352  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:47.409  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:47.555  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.383 seconds (JVM running for 21.298)
+2021-12-23 23:05:04.448  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:04.448  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:04.521  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:04.523  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:04.580  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-38 - Starting...
+2021-12-23 23:05:04.581  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-38 - Start completed.
+2021-12-23 23:05:04.587  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:04.590  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:04.635  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:04.635  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:04.689  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:04.829  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.391 seconds (JVM running for 27.991)
 ]]></system-out>
   </testcase>
-  <testcase name="updateAProduct_EmptyNameInput_OtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.397">
-    <system-out><![CDATA[2021-12-23 21:35:47.561  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:47.561  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:47.563  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-28 - Shutdown initiated...
-2021-12-23 21:35:47.563  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-28 - Shutdown completed.
+  <testcase name="updateAProduct_EmptyNameInput_OtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.382">
+    <system-out><![CDATA[2021-12-23 23:05:04.837  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:04.837  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:04.838  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-38 - Shutdown initiated...
+2021-12-23 23:05:04.839  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-38 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -247,25 +247,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:47.575  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:47.575  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:47.650  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:47.652  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:47.706  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-29 - Starting...
-2021-12-23 21:35:47.706  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-29 - Start completed.
-2021-12-23 21:35:47.713  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:47.716  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:47.754  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:47.755  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:47.810  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:47.953  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.389 seconds (JVM running for 21.697)
+2021-12-23 23:05:04.851  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:04.851  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:04.924  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:04.926  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:04.973  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-39 - Starting...
+2021-12-23 23:05:04.974  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-39 - Start completed.
+2021-12-23 23:05:04.980  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:04.982  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:05.020  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:05.020  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:05.074  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:05.213  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.373 seconds (JVM running for 28.376)
 ]]></system-out>
   </testcase>
-  <testcase name="addNewProduct_NoNameInputAllFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.408">
-    <system-out><![CDATA[2021-12-23 21:35:47.960  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:47.960  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:47.961  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-29 - Shutdown initiated...
-2021-12-23 21:35:47.962  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-29 - Shutdown completed.
+  <testcase name="addNewProduct_NoNameInputAllFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.392">
+    <system-out><![CDATA[2021-12-23 23:05:05.219  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:05.219  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:05.220  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-39 - Shutdown initiated...
+2021-12-23 23:05:05.221  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-39 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -275,25 +275,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:47.974  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:47.974  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:48.051  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:48.053  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:48.106  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-30 - Starting...
-2021-12-23 21:35:48.106  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-30 - Start completed.
-2021-12-23 21:35:48.113  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:48.115  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:48.152  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:48.153  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:48.208  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:48.363  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.399 seconds (JVM running for 22.107)
+2021-12-23 23:05:05.234  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:05.235  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:05.315  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:05.317  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:05.368  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-40 - Starting...
+2021-12-23 23:05:05.368  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-40 - Start completed.
+2021-12-23 23:05:05.375  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:05.378  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:05.415  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:05.415  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:05.470  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:05.608  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.386 seconds (JVM running for 28.771)
 ]]></system-out>
   </testcase>
-  <testcase name="getAllProductThatContains_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.424">
-    <system-out><![CDATA[2021-12-23 21:35:48.368  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:48.368  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:48.370  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-30 - Shutdown initiated...
-2021-12-23 21:35:48.371  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-30 - Shutdown completed.
+  <testcase name="getAllProductThatContains_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.402">
+    <system-out><![CDATA[2021-12-23 23:05:05.613  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:05.613  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:05.615  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-40 - Shutdown initiated...
+2021-12-23 23:05:05.615  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-40 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -303,25 +303,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:48.383  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:48.383  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:48.460  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:48.462  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:48.513  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-31 - Starting...
-2021-12-23 21:35:48.513  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-31 - Start completed.
-2021-12-23 21:35:48.520  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:48.522  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:48.561  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:48.561  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:48.620  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:48.786  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.413 seconds (JVM running for 22.53)
+2021-12-23 23:05:05.626  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:05.626  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:05.699  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:05.701  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:05.752  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-41 - Starting...
+2021-12-23 23:05:05.753  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-41 - Start completed.
+2021-12-23 23:05:05.760  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:05.762  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:05.799  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:05.799  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:05.869  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:06.010  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.393 seconds (JVM running for 29.173)
 ]]></system-out>
   </testcase>
-  <testcase name="deleteAProduct_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.429">
-    <system-out><![CDATA[2021-12-23 21:35:48.793  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:48.793  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:48.794  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-31 - Shutdown initiated...
-2021-12-23 21:35:48.795  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-31 - Shutdown completed.
+  <testcase name="deleteAProduct_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.433">
+    <system-out><![CDATA[2021-12-23 23:05:06.017  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:06.017  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:06.019  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-41 - Shutdown initiated...
+2021-12-23 23:05:06.019  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-41 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -331,25 +331,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:48.808  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:48.808  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:48.885  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:48.887  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:48.937  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-32 - Starting...
-2021-12-23 21:35:48.938  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-32 - Start completed.
-2021-12-23 21:35:48.944  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:48.946  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:48.983  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:48.984  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:49.053  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:49.210  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.413 seconds (JVM running for 22.953)
+2021-12-23 23:05:06.031  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:06.032  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:06.109  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:06.111  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:06.163  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-42 - Starting...
+2021-12-23 23:05:06.163  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-42 - Start completed.
+2021-12-23 23:05:06.170  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:06.173  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:06.211  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:06.211  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:06.277  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:06.438  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.416 seconds (JVM running for 29.6)
 ]]></system-out>
   </testcase>
-  <testcase name="addNewProduct_NoPriceInputOtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.387">
-    <system-out><![CDATA[2021-12-23 21:35:49.222  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:49.222  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:49.224  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-32 - Shutdown initiated...
-2021-12-23 21:35:49.224  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-32 - Shutdown completed.
+  <testcase name="addNewProduct_NoPriceInputOtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.388">
+    <system-out><![CDATA[2021-12-23 23:05:06.451  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:06.451  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:06.452  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-42 - Shutdown initiated...
+2021-12-23 23:05:06.453  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-42 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -359,25 +359,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:49.237  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:49.237  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:49.315  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:49.317  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:49.366  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-33 - Starting...
-2021-12-23 21:35:49.367  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-33 - Start completed.
-2021-12-23 21:35:49.374  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:49.376  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:49.412  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:49.412  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:49.464  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:49.605  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.378 seconds (JVM running for 23.348)
+2021-12-23 23:05:06.465  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:06.465  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:06.540  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:06.542  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:06.594  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-43 - Starting...
+2021-12-23 23:05:06.595  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-43 - Start completed.
+2021-12-23 23:05:06.602  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:06.605  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:06.640  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:06.641  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:06.695  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:06.835  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.38 seconds (JVM running for 29.997)
 ]]></system-out>
   </testcase>
-  <testcase name="getProductById_Negative" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.414">
-    <system-out><![CDATA[2021-12-23 21:35:49.610  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:49.611  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:49.612  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-33 - Shutdown initiated...
-2021-12-23 21:35:49.613  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-33 - Shutdown completed.
+  <testcase name="getProductById_Negative" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.385">
+    <system-out><![CDATA[2021-12-23 23:05:06.839  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:06.839  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:06.840  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-43 - Shutdown initiated...
+2021-12-23 23:05:06.841  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-43 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -387,25 +387,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:49.625  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:49.626  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:49.715  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:49.717  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:49.769  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-34 - Starting...
-2021-12-23 21:35:49.770  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-34 - Start completed.
-2021-12-23 21:35:49.776  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:49.779  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:49.815  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:49.815  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:49.872  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:50.019  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.404 seconds (JVM running for 23.763)
+2021-12-23 23:05:06.852  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:06.852  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:06.925  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:06.927  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:06.976  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-44 - Starting...
+2021-12-23 23:05:06.976  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-44 - Start completed.
+2021-12-23 23:05:06.983  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:06.985  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:07.018  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:07.018  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:07.069  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:07.219  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.377 seconds (JVM running for 30.381)
 ]]></system-out>
   </testcase>
-  <testcase name="addNewProduct_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.422">
-    <system-out><![CDATA[2021-12-23 21:35:50.024  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:50.025  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:50.026  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-34 - Shutdown initiated...
-2021-12-23 21:35:50.027  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-34 - Shutdown completed.
+  <testcase name="addNewProduct_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.431">
+    <system-out><![CDATA[2021-12-23 23:05:07.225  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:07.225  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:07.226  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-44 - Shutdown initiated...
+2021-12-23 23:05:07.226  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-44 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -415,25 +415,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:50.039  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:50.039  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:50.127  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:50.129  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:50.185  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-35 - Starting...
-2021-12-23 21:35:50.185  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-35 - Start completed.
-2021-12-23 21:35:50.192  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:50.195  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:50.232  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:50.232  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:50.289  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:50.442  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.414 seconds (JVM running for 24.185)
+2021-12-23 23:05:07.238  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:07.238  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:07.313  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:07.315  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:07.380  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-45 - Starting...
+2021-12-23 23:05:07.381  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-45 - Start completed.
+2021-12-23 23:05:07.388  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:07.391  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:07.427  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:07.427  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:07.490  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:07.650  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.421 seconds (JVM running for 30.811)
 ]]></system-out>
   </testcase>
-  <testcase name="addNewProduct_NoDescriptionInputOtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.411">
-    <system-out><![CDATA[2021-12-23 21:35:50.447  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:50.447  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:50.449  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-35 - Shutdown initiated...
-2021-12-23 21:35:50.450  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-35 - Shutdown completed.
+  <testcase name="addNewProduct_NoDescriptionInputOtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.407">
+    <system-out><![CDATA[2021-12-23 23:05:07.656  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:07.656  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:07.657  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-45 - Shutdown initiated...
+2021-12-23 23:05:07.658  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-45 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -443,25 +443,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:50.461  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:50.461  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:50.536  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:50.537  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:50.588  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-36 - Starting...
-2021-12-23 21:35:50.589  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-36 - Start completed.
-2021-12-23 21:35:50.596  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:50.598  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:50.631  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:50.631  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:50.699  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:50.855  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.404 seconds (JVM running for 24.599)
+2021-12-23 23:05:07.672  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:07.672  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:07.754  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:07.756  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:07.809  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-46 - Starting...
+2021-12-23 23:05:07.809  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-46 - Start completed.
+2021-12-23 23:05:07.816  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:07.819  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:07.852  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:07.853  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:07.911  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:08.059  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.399 seconds (JVM running for 31.22)
 ]]></system-out>
   </testcase>
-  <testcase name="updateAProduct_ProductNotFound_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.429">
-    <system-out><![CDATA[2021-12-23 21:35:50.859  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:50.859  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:50.861  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-36 - Shutdown initiated...
-2021-12-23 21:35:50.862  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-36 - Shutdown completed.
+  <testcase name="updateAProduct_ProductNotFound_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.407">
+    <system-out><![CDATA[2021-12-23 23:05:08.063  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:08.063  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:08.064  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-46 - Shutdown initiated...
+2021-12-23 23:05:08.064  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-46 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -471,25 +471,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:50.873  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:50.873  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:50.953  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:50.954  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:51.016  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-37 - Starting...
-2021-12-23 21:35:51.016  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-37 - Start completed.
-2021-12-23 21:35:51.023  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:51.026  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:51.065  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:51.065  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:51.125  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:51.282  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.419 seconds (JVM running for 25.026)
+2021-12-23 23:05:08.075  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:08.075  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:08.149  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:08.150  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:08.201  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-47 - Starting...
+2021-12-23 23:05:08.201  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-47 - Start completed.
+2021-12-23 23:05:08.208  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:08.210  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:08.242  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:08.242  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:08.308  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:08.465  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.399 seconds (JVM running for 31.627)
 ]]></system-out>
   </testcase>
-  <testcase name="getProductById_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.389">
-    <system-out><![CDATA[2021-12-23 21:35:51.288  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:51.288  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:51.289  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-37 - Shutdown initiated...
-2021-12-23 21:35:51.290  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-37 - Shutdown completed.
+  <testcase name="getProductById_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.423">
+    <system-out><![CDATA[2021-12-23 23:05:08.470  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:08.470  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:08.471  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-47 - Shutdown initiated...
+2021-12-23 23:05:08.471  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-47 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -499,25 +499,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:51.302  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:51.302  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:51.376  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:51.378  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:51.430  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-38 - Starting...
-2021-12-23 21:35:51.431  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-38 - Start completed.
-2021-12-23 21:35:51.437  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:51.440  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:51.472  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:51.473  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:51.528  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:51.671  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.379 seconds (JVM running for 25.415)
+2021-12-23 23:05:08.483  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:08.483  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:08.556  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:08.557  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:08.620  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-48 - Starting...
+2021-12-23 23:05:08.620  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-48 - Start completed.
+2021-12-23 23:05:08.627  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:08.630  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:08.668  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:08.668  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:08.731  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:08.887  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.414 seconds (JVM running for 32.049)
 ]]></system-out>
   </testcase>
-  <testcase name="addMoreProductsToCart_PostiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.414">
-    <system-out><![CDATA[2021-12-23 21:35:51.677  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:51.677  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:51.678  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-38 - Shutdown initiated...
-2021-12-23 21:35:51.679  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-38 - Shutdown completed.
+  <testcase name="addMoreProductsToCart_PostiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.431">
+    <system-out><![CDATA[2021-12-23 23:05:08.893  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:08.894  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:08.895  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-48 - Shutdown initiated...
+2021-12-23 23:05:08.896  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-48 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -527,25 +527,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:51.690  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:51.690  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:51.770  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:51.773  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:51.830  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-39 - Starting...
-2021-12-23 21:35:51.831  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-39 - Start completed.
-2021-12-23 21:35:51.838  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:51.840  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:51.875  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:51.875  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:51.931  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:52.083  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.402 seconds (JVM running for 25.826)
+2021-12-23 23:05:08.907  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:08.907  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:08.983  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:08.985  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:09.037  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-49 - Starting...
+2021-12-23 23:05:09.038  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-49 - Start completed.
+2021-12-23 23:05:09.044  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:09.047  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:09.085  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:09.085  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:09.153  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:09.318  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.421 seconds (JVM running for 32.48)
 ]]></system-out>
   </testcase>
-  <testcase name="updateProductQuantityInCart_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.401">
-    <system-out><![CDATA[2021-12-23 21:35:52.092  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:52.092  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:52.093  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-39 - Shutdown initiated...
-2021-12-23 21:35:52.094  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-39 - Shutdown completed.
+  <testcase name="updateProductQuantityInCart_PositiveTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.432">
+    <system-out><![CDATA[2021-12-23 23:05:09.325  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:09.325  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:09.326  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-49 - Shutdown initiated...
+2021-12-23 23:05:09.327  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-49 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -555,25 +555,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:52.106  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:52.106  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:52.182  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:52.183  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:52.237  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-40 - Starting...
-2021-12-23 21:35:52.237  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-40 - Start completed.
-2021-12-23 21:35:52.244  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:52.246  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:52.280  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:52.280  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:52.337  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:52.487  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.392 seconds (JVM running for 26.231)
+2021-12-23 23:05:09.338  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:09.339  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:09.414  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:09.416  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:09.469  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-50 - Starting...
+2021-12-23 23:05:09.470  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-50 - Start completed.
+2021-12-23 23:05:09.477  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:09.479  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:09.517  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:09.517  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:09.605  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:09.751  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.422 seconds (JVM running for 32.913)
 ]]></system-out>
   </testcase>
-  <testcase name="addMoreProductsToCart_CartNotFound_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.384">
-    <system-out><![CDATA[2021-12-23 21:35:52.493  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:52.493  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:52.494  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-40 - Shutdown initiated...
-2021-12-23 21:35:52.495  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-40 - Shutdown completed.
+  <testcase name="addMoreProductsToCart_CartNotFound_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.416">
+    <system-out><![CDATA[2021-12-23 23:05:09.757  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:09.757  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:09.758  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-50 - Shutdown initiated...
+2021-12-23 23:05:09.759  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-50 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -583,25 +583,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:52.506  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:52.507  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:52.577  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:52.579  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:52.629  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-41 - Starting...
-2021-12-23 21:35:52.629  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-41 - Start completed.
-2021-12-23 21:35:52.636  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:52.638  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:52.672  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:52.672  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:52.728  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:52.873  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.377 seconds (JVM running for 26.617)
+2021-12-23 23:05:09.770  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:09.770  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:09.841  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:09.843  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:09.892  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-51 - Starting...
+2021-12-23 23:05:09.893  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-51 - Start completed.
+2021-12-23 23:05:09.899  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:09.902  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:09.934  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:09.934  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:10.001  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:10.168  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.407 seconds (JVM running for 33.329)
 ]]></system-out>
   </testcase>
-  <testcase name="updateAProduct_EmptyDescriptionInput_OtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.396">
-    <system-out><![CDATA[2021-12-23 21:35:52.879  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:52.879  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:52.880  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-41 - Shutdown initiated...
-2021-12-23 21:35:52.881  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-41 - Shutdown completed.
+  <testcase name="updateAProduct_EmptyDescriptionInput_OtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.429">
+    <system-out><![CDATA[2021-12-23 23:05:10.173  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:10.173  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:10.174  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-51 - Shutdown initiated...
+2021-12-23 23:05:10.175  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-51 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -611,25 +611,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:52.896  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:52.896  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:52.975  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:52.977  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:53.028  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-42 - Starting...
-2021-12-23 21:35:53.028  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-42 - Start completed.
-2021-12-23 21:35:53.035  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:53.037  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:53.070  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:53.070  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:53.124  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:53.269  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.386 seconds (JVM running for 27.013)
+2021-12-23 23:05:10.187  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:10.187  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:10.261  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:10.264  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:10.324  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-52 - Starting...
+2021-12-23 23:05:10.325  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-52 - Start completed.
+2021-12-23 23:05:10.332  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:10.335  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:10.371  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:10.371  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:10.436  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:10.597  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.421 seconds (JVM running for 33.759)
 ]]></system-out>
   </testcase>
-  <testcase name="addNewProduct_PriceIsNotADoubleInputOtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.387">
-    <system-out><![CDATA[2021-12-23 21:35:53.275  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:53.275  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:53.276  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-42 - Shutdown initiated...
-2021-12-23 21:35:53.277  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-42 - Shutdown completed.
+  <testcase name="addNewProduct_PriceIsNotADoubleInputOtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.377">
+    <system-out><![CDATA[2021-12-23 23:05:10.603  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:10.603  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:10.604  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-52 - Shutdown initiated...
+2021-12-23 23:05:10.605  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-52 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -639,25 +639,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:53.289  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:53.289  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:53.361  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:53.363  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:53.413  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-43 - Starting...
-2021-12-23 21:35:53.413  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-43 - Start completed.
-2021-12-23 21:35:53.420  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:53.423  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:53.454  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:53.454  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:53.506  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:53.659  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.38 seconds (JVM running for 27.402)
+2021-12-23 23:05:10.615  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:10.615  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:10.686  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:10.688  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:10.738  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-53 - Starting...
+2021-12-23 23:05:10.738  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-53 - Start completed.
+2021-12-23 23:05:10.745  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:10.747  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:10.782  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:10.782  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:10.838  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:10.976  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.37 seconds (JVM running for 34.139)
 ]]></system-out>
   </testcase>
-  <testcase name="updateAProduct_PriceIsNotADoubleInput_OtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.396">
-    <system-out><![CDATA[2021-12-23 21:35:53.663  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:53.663  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:53.664  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-43 - Shutdown initiated...
-2021-12-23 21:35:53.665  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-43 - Shutdown completed.
+  <testcase name="updateAProduct_PriceIsNotADoubleInput_OtherFieldsValid_NegativeTest" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.385">
+    <system-out><![CDATA[2021-12-23 23:05:10.980  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:10.981  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:10.981  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-53 - Shutdown initiated...
+2021-12-23 23:05:10.982  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-53 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -667,25 +667,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:53.677  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:53.677  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:53.758  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:53.760  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:53.814  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-44 - Starting...
-2021-12-23 21:35:53.815  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-44 - Start completed.
-2021-12-23 21:35:53.821  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:53.824  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:53.856  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:53.856  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:53.912  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:54.054  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.388 seconds (JVM running for 27.798)
+2021-12-23 23:05:10.993  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:10.993  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:11.069  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:11.071  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:11.121  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-54 - Starting...
+2021-12-23 23:05:11.122  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-54 - Start completed.
+2021-12-23 23:05:11.128  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:11.131  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:11.163  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:11.163  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:11.217  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:11.359  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.376 seconds (JVM running for 34.522)
 ]]></system-out>
   </testcase>
-  <testcase name="getAllProductThatContains_NoValidProduct" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.389">
-    <system-out><![CDATA[2021-12-23 21:35:54.059  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:54.059  INFO 19668 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2021-12-23 21:35:54.060  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-44 - Shutdown initiated...
-2021-12-23 21:35:54.061  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-44 - Shutdown completed.
+  <testcase name="getAllProductThatContains_NoValidProduct" classname="com.revature.caseclothes.servicetests.ProductServiceTest" time="0.396">
+    <system-out><![CDATA[2021-12-23 23:05:11.366  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:11.366  INFO 17660 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-23 23:05:11.367  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-54 - Shutdown initiated...
+2021-12-23 23:05:11.368  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-54 - Shutdown completed.
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -695,18 +695,18 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.1)
 
-2021-12-23 21:35:54.072  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 19668 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
-2021-12-23 21:35:54.072  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
-2021-12-23 21:35:54.152  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-23 21:35:54.154  INFO 19668 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
-2021-12-23 21:35:54.207  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-45 - Starting...
-2021-12-23 21:35:54.208  INFO 19668 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-45 - Start completed.
-2021-12-23 21:35:54.215  INFO 19668 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-23 21:35:54.217  INFO 19668 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2021-12-23 21:35:54.248  INFO 19668 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-23 21:35:54.248  INFO 19668 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-23 21:35:54.301  WARN 19668 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-23 21:35:54.445  INFO 19668 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.382 seconds (JVM running for 28.188)
+2021-12-23 23:05:11.380  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Starting ProductServiceTest using Java 1.8.0_301 on MSI-Jymm with PID 17660 (started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+2021-12-23 23:05:11.380  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : The following profiles are active: ProductService-test
+2021-12-23 23:05:11.456  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-23 23:05:11.458  INFO 17660 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-12-23 23:05:11.520  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-55 - Starting...
+2021-12-23 23:05:11.521  INFO 17660 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-55 - Start completed.
+2021-12-23 23:05:11.528  INFO 17660 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-23 23:05:11.530  INFO 17660 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-23 23:05:11.560  INFO 17660 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-23 23:05:11.560  INFO 17660 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-23 23:05:11.614  WARN 17660 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-23 23:05:11.757  INFO 17660 --- [           main] c.r.c.servicetests.ProductServiceTest    : Started ProductServiceTest in 0.387 seconds (JVM running for 34.919)
 ]]></system-out>
   </testcase>
 </testsuite>
