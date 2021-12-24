@@ -1,10 +1,10 @@
 package com.revature.caseclothes.servicetests;
 
-import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.times;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
@@ -202,14 +202,14 @@ public class ProductServiceTest {
 	}
 
 	@Test // Sad Path
-	void addNewProduct_NoPriceInputOtherFieldsValid_NegativeTest() {
+	void addNewProduct_NoPriceInputOtherFieldsValid_NegativeTest() throws ProductNotFoundException {
 
 		Category c1 = new Category("Men's Clothing");
 		c1.setCategoryId(1);
 
 		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 0, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
-
+		
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			productsService.addNewProduct(p);
 		});
@@ -252,49 +252,50 @@ public class ProductServiceTest {
 				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 29.99, new Category("Men's Clothing"),
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 		productToBeUpdated.setId(productId);
-		
+
 		Mockito.when(productsDao.selectProductById(1)).thenReturn(productToBeUpdated);
-		
-		Mockito.when(productsDao.updateAProduct(productToBeUpdated)).thenReturn(new Products("Mens Casual Slim Fit",
-				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 29.99, new Category("Men's Clothing"),
-				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100));
-		
+
+		Mockito.when(productsDao.updateAProduct(productToBeUpdated))
+				.thenReturn(new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
+						29.99, new Category("Men's Clothing"),
+						"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100));
+
 		Products actual = productsService.updateAProduct("1", productToBeUpdated);
 		actual.setId(1);
-		
-		Products expected = new Products("Mens Casual Slim Fit",
-				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 29.99, new Category("Men's Clothing"),
-				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+
+		Products expected = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
+				29.99, new Category("Men's Clothing"), "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 		expected.setId(1);
-		
+
 		Assertions.assertEquals(expected, actual);
 	}
 
 	@Test // Sad Path
 	void updateAProduct_ProductNotFound_NegativeTest() {
-		
+
 		Products p = null;
-		
+
 		Assertions.assertThrows(ProductNotFoundException.class, () -> {
 			productsService.updateAProduct("1", p);
 		});
 	}
-	
+
 	@Test // Sad Path - Very Similar to addNewProduct()'s Input validation
-	void updateAProduct_EmptyNameInput_OtherFieldsValid_NegativeTest() {
-		
+	void updateAProduct_EmptyNameInput_OtherFieldsValid_NegativeTest() throws ProductNotFoundException {
+
 		Category c1 = new Category("Men's clothing");
 		c1.setCategoryId(1);
 
 		Products p = new Products("", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		Mockito.when(productsDao.selectProductById(1)).thenReturn(p);
 
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
-			productsService.addNewProduct(p);
+			productsService.updateAProduct("1", p);
 		});
-			
+
 	}
-	
+
 	@Test // Sad Path - Very Similar to addNewProduct()'s Input validation
 	void updateAProduct_EmptyDescriptionInput_OtherFieldsValid_NegativeTest() {
 
@@ -303,12 +304,13 @@ public class ProductServiceTest {
 
 		Products p = new Products("Mens Casual Slim Fit", "", 15.99, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
-
+		Mockito.when(productsDao.selectProductById(1)).thenReturn(p);
+		
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
-			productsService.addNewProduct(p);
+			productsService.updateAProduct("1", p);
 		});
 	}
-		
+
 	@Test // Sad Path - Very Similar to addNewProduct()'s Input validation
 	void updateAProduct_EmptyPriceInput_OtherFieldsValid_NegativeTest() {
 
@@ -317,12 +319,13 @@ public class ProductServiceTest {
 
 		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 0, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		Mockito.when(productsDao.selectProductById(1)).thenReturn(p);
 
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
-			productsService.addNewProduct(p);
+			productsService.updateAProduct("1", p);
 		});
 	}
-	
+
 	@Test // Sad Path - Very Similar to addNewProduct()'s Input validation
 	void updateAProduct_PriceIsNotADoubleInput_OtherFieldsValid_NegativeTest() {
 
@@ -331,12 +334,13 @@ public class ProductServiceTest {
 
 		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
 				Double.NaN, c1, "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		Mockito.when(productsDao.selectProductById(1)).thenReturn(p);
 
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
-			productsService.addNewProduct(p);
+			productsService.updateAProduct("1", p);
 		});
 	}
-	
+
 	/*
 	 * addMoreProductsToCart() test
 	 */
@@ -393,4 +397,86 @@ public class ProductServiceTest {
 		});
 	}
 
+	/*
+	 * updateProductQuantityInCart() test
+	 */
+
+	@Test // Happy Path
+	void updateProductQuantityInCart_PositiveTest() throws CartNotFoundException, ProductNotFoundException {
+
+		List<Quantities> quantityList = new ArrayList<>();
+
+		Carts currentCart = new Carts(quantityList);
+		currentCart.setCartId(1);
+
+		Mockito.when(productsDao.selectACartById(1)).thenReturn(currentCart);
+
+		Products productToUpdate = new Products("Jacket", "Perfect clothing for cold season", 109.95,
+				new Category("Women's Clothing"), "imageURL", 100);
+		productToUpdate.setId(2);
+		Quantities q2 = new Quantities(productToUpdate, 1);
+		q2.setQuantityId(2);
+
+		Mockito.when(productsDao.selectProductById(2)).thenReturn(productToUpdate);
+
+		List<Quantities> currentQuantitiesInTheCart = currentCart.getQuantities();
+		for (Quantities q : currentQuantitiesInTheCart) {
+			q.setQuantity(2);
+		}
+
+		currentCart.setQuantities(currentQuantitiesInTheCart);
+
+		Mockito.when(productsDao.updateProductsInTheCart(currentCart)).thenReturn(currentCart);
+
+		Carts actual = productsService.updateProductQuantityInCart(currentCart, "1", "2", "2");
+
+		Carts expected = currentCart;
+
+		Assertions.assertEquals(expected, actual);
+
+	}
+
+	/*
+	 * deleteProductInTheCart() test
+	 */
+
+	@Test // Happy Path
+	void deleteProductInTheCart() throws CartNotFoundException, ProductNotFoundException {
+
+		List<Quantities> quantityList = new ArrayList<>();
+		Carts currentCart = new Carts(quantityList);
+		currentCart.setCartId(1);
+
+		Mockito.when(productsDao.selectACartById(1)).thenReturn(currentCart);
+
+		Products productToDelete = new Products("Jacket", "Perfect clothing for cold season", 109.95,
+				new Category("Women's Clothing"), "imageURL", 100);
+		productToDelete.setId(2);
+
+		Mockito.when(productsDao.selectProductById(2)).thenReturn(productToDelete);
+
+		Quantities q2 = new Quantities(new Products(), 1);
+		q2.setQuantityId(1);
+
+		List<Quantities> currentProductInTheCart = currentCart.getQuantities();
+		int quantityToDelete = 0;
+
+		Iterator<Quantities> iter = currentProductInTheCart.iterator();
+		Quantities q1 = null;
+		while (iter.hasNext()) {
+			q1 = iter.next();
+			iter.remove();
+			quantityToDelete = q1.getQuantityId();
+		}
+
+		currentCart.setQuantities(currentProductInTheCart);
+
+		Mockito.when(productsDao.deleteAProductInTheCart(currentCart, quantityToDelete)).thenReturn(currentCart);
+
+		Carts actual = productsService.delteteProductInCart(currentCart, "1", "2");
+
+		Carts expected = currentCart;
+
+		Assertions.assertEquals(expected, actual);
+	}
 }

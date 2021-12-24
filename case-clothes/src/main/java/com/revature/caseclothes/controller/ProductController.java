@@ -78,8 +78,13 @@ public class ProductController {
 	@PostMapping(path = "/products", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Object> addNewProduct(@RequestBody Products productToAdd) {
 
-		Products p = ps.addNewProduct(productToAdd);
-		return ResponseEntity.status(201).body(p);
+		try {
+			Products p = ps.addNewProduct(productToAdd);
+			return ResponseEntity.status(201).body(p);
+		} catch (InvalidParameterException e) {
+			return ResponseEntity.status(404).body(e.getMessage());
+		}
+		
 	}
 
 	@DeleteMapping(path = "/products/{id}")
