@@ -58,11 +58,14 @@ public class ProductDaoTest {
 		expected2.setId(2);
 		
 		List<Products> expectedProducts = new ArrayList<>();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7137c14864632b42c20be13aadfb3eb6f53ff4d4
 		expectedProducts.add(expected1);
 		expectedProducts.add(expected2);
 		
-		Assertions.assertEquals(expectedProducts, actual);
-		
+		Assertions.assertEquals(expectedProducts, actual);	
 	}
 	
 	@Test
@@ -108,14 +111,17 @@ public class ProductDaoTest {
 		expected2.setId(2);
 		
 		List<Products> expectedList = new ArrayList<>();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7137c14864632b42c20be13aadfb3eb6f53ff4d4
 		expectedList.add(expected1);
 		expectedList.add(expected2);
 		
 		List<Products> actualList = this.sut.getAllProductThatContains("tshirt");
 		
 		
-		Assertions.assertEquals(expectedList, actualList);
-		
+		Assertions.assertEquals(expectedList, actualList);	
 	}
 	
 	@Test

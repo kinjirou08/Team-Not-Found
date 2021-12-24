@@ -157,7 +157,13 @@ public class UserDaoTest {
 		User expected4 = new User("tanveer_singh","password12","Tanveer","Singh","t_singh@list.com","3458976","345 Test",customer);
 		expected4.setId(4);
 	
+<<<<<<< HEAD
 		List<User> expectedUsers = new ArrayList<>();
+=======
+
+		List<User> expectedUsers = new ArrayList<>();
+
+>>>>>>> 7137c14864632b42c20be13aadfb3eb6f53ff4d4
 		expectedUsers.add(expected1);
 		expectedUsers.add(expected2);
 		expectedUsers.add(expected3);

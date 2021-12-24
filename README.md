@@ -3,20 +3,30 @@
 
 ## Project Description
 
-Here goes your awesome project description!
+A shopping application utilizing https://fakestoreapi.com/ as an external API and it’s stored fake products. The shopping application will two main users, An admin, and the customers. The shopping application could also Insert or Add a new product to the current, update an existing product, and delete an existing product. There will also be a Cart system where a customer could put the product they chose, update its quantity, and remove a product if they don’t want the product. And lastly, the application would be able to do a transaction where, after buying all the products, all the quantity of the product would be reduced, and every transaction will persist in a database.
 
 ## Technologies Used
 
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* SpringBoot
+* PostgreSQL
+* Angular
+* JUnit 5 - version 5.8.1
+* Mockito - version 4.0.0
+* AWS EC2
+
 
 ## Features
 
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+Customer Features
+* Login to account
+* Logout of account
+* Create a new account
+* Add a new product to cart
+* Update an existing product in the cart
+* Update the quantity of the product in the cart
+* Remove an existing product in the cart
+* Purchase items in cart
+* Clear cart after purchase
 
 To-do list:
 * Wow improvement to be done 1

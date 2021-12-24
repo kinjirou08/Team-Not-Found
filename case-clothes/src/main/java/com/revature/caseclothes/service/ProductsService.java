@@ -42,8 +42,6 @@ public class ProductsService {
 			throw new InvalidParameterException("Name of the product must be included!");
 		} else if (productToAdd.getDescription().equals("")) {
 			throw new InvalidParameterException("Description of the product must be included!");
-		} else if (convertPriceToString.trim().equals("")) {
-			throw new NumberFormatException("Price of the product must be included!");
 		} else if (convertPriceToString.trim().matches("^[a-zA-Z]*$")) {
 			throw new InvalidParameterException("Price of the product cannot contain alphabets!");
 		} else if (productToAdd.getPrice() <= 0) {
@@ -101,7 +99,6 @@ public class ProductsService {
 			}
 		}
 		return result;
-
 	}
 
 	public Carts getACartById(String id) throws CartNotFoundException {
@@ -123,34 +120,27 @@ public class ProductsService {
 
 	}
 
-	public Products updateAProduct(String id, Products productToBeUpdated) throws ProductNotFoundException {
+	public Products updateAProduct(String id, Products productToBeUpdated)
+			throws ProductNotFoundException, InvalidParameterException {
 
 		int productId = Integer.parseInt(id);
-		Products checkProductIfExist = this.getProductById(id);
-		try {
-			if (checkProductIfExist == null) {
-				throw new ProductNotFoundException("No product with the id of " + id);
-			}
-			String convertPriceToString = String.valueOf(productToBeUpdated.getPrice());
-			if (productToBeUpdated.getName().equals("")) {
-				throw new InvalidParameterException("Name of the product must be included!");
-			} else if (productToBeUpdated.getDescription().equals("")) {
-				throw new InvalidParameterException("Description of the product must be included!");
-			} else if (convertPriceToString.trim().equals("")) {
-				throw new InvalidParameterException("Price of the product must be included!");
-			} else if (convertPriceToString.trim().matches("^[a-zA-Z]*$")) {
-				throw new InvalidParameterException("Price of the product cannot contain alphabets!");
-			} else if (productToBeUpdated.getPrice() <= 0) {
-				throw new InvalidParameterException("Price of the product cannot be less than zero");
-			} else {
-				productToBeUpdated.setId(productId);
-			}
-		} catch (ProductNotFoundException e) {
-			e.getMessage();
-		} catch (InvalidParameterException e) {
-			e.getMessage();
-		}
+		Products checkProductIfExist = pd.selectProductById(productId);
 
+		if (checkProductIfExist == null) {
+			throw new ProductNotFoundException("No product with the id of " + id);
+		}
+		String convertPriceToString = String.valueOf(productToBeUpdated.getPrice());
+		if (productToBeUpdated.getName().equals("")) {
+			throw new InvalidParameterException("Name of the product must be included!");
+		} else if (productToBeUpdated.getDescription().equals("")) {
+			throw new InvalidParameterException("Description of the product must be included!");
+		} else if (convertPriceToString.trim().matches("^[a-zA-Z]*$")) {
+			throw new InvalidParameterException("Price of the product cannot contain alphabets!");
+		} else if (productToBeUpdated.getPrice() <= 0) {
+			throw new InvalidParameterException("Price of the product cannot be less than zero");
+		} else {
+			productToBeUpdated.setId(productId);
+		}
 		return pd.updateAProduct(productToBeUpdated);
 
 	}

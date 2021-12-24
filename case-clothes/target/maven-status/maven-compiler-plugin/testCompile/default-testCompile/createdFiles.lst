@@ -1,0 +1,10 @@
+com\revature\caseclothes\integrationtest\ProductControllerTest.class
+com\revature\caseclothes\servicetests\UserDAOTestConfiguration.class
+com\revature\caseclothes\servicetests\UserServiceTest.class
+com\revature\caseclothes\CaseClothesServiceTests.class
+com\revature\caseclothes\servicetests\ProductsDaoTestConfiguration.class
+com\revature\caseclothes\servicetests\ProductServiceTest.class
+com\revature\caseclothes\daounittests\UserDaoTest.class
+com\revature\caseclothes\CaseClothesApplicationTests.class
+com\revature\caseclothes\integrationtest\AuthenticationControllerTest.class
+com\revature\caseclothes\daounittests\ProductDaoTest.class
