@@ -1,5 +1,8 @@
 package com.revature.caseclothes.servicetests;
 
+import static org.mockito.ArgumentMatchers.isA;
+import static org.mockito.Mockito.times;
+
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
@@ -227,6 +230,114 @@ public class ProductServiceTest {
 	}
 
 	/*
+	 * deleteProductById() test
+	 */
+	@Test // Happy Path
+	void deleteAProduct_PositiveTest() {
+
+		productsService.deleteProductById("1");
+
+		Mockito.verify(productsDao, times(1)).deleteProductById(1);
+	}
+
+	/*
+	 * updateAProduct() test
+	 */
+
+	@Test // Happy Path
+	void updateAProduct_PositiveTest() throws ProductNotFoundException {
+
+		int productId = 1;
+		Products productToBeUpdated = new Products("Mens Casual Slim Fit",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 29.99, new Category("Men's Clothing"),
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		productToBeUpdated.setId(productId);
+		
+		Mockito.when(productsDao.selectProductById(1)).thenReturn(productToBeUpdated);
+		
+		Mockito.when(productsDao.updateAProduct(productToBeUpdated)).thenReturn(new Products("Mens Casual Slim Fit",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 29.99, new Category("Men's Clothing"),
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100));
+		
+		Products actual = productsService.updateAProduct("1", productToBeUpdated);
+		actual.setId(1);
+		
+		Products expected = new Products("Mens Casual Slim Fit",
+				"H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 29.99, new Category("Men's Clothing"),
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+		expected.setId(1);
+		
+		Assertions.assertEquals(expected, actual);
+	}
+
+	@Test // Sad Path
+	void updateAProduct_ProductNotFound_NegativeTest() {
+		
+		Products p = null;
+		
+		Assertions.assertThrows(ProductNotFoundException.class, () -> {
+			productsService.updateAProduct("1", p);
+		});
+	}
+	
+	@Test // Sad Path - Very Similar to addNewProduct()'s Input validation
+	void updateAProduct_EmptyNameInput_OtherFieldsValid_NegativeTest() {
+		
+		Category c1 = new Category("Men's clothing");
+		c1.setCategoryId(1);
+
+		Products p = new Products("", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			productsService.addNewProduct(p);
+		});
+			
+	}
+	
+	@Test // Sad Path - Very Similar to addNewProduct()'s Input validation
+	void updateAProduct_EmptyDescriptionInput_OtherFieldsValid_NegativeTest() {
+
+		Category c1 = new Category("Men's clothing");
+		c1.setCategoryId(1);
+
+		Products p = new Products("Mens Casual Slim Fit", "", 15.99, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			productsService.addNewProduct(p);
+		});
+	}
+		
+	@Test // Sad Path - Very Similar to addNewProduct()'s Input validation
+	void updateAProduct_EmptyPriceInput_OtherFieldsValid_NegativeTest() {
+
+		Category c1 = new Category("Men's Clothing");
+		c1.setCategoryId(1);
+
+		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 0, c1,
+				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			productsService.addNewProduct(p);
+		});
+	}
+	
+	@Test // Sad Path - Very Similar to addNewProduct()'s Input validation
+	void updateAProduct_PriceIsNotADoubleInput_OtherFieldsValid_NegativeTest() {
+
+		Category c1 = new Category("Men's Clothing");
+		c1.setCategoryId(1);
+
+		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
+				Double.NaN, c1, "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
+
+		Assertions.assertThrows(InvalidParameterException.class, () -> {
+			productsService.addNewProduct(p);
+		});
+	}
+	
+	/*
 	 * addMoreProductsToCart() test
 	 */
 
@@ -260,30 +371,26 @@ public class ProductServiceTest {
 
 		Assertions.assertEquals(expected, actual);
 	}
-	
+
 	@Test // Sad Path
 	void addMoreProductsToCart_CartNotFound_NegativeTest() {
-		
+
 		Assertions.assertThrows(CartNotFoundException.class, () -> {
-				productsService.addMoreProductsToCart(null, "1", "1", "1");
-		});	
+			productsService.addMoreProductsToCart(null, "1", "1", "1");
+		});
 	}
-	
+
 	@Test // Sad Path
 	void addMoreProductsToCart_ProductNotFound_NegativeTest() {
-		
+
 		List<Quantities> quantityList = new ArrayList<>();
 		Carts currentCart = new Carts(quantityList);
 		currentCart.setCartId(1);
 		Mockito.when(productsDao.selectACartById(1)).thenReturn(currentCart);
-		
-		Assertions.assertThrows(ProductNotFoundException.class, () -> {
-				productsService.addMoreProductsToCart(currentCart, "1", "1", "1");
-		});	
-	}
-	
-	@Test // Happy Path 
-	void checkProductInTheCart_PositiveTest() {
 
+		Assertions.assertThrows(ProductNotFoundException.class, () -> {
+			productsService.addMoreProductsToCart(currentCart, "1", "1", "1");
+		});
 	}
+
 }
