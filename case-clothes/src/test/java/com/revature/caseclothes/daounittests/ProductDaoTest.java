@@ -58,10 +58,6 @@ public class ProductDaoTest {
 		expected2.setId(2);
 		
 		List<Products> expectedProducts = new ArrayList<>();
-<<<<<<< HEAD
-=======
-
->>>>>>> 7137c14864632b42c20be13aadfb3eb6f53ff4d4
 		expectedProducts.add(expected1);
 		expectedProducts.add(expected2);
 		
@@ -111,10 +107,6 @@ public class ProductDaoTest {
 		expected2.setId(2);
 		
 		List<Products> expectedList = new ArrayList<>();
-<<<<<<< HEAD
-=======
-
->>>>>>> 7137c14864632b42c20be13aadfb3eb6f53ff4d4
 		expectedList.add(expected1);
 		expectedList.add(expected2);
 		

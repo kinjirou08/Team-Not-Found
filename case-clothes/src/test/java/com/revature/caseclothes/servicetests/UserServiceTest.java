@@ -161,23 +161,6 @@ public class UserServiceTest {
 		});
 	}
 
-<<<<<<< HEAD
-//	@Test
-//	public void testAddCustomer() throws UnAuthorizedException {
-//		UserRole customer = new UserRole("customer");
-//		
-//		AddUserDTO dto = new AddUserDTO("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave");
-//		
-//		Mockito.when(ud.addCustomer(dto)).thenReturn(new User("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave", customer));
-//		
-//		User actual = us.addCustomer(dto);
-//		
-//		User expected = new User("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave", customer);
-//		
-//		Assertions.assertEquals(expected, actual);
-//	}
-	
-=======
 	@Test
 	public void testAddCustomer_PositiveTest() {
 		UserRole customer = new UserRole("customer");
@@ -197,7 +180,6 @@ public class UserServiceTest {
 		Assertions.assertEquals(expected, actual);
 	}
 
->>>>>>> 7137c14864632b42c20be13aadfb3eb6f53ff4d4
 	@Test
 	public void testAddCustomer_NoFirstNameInput_OtherFieldsValid_NegativeTest() {
 
@@ -457,7 +439,6 @@ public class UserServiceTest {
 		us.deleteUserByID(user);
 	}
 
-<<<<<<< HEAD
 //	@Test
 //	public void testUpdateUserByID() throws UserNotFoundException {
 //		UserRole customer = new UserRole("customer");
@@ -476,7 +457,6 @@ public class UserServiceTest {
 //		
 //		Assertions.assertEquals(expected, actual);
 //	}
-=======
 	@Test
 	public void testDeleteUserByID_negative() throws UserNotFoundException {
 		User user = null;
@@ -577,7 +557,6 @@ public class UserServiceTest {
 			us.UpdateUser(user, userToBeUpdated);
 		});
 	}
->>>>>>> 7137c14864632b42c20be13aadfb3eb6f53ff4d4
 
 	@Test
 	public void testLogin_admin() throws UserNotFoundException, InvalidLoginException {
