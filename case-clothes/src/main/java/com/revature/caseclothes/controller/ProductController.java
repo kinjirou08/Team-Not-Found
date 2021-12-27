@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,6 +32,8 @@ import com.revature.caseclothes.service.ProductsService;
 @RestController
 @CrossOrigin(originPatterns = "*", allowCredentials = "true")
 public class ProductController {
+	
+	Logger logger = LoggerFactory.getLogger(ProductController.class);
 
 	@Autowired
 	private ProductsService ps;
@@ -41,7 +45,7 @@ public class ProductController {
 
 	@GetMapping(path = "/products")
 	public List<Products> getAllProducts() {
-
+		logger.info("getAllProducts() mapping invoked");
 		return ps.getAllProducts();
 	}
 
@@ -84,7 +88,7 @@ public class ProductController {
 		} catch (InvalidParameterException e) {
 			return ResponseEntity.status(404).body(e.getMessage());
 		}
-		
+
 	}
 
 	@DeleteMapping(path = "/products/{id}")
@@ -227,9 +231,12 @@ public class ProductController {
 		LocalDateTime now = LocalDateTime.now();
 
 		String transactionTime = dtf.format(now);
+		
+		double change = Double.parseDouble(amount) - Double.parseDouble(df.format(totalPrice));
 
 		TransactionKeeper testing = new TransactionKeeper(transactionTime, getCartById,
-				Double.parseDouble(df.format(totalPrice)), Double.parseDouble(amount));
+				Double.parseDouble(df.format(totalPrice)), Double.parseDouble(amount),
+				Double.parseDouble(df.format(change)));
 
 		return ResponseEntity.status(200).body(testing);
 	}
