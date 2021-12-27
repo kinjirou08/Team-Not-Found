@@ -6,14 +6,31 @@ import { Injectable } from '@angular/core';
 })
 export class AdminService {
 
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAllProducts() {
+
+  getAllProducts(){
     return this.http.get('http://localhost:8080/products', {
       withCredentials: true,
-      observe: 'response',
-      
+      observe: 'response'
     });
   }
 
+  addNewProduct(pName: string, pDescription: string, pPrice: number, pId: number,
+    pCategory: string, pImageURL: string, pTotalQuantity: number) {
+
+    return this.http.post('http://localhost:8080/products', {
+      "name": pName,
+      "description": pDescription,
+      "price": pPrice,
+      "categories": {
+          "categoryId": pId,
+          "category": pCategory
+      },
+      "imageURL": pImageURL,
+      "totalQuantity": pTotalQuantity
+    }, {
+      observe: 'response'
+    });
+  }
 }

@@ -1,10 +1,39 @@
-<p>admin-page works!</p>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Product Name</th>
-        <th>Price</th>
-        <th>Catagory</th>
-        <th>Total Quantity</th>
-    </tr>
-</table>
+<link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css">
+    <app-navbar></app-navbar>
+<div>
+    <div class="field logout-button">
+        <p class="control">
+            <button (click)="onButtonClick()" class="button is-success">Logout</button>
+            </p>
+            </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th><abbr title="Played">Description</abbr></th>
+            <th><abbr title="Won">Price</abbr></th>
+            <th><abbr title="Drawn">Category</abbr></th>
+            <!-- <th><abbr title="Lost">Image</abbr></th> -->
+            <th><abbr title="Goals for">Quantity</abbr></th>
+          </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let p of products">
+                <tr>
+                    <td>{{ p.id }}</td>
+                    <td>{{ p.name }}</td>
+                    <td>{{ p.description }}</td>
+                    <td>{{ p.price }}</td>
+                    <td>{{ p.categories.category }}</td>
+                    <!-- <td>{{ p.imageUrl }}</td>
+                    <td>{{ p.id }}</td> -->
+                    <td>{{ p.totalQuantity }}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
+
+
+
