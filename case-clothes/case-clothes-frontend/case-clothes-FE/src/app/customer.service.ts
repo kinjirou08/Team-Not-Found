@@ -11,7 +11,7 @@ export class CustomerService {
 
 
   getAllProducts(){
-    return this.http.get('http://localhost:8080/products', {
+    return this.http.get('http://ec2-34-211-207-79.us-west-2.compute.amazonaws.com:8082/products', {
       withCredentials: true,
       observe: 'response'
     });

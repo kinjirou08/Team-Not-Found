@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cart } from 'src/Cart';
-import { User } from 'src/User';
+import { Cart } from '../Cart';
+import { User } from '../User';
 import { CartService } from '../cart.service';
 import { CustomerService } from '../customer.service';
 import { LoginService } from '../login.service';

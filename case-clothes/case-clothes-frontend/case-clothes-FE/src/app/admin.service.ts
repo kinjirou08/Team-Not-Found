@@ -10,7 +10,7 @@ export class AdminService {
 
 
   getAllProducts(){
-    return this.http.get('http://localhost:8080/products', {
+    return this.http.get('http://ec2-34-211-207-79.us-west-2.compute.amazonaws.com:8082/products', {
       withCredentials: true,
       observe: 'response'
     });
@@ -19,7 +19,7 @@ export class AdminService {
   addNewProduct(pName: string, pDescription: string, pPrice: number, pId: number,
     pCategory: string, pImageURL: string, pTotalQuantity: number) {
 
-    return this.http.post('http://localhost:8080/products', {
+    return this.http.post('http://ec2-34-211-207-79.us-west-2.compute.amazonaws.com:8082/products', {
       "name": pName,
       "description": pDescription,
       "price": pPrice,

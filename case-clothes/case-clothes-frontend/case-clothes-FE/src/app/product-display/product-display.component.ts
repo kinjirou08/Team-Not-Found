@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cart } from 'src/Cart';
-import { User } from 'src/User';
+import { Cart } from '../Cart';
 import { CartService } from '../cart.service';
 import { LoginService } from '../login.service';
 import { Products } from '../Products';
+import { User } from '../User';
 
 @Component({
   selector: 'app-product-display',
@@ -38,7 +38,7 @@ export class ProductDisplayComponent implements OnInit {
       }
     })
 
-    
+
   }
 
   onBuyButtonClick(p: number, q:number){
@@ -54,10 +54,10 @@ export class ProductDisplayComponent implements OnInit {
       },
       error: (err) =>{
         console.log(err);
-        
+
       }
     })
-   
+
   }
 
 }

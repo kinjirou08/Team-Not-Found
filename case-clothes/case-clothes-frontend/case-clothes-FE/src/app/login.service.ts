@@ -9,7 +9,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(uName: string, pass: string) {
-    return this.http.post('http://localhost:8080/login', {
+    return this.http.post('http://localhost:8082/login', {
       "username": uName,
       "password": pass
     }, {
@@ -19,7 +19,7 @@ export class LoginService {
   }
 
   checkLoginStatus() {
-    return this.http.get('http://localhost:8080/loginstatus', {
+    return this.http.get('http://localhost:8082/loginstatus', {
       observe: 'response',
       withCredentials: true
     })
@@ -27,7 +27,7 @@ export class LoginService {
 
   signup(username: string, password: string, firstName: string, lastName: string,
     email: string, phoneNumber:string, address: string) {
-      return this.http.post('http://localhost:8080/users',{
+      return this.http.post('http://localhost:8082/users',{
         "username": username,
         "password": password,
         "firstName": firstName,
@@ -43,7 +43,7 @@ export class LoginService {
   }
 
   logout() {
-    return this.http.post('http://localhost:8080/logout', {}, {
+    return this.http.post('http://ec2-34-211-207-79.us-west-2.compute.amazonaws.com:8082/logout', {}, {
       observe: 'response',
       withCredentials: true,
       responseType: 'text'

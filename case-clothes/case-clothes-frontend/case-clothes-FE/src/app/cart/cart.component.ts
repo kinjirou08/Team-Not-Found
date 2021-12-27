@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cart } from 'src/Cart';
-import { User } from 'src/User';
+import { Cart } from '../Cart';
+import { User } from '../User';
 import { CartService } from '../cart.service';
 import { LoginService } from '../login.service';
 
@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
   priceTotal!: Cart[];
 
   totalPrice: number = 0;
-  
+
   constructor(
     private cartService: CartService, private loginService: LoginService, private router: Router){}
 
@@ -42,7 +42,7 @@ export class CartComponent implements OnInit {
         }
       }
     })
-    
+
     this.cartService.sub.subscribe((data)=>{
       console.log(data);
       this.cart = data;
@@ -51,10 +51,10 @@ export class CartComponent implements OnInit {
         let pPrice = data.quantities[i].product.price;
         let pQuantity = data.quantities[i].quantity;
         let individualPrice = Number(pPrice) * Number(pQuantity);
- 
+
         let totalPrice = Number(this.totalPrice) + Number(individualPrice);
         totalPrice = Math.round(totalPrice * 100) / 100;
- 
+
         this.totalPrice = totalPrice;
       }
 
@@ -68,12 +68,12 @@ export class CartComponent implements OnInit {
         let body = <Cart> res.body
         console.log(body);
       }
-      
+
     },
       error: (err) =>{
         console.log(err);
       }
-        
+
     })
   }
 

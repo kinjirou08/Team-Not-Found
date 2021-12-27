@@ -73,7 +73,9 @@ public class ProductsService {
 		Quantities q = new Quantities(p, quantityToBuy);
 
 		List<Quantities> currentQuantitiesInTheCart = currentCart.getQuantities();
+		
 		boolean checkProduct = checkProductInTheCart(currentQuantitiesInTheCart, p);
+		
 		if (checkProduct == false) {
 			currentQuantitiesInTheCart.add(q);
 			currentCart.setQuantities(currentQuantitiesInTheCart);
@@ -85,9 +87,7 @@ public class ProductsService {
 				}
 			}
 		}
-
 		currentCart = pd.insertToCart(currentCart, q);
-
 		return currentCart;
 	}
 
