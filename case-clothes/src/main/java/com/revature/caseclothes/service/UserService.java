@@ -1,5 +1,6 @@
 package com.revature.caseclothes.service;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,6 @@ import com.revature.caseclothes.exception.InvalidParametersException;
 import com.revature.caseclothes.exception.UnAuthorizedException;
 import com.revature.caseclothes.exception.UserNotFoundException;
 import com.revature.caseclothes.model.Carts;
-//import com.revature.caseclothes.model.Carts;
 import com.revature.caseclothes.model.User;
 
 @Service
@@ -25,6 +25,13 @@ public class UserService {
 
 	// Add Admin if you are logged in as Admin
 	public User addAdmin(User currentlyLoggedInUser, AddUserDTO dto) throws UnAuthorizedException {
+		if (dto.getUsername().trim().equals("") || dto.getPassword().trim().equals("")
+				|| dto.getFirstName().trim().equals("") || dto.getLastName().trim().equals("")
+				|| dto.getPhoneNumber().trim().equals("") || dto.getEmail().trim().equals("")
+				|| dto.getAddress().equals("")) {
+			throw new InvalidParameterException("Do not leave any information blank");
+		}
+
 		if (currentlyLoggedInUser.getRole().getRole().equals("admin")) {
 			return ud.addAdmin(dto);
 		} else {
@@ -34,6 +41,12 @@ public class UserService {
 
 	// Add customer
 	public User addCustomer(AddUserDTO dto) {
+		if (dto.getUsername().trim().equals("") || dto.getPassword().trim().equals("")
+				|| dto.getFirstName().trim().equals("") || dto.getLastName().trim().equals("")
+				|| dto.getPhoneNumber().trim().equals("") || dto.getEmail().trim().equals("")
+				|| dto.getAddress().equals("")) {
+			throw new InvalidParameterException("Do not leave any information blank");
+		}
 		Carts c = null;
 		return ud.addCustomer(dto, c);
 	}
@@ -77,20 +90,17 @@ public class UserService {
 	// Get user by id if Admin
 	public User getUserByUsername(User currentUser, String username)
 			throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
-		try {
-			if (currentUser.getRole().getRole().equals("admin")) {
-				User user = ud.getUserByUsername(username);
 
-				if (user == null) {
-					throw new UserNotFoundException("User with an id of " + username + " was not found.");
-				}
+		if (currentUser.getRole().getRole().equals("admin")) {
+			User user = ud.getUserByUsername(username);
 
-				return user;
-			} else {
-				throw new UnAuthorizedException("Must be an Admin to use this feature.");
+			if (user == null) {
+				throw new UserNotFoundException("User with an id of " + username + " was not found.");
 			}
-		} catch (NumberFormatException e) {
-			throw new InvalidParametersException("ID provided is not an int compatible value.");
+
+			return user;
+		} else {
+			throw new UnAuthorizedException("Must be an Admin to use this feature.");
 		}
 	}
 
@@ -106,7 +116,7 @@ public class UserService {
 
 	// Update Information of currentUser
 	public User UpdateUser(User currentUser, User updatedUserInfo) throws InvalidParametersException {
-		
+
 		if (updatedUserInfo.getFirstName().trim().equals("")) {
 			throw new InvalidParametersException("First Name is required to update your account!");
 		}
@@ -122,7 +132,6 @@ public class UserService {
 		if (updatedUserInfo.getAddress().trim().equals("")) {
 			throw new InvalidParametersException("Address is required to update your account!");
 		}
-		
 
 		int currentUserID = currentUser.getId();
 		updatedUserInfo.setId(currentUserID);

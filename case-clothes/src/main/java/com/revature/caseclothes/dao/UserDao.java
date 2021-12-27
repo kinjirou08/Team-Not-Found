@@ -6,9 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -114,21 +111,5 @@ public class UserDao {
 		
 		return user;
 	}
-	
-//	@Test
-//	@Transactional
-//	public void testGetUsernameAndPassword_incorrectPassword() {
-//		UserRole customer = new UserRole("customer");
-//		this.em.persist(customer);
-//		
-//		User user = new User("tanveer_singh","password1","Tanveer","Singh","tanveersingh@list.com","2607105094","220 West",customer);
-//		this.em.persist(user);
-//		
-//		this.em.flush();
-//		
-//		Assertions.assertThrows(DataAccessException.class, () ->{
-//			this.sut.getUsernameAndPassword("tanveer_singh", "password1234");
-//		});
-//	}
 
 }

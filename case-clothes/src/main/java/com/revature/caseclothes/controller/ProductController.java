@@ -1,5 +1,9 @@
 package com.revature.caseclothes.controller;
 
+import java.security.InvalidParameterException;
+import java.text.DecimalFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +18,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.caseclothes.dao.ProductsDAO;
 import com.revature.caseclothes.exception.CartNotFoundException;
 import com.revature.caseclothes.exception.ProductNotFoundException;
 import com.revature.caseclothes.model.Carts;
-
 import com.revature.caseclothes.model.Products;
+import com.revature.caseclothes.model.Quantities;
+import com.revature.caseclothes.model.TransactionKeeper;
 import com.revature.caseclothes.service.ProductsService;
 
 @RestController
@@ -27,6 +33,9 @@ public class ProductController {
 
 	@Autowired
 	private ProductsService ps;
+
+	@Autowired
+	ProductsDAO pd;
 
 	private final String PATTERN = "[0-9]+";
 
@@ -62,15 +71,20 @@ public class ProductController {
 		} catch (ProductNotFoundException e) {
 			return ResponseEntity.status(404).body(e.getMessage());
 		} catch (NumberFormatException e) {
-			return ResponseEntity.status(404).body(e.getMessage());
+			return ResponseEntity.status(400).body(e.getMessage());
 		}
 	}
 
 	@PostMapping(path = "/products", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Object> addNewProduct(@RequestBody Products productToAdd) {
 
-		Products p = ps.addNewProduct(productToAdd);
-		return ResponseEntity.status(201).body(p);
+		try {
+			Products p = ps.addNewProduct(productToAdd);
+			return ResponseEntity.status(201).body(p);
+		} catch (InvalidParameterException e) {
+			return ResponseEntity.status(404).body(e.getMessage());
+		}
+		
 	}
 
 	@DeleteMapping(path = "/products/{id}")
@@ -90,7 +104,7 @@ public class ProductController {
 
 	@PutMapping(path = "/products/{id}")
 	public ResponseEntity<Object> updateAProductByid(@PathVariable("id") String id,
-			@RequestBody Products productToBeUpdated) throws ProductNotFoundException, NumberFormatException {
+			@RequestBody Products productToBeUpdated) throws NumberFormatException {
 
 		try {
 			if (id.matches(PATTERN)) {
@@ -103,13 +117,19 @@ public class ProductController {
 			return ResponseEntity.status(400).body(e.getMessage());
 		} catch (ProductNotFoundException e) {
 			return ResponseEntity.status(404).body(e.getMessage());
+		} catch (InvalidParameterException e) {
+			return ResponseEntity.status(400).body(e.getMessage());
 		}
-
 	}
 
 	@GetMapping(path = "/carts/{id}")
 	public ResponseEntity<Object> getCartById(@PathVariable("id") String id) throws CartNotFoundException {
-
+		/*
+		 * checkout button -> show list of products, in Angular side just get: Carts: {
+		 * User: { first name, last name } Quantities: { Product: { name: price: }
+		 * quantity: } }
+		 * 
+		 */
 		try {
 			if (id.matches(PATTERN)) {
 				Carts c = ps.getACartById(id);
@@ -123,24 +143,6 @@ public class ProductController {
 			return ResponseEntity.status(404).body(e.getMessage());
 		}
 	}
-
-//	@PostMapping(path = "/carts") // path will be changed to "/user/{id}/carts" once we have the User feature
-//	public ResponseEntity<Object> addProductsToCart(@RequestParam("productId") String productId,
-//			@RequestParam("quantity") String quantity) throws ProductNotFoundException {
-//
-//		try {
-//			if (productId.matches(PATTERN) || quantity.matches(PATTERN)) {
-//				Carts c = ps.addProductsToCart(productId, quantity);
-//				return ResponseEntity.status(201).body(c);
-//			} else {
-//				throw new NumberFormatException("product id or quantity must be of type int!");
-//			}
-//		} catch (NumberFormatException e) {
-//			return ResponseEntity.status(400).body(e.getMessage());
-//		} catch (ProductNotFoundException e) {
-//			return ResponseEntity.status(404).body(e.getMessage());
-//		}
-//	}
 
 	@PostMapping(path = "/carts/{id}")
 	public ResponseEntity<Object> addMoreProductToCart(@PathVariable("id") String cartId,
@@ -182,7 +184,6 @@ public class ProductController {
 		} catch (ProductNotFoundException e) {
 			return ResponseEntity.status(404).body(e.getMessage());
 		}
-
 	}
 
 	@DeleteMapping(path = "/carts/{id}")
@@ -202,7 +203,34 @@ public class ProductController {
 		} catch (ProductNotFoundException e) {
 			return ResponseEntity.status(404).body(e.getMessage());
 		}
-
 	}
 
+	@PostMapping(path = "/cart/{id}/checkout") // Pay Now button test
+	public ResponseEntity<Object> checkoutTest(@PathVariable("id") String id, @RequestParam("amountPaid") String amount)
+			throws CartNotFoundException {
+
+		Carts getCartById = ps.getACartById(id);
+
+		// computing for the total price for each product
+		DecimalFormat df = new DecimalFormat("#.##");
+		double price = 0.0;
+		double totalPrice = 0.0;
+		List<Quantities> q = getCartById.getQuantities();
+		for (Quantities q1 : q) {
+			price = q1.getProduct().getPrice() * q1.getQuantity();
+			System.out.println(q1.getProduct().getId() + ": " + price);
+			totalPrice = totalPrice + price;
+			System.out.println(df.format(totalPrice));
+		}
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+
+		String transactionTime = dtf.format(now);
+
+		TransactionKeeper testing = new TransactionKeeper(transactionTime, getCartById,
+				Double.parseDouble(df.format(totalPrice)), Double.parseDouble(amount));
+
+		return ResponseEntity.status(200).body(testing);
+	}
 }
