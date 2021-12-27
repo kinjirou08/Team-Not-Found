@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">case-clothes</a> &gt; <a href="index.source.html" class="el_package">com.revature.caseclothes.service</a> &gt; <span class="el_source">UserService.java</span></div><h1>UserService.java</h1><pre class="source lang-java linenums">package com.revature.caseclothes.service;
+
+import java.security.InvalidParameterException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
+
+import com.revature.caseclothes.dao.UserDao;
+import com.revature.caseclothes.dto.AddUserDTO;
+import com.revature.caseclothes.exception.InvalidLoginException;
+import com.revature.caseclothes.exception.InvalidParametersException;
+import com.revature.caseclothes.exception.UnAuthorizedException;
+import com.revature.caseclothes.exception.UserNotFoundException;
+import com.revature.caseclothes.model.Carts;
+import com.revature.caseclothes.model.User;
+
+@Service
+<span class="fc" id="L21">public class UserService {</span>
+
+	@Autowired
+	private UserDao ud;
+
+	// Add Admin if you are logged in as Admin
+	public User addAdmin(User currentlyLoggedInUser, AddUserDTO dto) throws UnAuthorizedException {
+<span class="fc bfc" id="L28" title="All 4 branches covered.">		if (dto.getUsername().trim().equals(&quot;&quot;) || dto.getPassword().trim().equals(&quot;&quot;)</span>
+<span class="fc bfc" id="L29" title="All 4 branches covered.">				|| dto.getFirstName().trim().equals(&quot;&quot;) || dto.getLastName().trim().equals(&quot;&quot;)</span>
+<span class="fc bfc" id="L30" title="All 4 branches covered.">				|| dto.getPhoneNumber().trim().equals(&quot;&quot;) || dto.getEmail().trim().equals(&quot;&quot;)</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">				|| dto.getAddress().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L32">			throw new InvalidParameterException(&quot;Do not leave any information blank&quot;);</span>
+		}
+
+<span class="fc bfc" id="L35" title="All 2 branches covered.">		if (currentlyLoggedInUser.getRole().getRole().equals(&quot;admin&quot;)) {</span>
+<span class="fc" id="L36">			return ud.addAdmin(dto);</span>
+		} else {
+<span class="fc" id="L38">			throw new UnAuthorizedException(&quot;You must be an Admin to use this while you are logged in.&quot;);</span>
+		}
+	}
+
+	// Add customer
+	public User addCustomer(AddUserDTO dto) {
+<span class="fc bfc" id="L44" title="All 4 branches covered.">		if (dto.getUsername().trim().equals(&quot;&quot;) || dto.getPassword().trim().equals(&quot;&quot;)</span>
+<span class="fc bfc" id="L45" title="All 4 branches covered.">				|| dto.getFirstName().trim().equals(&quot;&quot;) || dto.getLastName().trim().equals(&quot;&quot;)</span>
+<span class="fc bfc" id="L46" title="All 4 branches covered.">				|| dto.getPhoneNumber().trim().equals(&quot;&quot;) || dto.getEmail().trim().equals(&quot;&quot;)</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">				|| dto.getAddress().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L48">			throw new InvalidParameterException(&quot;Do not leave any information blank&quot;);</span>
+		}
+<span class="fc" id="L50">		Carts c = null;</span>
+<span class="fc" id="L51">		return ud.addCustomer(dto, c);</span>
+	}
+
+	// Get all users if Admin
+	public List&lt;User&gt; getAllUsers(User currentUser) throws UnAuthorizedException {
+<span class="fc bfc" id="L56" title="All 2 branches covered.">		if (currentUser.getRole().getRole().equals(&quot;admin&quot;)) {</span>
+<span class="fc" id="L57">			return ud.getAllUsers();</span>
+		}
+
+		// if user is customer
+		// throw authentication exception
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">		if (currentUser.getRole().getRole().equals(&quot;customer&quot;)) {</span>
+<span class="fc" id="L63">			throw new UnAuthorizedException(&quot;Must be an Admin to use this feature.&quot;);</span>
+		}
+
+<span class="nc" id="L66">		return new ArrayList&lt;&gt;();</span>
+	}
+
+	// Get user by id if Admin
+	public User getUserByID(User currentUser, int id)
+			throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
+		try {
+<span class="fc bfc" id="L73" title="All 2 branches covered.">			if (currentUser.getRole().getRole().equals(&quot;admin&quot;)) {</span>
+<span class="fc" id="L74">				User user = ud.getUserByID(id);</span>
+
+<span class="fc bfc" id="L76" title="All 2 branches covered.">				if (user == null) {</span>
+<span class="fc" id="L77">					throw new UserNotFoundException(&quot;User with an id of &quot; + id + &quot; was not found.&quot;);</span>
+				}
+
+<span class="fc" id="L80">				return user;</span>
+			} else {
+<span class="fc" id="L82">				throw new UnAuthorizedException(&quot;Must be an Admin to use this feature.&quot;);</span>
+			}
+
+<span class="nc" id="L85">		} catch (NumberFormatException e) {</span>
+<span class="nc" id="L86">			throw new InvalidParametersException(&quot;ID provided is not an int compatible value.&quot;);</span>
+		}
+	}
+
+	// Get user by id if Admin
+	public User getUserByUsername(User currentUser, String username)
+			throws UserNotFoundException, UnAuthorizedException, InvalidParametersException {
+
+<span class="fc bfc" id="L94" title="All 2 branches covered.">		if (currentUser.getRole().getRole().equals(&quot;admin&quot;)) {</span>
+<span class="fc" id="L95">			User user = ud.getUserByUsername(username);</span>
+
+<span class="fc bfc" id="L97" title="All 2 branches covered.">			if (user == null) {</span>
+<span class="fc" id="L98">				throw new UserNotFoundException(&quot;User with an id of &quot; + username + &quot; was not found.&quot;);</span>
+			}
+
+<span class="fc" id="L101">			return user;</span>
+		} else {
+<span class="fc" id="L103">			throw new UnAuthorizedException(&quot;Must be an Admin to use this feature.&quot;);</span>
+		}
+	}
+
+	// Delete user if currentUserId = userToBeDeleted
+	public void deleteUserByID(User currentUser) throws UserNotFoundException {
+<span class="fc bfc" id="L109" title="All 2 branches covered.">		if (currentUser != null) {</span>
+<span class="fc" id="L110">			int currentUserID = currentUser.getId();</span>
+<span class="fc" id="L111">			ud.deleteUserByID(currentUserID);</span>
+<span class="fc" id="L112">		} else {</span>
+<span class="fc" id="L113">			throw new UserNotFoundException(&quot;Current User is NULL&quot;);</span>
+		}
+<span class="fc" id="L115">	}</span>
+
+	// Update Information of currentUser
+	public User UpdateUser(User currentUser, User updatedUserInfo) throws InvalidParametersException {
+
+<span class="fc bfc" id="L120" title="All 2 branches covered.">		if (updatedUserInfo.getFirstName().trim().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L121">			throw new InvalidParametersException(&quot;First Name is required to update your account!&quot;);</span>
+		}
+<span class="fc bfc" id="L123" title="All 2 branches covered.">		if (updatedUserInfo.getLastName().trim().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L124">			throw new InvalidParametersException(&quot;Last Name is required to update your account!&quot;);</span>
+		}
+<span class="fc bfc" id="L126" title="All 2 branches covered.">		if (updatedUserInfo.getEmail().trim().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L127">			throw new InvalidParametersException(&quot;Email is required to update your account!&quot;);</span>
+		}
+<span class="fc bfc" id="L129" title="All 2 branches covered.">		if (updatedUserInfo.getPhoneNumber().trim().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L130">			throw new InvalidParametersException(&quot;Phone Number is required to update your account!&quot;);</span>
+		}
+<span class="fc bfc" id="L132" title="All 2 branches covered.">		if (updatedUserInfo.getAddress().trim().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L133">			throw new InvalidParametersException(&quot;Address is required to update your account!&quot;);</span>
+		}
+
+<span class="fc" id="L136">		int currentUserID = currentUser.getId();</span>
+<span class="fc" id="L137">		updatedUserInfo.setId(currentUserID);</span>
+<span class="fc" id="L138">		updatedUserInfo.setUsername(currentUser.getUsername());</span>
+<span class="fc" id="L139">		updatedUserInfo.setPassword(currentUser.getPassword());</span>
+<span class="fc" id="L140">		updatedUserInfo.setRole(currentUser.getRole());</span>
+<span class="fc" id="L141">		updatedUserInfo = ud.UpdateUser(currentUserID, updatedUserInfo);</span>
+
+<span class="fc" id="L143">		return updatedUserInfo;</span>
+	}
+
+	public User login(String username, String password) throws InvalidLoginException {
+		try {
+<span class="fc" id="L148">			User user = this.ud.getUsernameAndPassword(username, password);</span>
+
+<span class="fc" id="L150">			return user;</span>
+<span class="fc" id="L151">		} catch (DataAccessException e) {</span>
+<span class="fc" id="L152">			throw new InvalidLoginException(&quot;Username and/or password is incorrect&quot;);</span>
+		}
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

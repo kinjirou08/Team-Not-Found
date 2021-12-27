@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddUserDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">case-clothes</a> &gt; <a href="index.source.html" class="el_package">com.revature.caseclothes.dto</a> &gt; <span class="el_source">AddUserDTO.java</span></div><h1>AddUserDTO.java</h1><pre class="source lang-java linenums">package com.revature.caseclothes.dto;
+
+import java.util.Objects;
+
+public class AddUserDTO {
+	private String username;
+	private String password; 
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String phoneNumber;
+	private String address;
+
+	public AddUserDTO() {
+<span class="nc" id="L15">		super();</span>
+<span class="nc" id="L16">	}</span>
+
+	public AddUserDTO(String username, String password, String firstName, String lastName, String email,
+			String phoneNumber, String address) {
+<span class="fc" id="L20">		super();</span>
+<span class="fc" id="L21">		this.username = username;</span>
+<span class="fc" id="L22">		this.password = password;</span>
+<span class="fc" id="L23">		this.firstName = firstName;</span>
+<span class="fc" id="L24">		this.lastName = lastName;</span>
+<span class="fc" id="L25">		this.email = email;</span>
+<span class="fc" id="L26">		this.phoneNumber = phoneNumber;</span>
+<span class="fc" id="L27">		this.address = address;</span>
+<span class="fc" id="L28">	}</span>
+
+	public String getUsername() {
+<span class="fc" id="L31">		return username;</span>
+	}
+
+	public void setUsername(String username) {
+<span class="nc" id="L35">		this.username = username;</span>
+<span class="nc" id="L36">	}</span>
+
+	public String getPassword() {
+<span class="fc" id="L39">		return password;</span>
+	}
+
+	public void setPassword(String password) {
+<span class="nc" id="L43">		this.password = password;</span>
+<span class="nc" id="L44">	}</span>
+
+	public String getFirstName() {
+<span class="fc" id="L47">		return firstName;</span>
+	}
+
+	public void setFirstName(String firstName) {
+<span class="nc" id="L51">		this.firstName = firstName;</span>
+<span class="nc" id="L52">	}</span>
+
+	public String getLastName() {
+<span class="fc" id="L55">		return lastName;</span>
+	}
+
+	public void setLastName(String lastName) {
+<span class="nc" id="L59">		this.lastName = lastName;</span>
+<span class="nc" id="L60">	}</span>
+
+	public String getEmail() {
+<span class="fc" id="L63">		return email;</span>
+	}
+
+	public void setEmail(String email) {
+<span class="nc" id="L67">		this.email = email;</span>
+<span class="nc" id="L68">	}</span>
+
+	public String getPhoneNumber() {
+<span class="fc" id="L71">		return phoneNumber;</span>
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+<span class="nc" id="L75">		this.phoneNumber = phoneNumber;</span>
+<span class="nc" id="L76">	}</span>
+
+	public String getAddress() {
+<span class="fc" id="L79">		return address;</span>
+	}
+
+	public void setAddress(String address) {
+<span class="nc" id="L83">		this.address = address;</span>
+<span class="nc" id="L84">	}</span>
+
+	@Override
+	public int hashCode() {
+<span class="nc" id="L88">		return Objects.hash(address, email, firstName, lastName, password, phoneNumber, username);</span>
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">		if (this == obj)</span>
+<span class="nc" id="L94">			return true;</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">		if (obj == null)</span>
+<span class="nc" id="L96">			return false;</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">		if (getClass() != obj.getClass())</span>
+<span class="nc" id="L98">			return false;</span>
+<span class="fc" id="L99">		AddUserDTO other = (AddUserDTO) obj;</span>
+<span class="pc bpc" id="L100" title="2 of 4 branches missed.">		return Objects.equals(address, other.address) &amp;&amp; Objects.equals(email, other.email)</span>
+<span class="pc bpc" id="L101" title="2 of 4 branches missed.">				&amp;&amp; Objects.equals(firstName, other.firstName) &amp;&amp; Objects.equals(lastName, other.lastName)</span>
+<span class="pc bpc" id="L102" title="2 of 4 branches missed.">				&amp;&amp; Objects.equals(password, other.password) &amp;&amp; Objects.equals(phoneNumber, other.phoneNumber)</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">				&amp;&amp; Objects.equals(username, other.username);</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="nc" id="L108">		return &quot;AddUserDTO [username=&quot; + username + &quot;, password=&quot; + password + &quot;, firstName=&quot; + firstName</span>
+				+ &quot;, lastName=&quot; + lastName + &quot;, email=&quot; + email + &quot;, phoneNumber=&quot; + phoneNumber + &quot;, address=&quot;
+				+ address + &quot;]&quot;;
+		}
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
