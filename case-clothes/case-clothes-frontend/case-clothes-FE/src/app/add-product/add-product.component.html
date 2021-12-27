@@ -1,0 +1,50 @@
+<link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css">
+<app-navbar></app-navbar>
+<section class="section-1">
+    <div class="field">
+        <label class="label">Input Product Name:</label>
+        <div class="control">
+          <input class="input input-width" type="text" placeholder="Product Name" [(ngModel)]="pName">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Description: </label>
+        <div class="control">
+          <input class="input input-width" type="text" placeholder="Description" [(ngModel)]="pDescription">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Price: </label>
+        <div class="control">
+          <input class="input input-width" type="text" placeholder="Price in Dollars" [(ngModel)]="pPrice">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Category Name:</label>
+        <div class="control">
+          <input class="input input-width" type="text" placeholder="Category(Men's/Women's)" [(ngModel)]="pCategory">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Image URL:</label>
+        <div class="control">
+          <input class="input input-width" type="text" placeholder="Image URL" [(ngModel)]="pImageURL">
+        </div>
+      </div>
+        <!-- https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg -->
+        <div class="field">
+            <label class="label">Total Stock of the Product:</label>
+            <div class="control">
+              <input class="input input-width" type="text" placeholder="Stock of the Product" [(ngModel)]="pTotalQuantity">
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <button (click)="addProductButton()" class="button is-success">Submit</button>
+            </div>
+            <div class="control">
+              <button  class="button is-link is-light">Cancel</button>
+            </div>
+          </div>
+        <p>{{ errorMessage }}</p>
+</section>

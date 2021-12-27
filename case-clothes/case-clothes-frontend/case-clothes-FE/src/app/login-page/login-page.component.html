@@ -1,1 +1,142 @@
-<p>login-page works!</p>
+<link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css">
+<section class="section section-1">
+  <div class="field">
+    <h1 class="title is-1">Log In</h1>
+    <p class="control has-icons-left has-icons-right">
+      <input class="input input-width" type="email" placeholder="Username" [(ngModel)]="username">
+      <!-- <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span> -->
+      <!-- <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span> -->
+    </p>
+  </div>
+
+    <div class="field">
+      <p class="control has-icons-left">
+        <input class="input input-width" type="password" placeholder="Password" [(ngModel)]="password">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </p>
+    </div>
+    
+    <div class="field">
+      <p class="control">
+        <button (click)="onButtonClick()" class="button is-success">
+          Login
+        </button>
+      </p>
+        <div *ngIf="errorMessage" id="error-message">
+          {{ errorMessage }}
+        </div>
+     
+    </div>
+  </section>
+
+  
+
+
+
+<section class="sign-up">
+  <h2 class="title is-1">Create Account</h2>
+  <div class="field">
+    <label class="label">Username:</label>
+    <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    <div class="control">
+      <input class="input input-width" type="text" placeholder="Username" [(ngModel)]="userName">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Password:</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input input-width" type="password" placeholder="Password" [(ngModel)]="passWord">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">First Name:</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input input-width" type="text" placeholder="First Name" [(ngModel)]="firstName">
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-exclamation-triangle"></i>
+      </span>
+    </div>
+  </div>
+  
+  <div class="field">
+    <label class="label">Last Name:</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input input-width" type="text" placeholder="Last Name" [(ngModel)]="lastName">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    </div>
+  </div>
+  
+  <div class="field">
+    <label class="label">Email:</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input input-width" type="email" placeholder="Email" [(ngModel)]="email">
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-exclamation-triangle"></i>
+      </span>
+    </div>
+  </div>
+  
+  <div class="field">
+    <label class="label">Phone Number:</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input input-width" type="number" placeholder="Phone number" [(ngModel)]="pNumber">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    </div>
+  </div>
+  
+  <div class="field">
+    <label class="label">Address:</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input input-width" type="text" placeholder="Address" [(ngModel)]="address">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    </div>
+  </div>
+  
+  <div class="field is-grouped">
+    <div class="control">
+      <button (click)="onSubmitButtonClick()" class="button is-success">Submit</button>
+    </div>
+    <div class="control">
+      <button  class="button is-link is-light">Cancel</button>
+    </div>
+  </div>
+  
+</section>

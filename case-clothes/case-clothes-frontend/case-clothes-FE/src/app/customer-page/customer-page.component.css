@@ -1,0 +1,19 @@
+.logout-button{
+    text-align: right;
+}
+
+.desc-lay{
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding:10px;
+    margin: auto;
+}
+
+.button-lay{
+    margin-right: 10px;
+}
+.cell-1{
+    margin-right: 10px;
+}

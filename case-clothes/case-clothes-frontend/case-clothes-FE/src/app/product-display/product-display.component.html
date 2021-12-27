@@ -1,0 +1,10 @@
+<h3 class="cell-1">  
+    {{ product.name }}
+</h3>
+<h4> {{ product.price | currency }}</h4>
+<p>
+    Description: {{ product.description }}
+</p>
+ <label>Quantity</label>
+<input type="number" [(ngModel)]="q">
+<button type="button" (click)="onBuyButtonClick(product.id, q)">Buy</button>

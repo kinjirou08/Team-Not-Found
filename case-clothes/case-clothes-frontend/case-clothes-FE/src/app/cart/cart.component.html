@@ -1,0 +1,13 @@
+<h1>Checkout Details for {{ cart.user.firstName }} {{ cart.user.firstName }}</h1>
+<p>Product List</p>
+<div>
+<ng-container *ngFor="let p of cart.quantities">
+    <p> Product Name: {{ p.product.name }}</p>
+    <p> Price: {{ p.product.price }}</p>
+    <p> Quantity: {{ p.quantity }}</p>
+    <p> Total: {{ p.quantity * p.product.price }}</p>
+    <button (click)="onDeleteButtonClick(p.product.id)">Delete me</button>
+</ng-container>
+<p> Total Price of all Products: {{ totalPrice }}</p>
+</div>
+

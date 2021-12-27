@@ -1,1 +1,18 @@
-<p>customer-page works!</p>
+
+<link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css">
+<div>
+        <div class="field logout-button">
+            <p class="control">
+                <button (click)="onButtonClick()" class="button is-success">Logout</button>
+                <button routerLink="/cart" class="button is-success">Checkout</button>
+                
+            </p>
+        </div>
+                <section class="section">
+                    <div class="desc-lay" *ngFor="let p of products">
+                        <app-product-display [product]="p"></app-product-display>
+                        
+                    </div>
+    </section>
+            
+</div>
