@@ -67,17 +67,14 @@ A shopping application utilizing https://fakestoreapi.com/ as an external API an
 ## Getting Started
 
 The repository is set as public and anyone could clone it for their production use.
-```git clone git@github.com:kinjirou08/Team-Not-Found.git```
 
+--- Use this command in Git Bash to clone the repository
+> ```git clone git@github.com:kinjirou08/Team-Not-Found.git```
 
-> Be sure to include BOTH Windows and Unix command
-> Be sure to mention if the commands only work on a specific platform (eg. AWS, GCP)
-- All the `code` required to get started
-- Images of what it should look like
+> (Not sure what to add more yet, should we use Getting Started? -Jymm)
 
 ## Usage
-
-> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
+> (Not sure what to add here yet, should we add? -Jymm)
 
 ## Contributors
 * Jymm Enriquez
