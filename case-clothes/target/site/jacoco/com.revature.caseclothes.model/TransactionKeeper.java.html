@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TransactionKeeper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">case-clothes</a> &gt; <a href="index.source.html" class="el_package">com.revature.caseclothes.model</a> &gt; <span class="el_source">TransactionKeeper.java</span></div><h1>TransactionKeeper.java</h1><pre class="source lang-java linenums">package com.revature.caseclothes.model;
+
+import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
+public class TransactionKeeper {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int checkoutId;
+
+	private String localDateTime;
+
+	@OneToOne
+	private Carts carts;
+
+	private double totalPrice;
+
+	private double amountPaid;
+
+	private double change;
+
+	public TransactionKeeper() {
+<span class="fc" id="L30">		super();</span>
+<span class="fc" id="L31">	}</span>
+
+	public TransactionKeeper(String localDateTime, Carts carts, double totalPrice, double amountPaid) {
+<span class="nc" id="L34">		super();</span>
+<span class="nc" id="L35">		this.localDateTime = localDateTime;</span>
+<span class="nc" id="L36">		this.carts = carts;</span>
+<span class="nc" id="L37">		this.totalPrice = totalPrice;</span>
+<span class="nc" id="L38">		this.amountPaid = amountPaid;</span>
+<span class="nc" id="L39">	}</span>
+
+	public int getCheckoutId() {
+<span class="nc" id="L42">		return checkoutId;</span>
+	}
+
+	public void setCheckoutId(int checkoutId) {
+<span class="nc" id="L46">		this.checkoutId = checkoutId;</span>
+<span class="nc" id="L47">	}</span>
+
+	public String getLocalDateTime() {
+<span class="nc" id="L50">		return localDateTime;</span>
+	}
+
+	public void setLocalDateTime(String localDateTime) {
+<span class="nc" id="L54">		this.localDateTime = localDateTime;</span>
+<span class="nc" id="L55">	}</span>
+
+	public Carts getCarts() {
+<span class="nc" id="L58">		return carts;</span>
+	}
+
+	public void setCarts(Carts carts) {
+<span class="nc" id="L62">		this.carts = carts;</span>
+<span class="nc" id="L63">	}</span>
+
+	public double getTotalPrice() {
+<span class="nc" id="L66">		return totalPrice;</span>
+	}
+
+	public void setTotalPrice(double totalPrice) {
+<span class="nc" id="L70">		this.totalPrice = totalPrice;</span>
+<span class="nc" id="L71">	}</span>
+
+	public double getAmountPaid() {
+<span class="nc" id="L74">		return amountPaid;</span>
+	}
+
+	public void setAmountPaid(double amountPaid) {
+<span class="nc" id="L78">		this.amountPaid = amountPaid;</span>
+<span class="nc" id="L79">	}</span>
+
+	public double getChange() {
+<span class="nc" id="L82">		return change;</span>
+	}
+
+	public void setChange(double change) {
+<span class="nc" id="L86">		this.change = change;</span>
+<span class="nc" id="L87">	}</span>
+
+	@Override
+	public int hashCode() {
+<span class="nc" id="L91">		return Objects.hash(amountPaid, carts, change, checkoutId, localDateTime, totalPrice);</span>
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+<span class="nc bnc" id="L96" title="All 2 branches missed.">		if (this == obj)</span>
+<span class="nc" id="L97">			return true;</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">		if (obj == null)</span>
+<span class="nc" id="L99">			return false;</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">		if (getClass() != obj.getClass())</span>
+<span class="nc" id="L101">			return false;</span>
+<span class="nc" id="L102">		TransactionKeeper other = (TransactionKeeper) obj;</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">		return Double.doubleToLongBits(amountPaid) == Double.doubleToLongBits(other.amountPaid)</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">				&amp;&amp; Objects.equals(carts, other.carts)</span>
+<span class="nc bnc" id="L105" title="All 4 branches missed.">				&amp;&amp; Double.doubleToLongBits(change) == Double.doubleToLongBits(other.change)</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">				&amp;&amp; checkoutId == other.checkoutId &amp;&amp; Objects.equals(localDateTime, other.localDateTime)</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">				&amp;&amp; Double.doubleToLongBits(totalPrice) == Double.doubleToLongBits(other.totalPrice);</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="nc" id="L112">		return &quot;TransactionKeeper [checkoutId=&quot; + checkoutId + &quot;, localDateTime=&quot; + localDateTime + &quot;, carts=&quot; + carts</span>
+				+ &quot;, totalPrice=&quot; + totalPrice + &quot;, amountPaid=&quot; + amountPaid + &quot;, change=&quot; + change + &quot;]&quot;;
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductsService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">case-clothes</a> &gt; <a href="index.source.html" class="el_package">com.revature.caseclothes.service</a> &gt; <span class="el_source">ProductsService.java</span></div><h1>ProductsService.java</h1><pre class="source lang-java linenums">package com.revature.caseclothes.service;
+
+import java.security.InvalidParameterException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.revature.caseclothes.dao.ProductsDAO;
+import com.revature.caseclothes.exception.CartNotFoundException;
+import com.revature.caseclothes.exception.ProductNotFoundException;
+import com.revature.caseclothes.model.Carts;
+import com.revature.caseclothes.model.Products;
+import com.revature.caseclothes.model.Quantities;
+
+@Service
+<span class="fc" id="L19">public class ProductsService {</span>
+
+	@Autowired
+	private ProductsDAO pd;
+
+	public List&lt;Products&gt; getAllProducts() {
+<span class="fc" id="L25">		return pd.getAllProducts();</span>
+	}
+
+	public List&lt;Products&gt; getAllProductThatContains(String name) throws ProductNotFoundException {
+<span class="fc" id="L29">		List&lt;Products&gt; products = pd.getAllProductThatContains(name);</span>
+
+<span class="fc bfc" id="L31" title="All 2 branches covered.">		if (products.isEmpty()) {</span>
+<span class="fc" id="L32">			throw new ProductNotFoundException(&quot;There is/are no product/s that matches &quot; + name);</span>
+		} else {
+<span class="fc" id="L34">			return pd.getAllProductThatContains(name);</span>
+		}
+	}
+
+	public Products addNewProduct(Products productToAdd) {
+
+<span class="fc" id="L40">		String convertPriceToString = String.valueOf(productToAdd.getPrice());</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">		if (productToAdd.getName().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L42">			throw new InvalidParameterException(&quot;Name of the product must be included!&quot;);</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">		} else if (productToAdd.getDescription().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L44">			throw new InvalidParameterException(&quot;Description of the product must be included!&quot;);</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">		} else if (convertPriceToString.trim().matches(&quot;^[a-zA-Z]*$&quot;)) {</span>
+<span class="fc" id="L46">			throw new InvalidParameterException(&quot;Price of the product cannot contain alphabets!&quot;);</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">		} else if (productToAdd.getPrice() &lt;= 0) {</span>
+<span class="fc" id="L48">			throw new InvalidParameterException(&quot;Price of the product cannot be less than zero&quot;);</span>
+		} else {
+<span class="fc" id="L50">			return pd.insertNewProduct(productToAdd);</span>
+		}
+	}
+
+	public Products getProductById(String id) throws ProductNotFoundException {
+
+<span class="fc" id="L56">		int productId = Integer.parseInt(id);</span>
+<span class="fc" id="L57">		Products p = pd.selectProductById(productId);</span>
+
+<span class="fc bfc" id="L59" title="All 2 branches covered.">		if (p == null) {</span>
+<span class="fc" id="L60">			throw new ProductNotFoundException(&quot;No product with the id of &quot; + id);</span>
+		} else {
+<span class="fc" id="L62">			return pd.selectProductById(productId);</span>
+		}
+
+	}
+
+	public Carts addMoreProductsToCart(Carts currentCart, String cartId, String productId, String quantity)
+			throws ProductNotFoundException, CartNotFoundException {
+
+<span class="fc" id="L70">		currentCart = this.getACartById(cartId);</span>
+<span class="fc" id="L71">		Products p = this.getProductById(productId);</span>
+<span class="fc" id="L72">		int quantityToBuy = Integer.parseInt(quantity);</span>
+<span class="fc" id="L73">		Quantities q = new Quantities(p, quantityToBuy);</span>
+
+<span class="fc" id="L75">		List&lt;Quantities&gt; currentQuantitiesInTheCart = currentCart.getQuantities();</span>
+<span class="fc" id="L76">		boolean checkProduct = checkProductInTheCart(currentQuantitiesInTheCart, p);</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">		if (checkProduct == false) {</span>
+<span class="nc" id="L78">			currentQuantitiesInTheCart.add(q);</span>
+<span class="nc" id="L79">			currentCart.setQuantities(currentQuantitiesInTheCart);</span>
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">		} else if (checkProduct == true) {</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">			for (Quantities q1 : currentQuantitiesInTheCart) {</span>
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">				if (q1.getProduct() == p) {</span>
+<span class="fc" id="L83">					q1.setQuantity(q1.getQuantity() + quantityToBuy);</span>
+<span class="fc" id="L84">					q = q1;</span>
+				}
+<span class="fc" id="L86">			}</span>
+		}
+
+<span class="fc" id="L89">		currentCart = pd.insertToCart(currentCart, q);</span>
+
+<span class="fc" id="L91">		return currentCart;</span>
+	}
+
+	private boolean checkProductInTheCart(List&lt;Quantities&gt; currentQuantitiesInTheCart, Products p) {
+<span class="fc" id="L95">		boolean result = false;</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">		for (Quantities q1 : currentQuantitiesInTheCart) {</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">			if (q1.getProduct() == p) {</span>
+<span class="fc" id="L98">				result = true;</span>
+			}
+<span class="fc" id="L100">		}</span>
+<span class="fc" id="L101">		return result;</span>
+	}
+
+	public Carts getACartById(String id) throws CartNotFoundException {
+
+<span class="fc" id="L106">		int cartId = Integer.parseInt(id);</span>
+<span class="fc" id="L107">		Carts selectedCart = pd.selectACartById(cartId);</span>
+
+<span class="fc bfc" id="L109" title="All 2 branches covered.">		if (selectedCart == null) {</span>
+<span class="fc" id="L110">			throw new CartNotFoundException(&quot;No Cart with the id of &quot; + id);</span>
+		} else {
+<span class="fc" id="L112">			return pd.selectACartById(cartId);</span>
+		}
+	}
+
+	public void deleteProductById(String id) {
+
+<span class="fc" id="L118">		int productId = Integer.parseInt(id);</span>
+<span class="fc" id="L119">		pd.deleteProductById(productId);</span>
+
+<span class="fc" id="L121">	}</span>
+
+	public Products updateAProduct(String id, Products productToBeUpdated)
+			throws ProductNotFoundException, InvalidParameterException {
+
+<span class="fc" id="L126">		int productId = Integer.parseInt(id);</span>
+<span class="fc" id="L127">		Products checkProductIfExist = pd.selectProductById(productId);</span>
+
+<span class="fc bfc" id="L129" title="All 2 branches covered.">		if (checkProductIfExist == null) {</span>
+<span class="fc" id="L130">			throw new ProductNotFoundException(&quot;No product with the id of &quot; + id);</span>
+		}
+<span class="fc" id="L132">		String convertPriceToString = String.valueOf(productToBeUpdated.getPrice());</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">		if (productToBeUpdated.getName().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L134">			throw new InvalidParameterException(&quot;Name of the product must be included!&quot;);</span>
+<span class="fc bfc" id="L135" title="All 2 branches covered.">		} else if (productToBeUpdated.getDescription().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L136">			throw new InvalidParameterException(&quot;Description of the product must be included!&quot;);</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">		} else if (convertPriceToString.trim().matches(&quot;^[a-zA-Z]*$&quot;)) {</span>
+<span class="fc" id="L138">			throw new InvalidParameterException(&quot;Price of the product cannot contain alphabets!&quot;);</span>
+<span class="fc bfc" id="L139" title="All 2 branches covered.">		} else if (productToBeUpdated.getPrice() &lt;= 0) {</span>
+<span class="fc" id="L140">			throw new InvalidParameterException(&quot;Price of the product cannot be less than zero&quot;);</span>
+		} else {
+<span class="fc" id="L142">			productToBeUpdated.setId(productId);</span>
+		}
+<span class="fc" id="L144">		return pd.updateAProduct(productToBeUpdated);</span>
+
+	}
+
+	public Carts updateProductQuantityInCart(Carts currentCart, String cartId, String productId, String quantity)
+			throws CartNotFoundException, ProductNotFoundException {
+
+<span class="fc" id="L151">		currentCart = this.getACartById(cartId);</span>
+<span class="fc" id="L152">		int prodId = Integer.parseInt(productId);</span>
+<span class="fc" id="L153">		int quantityToBuy = Integer.parseInt(quantity);</span>
+<span class="fc" id="L154">		List&lt;Quantities&gt; currentProductList = currentCart.getQuantities();</span>
+<span class="pc bpc" id="L155" title="1 of 2 branches missed.">		for (Quantities q : currentProductList) {</span>
+<span class="nc bnc" id="L156" title="All 2 branches missed.">			if (q.getProduct().getId() == prodId) {</span>
+<span class="nc" id="L157">				q.setQuantity(quantityToBuy);</span>
+			} else {
+<span class="nc" id="L159">				throw new ProductNotFoundException(&quot;Product not found on this cart&quot;);</span>
+			}
+<span class="nc" id="L161">		}</span>
+<span class="fc" id="L162">		currentCart.setQuantities(currentProductList);</span>
+
+<span class="fc" id="L164">		currentCart = pd.updateProductsInTheCart(currentCart);</span>
+
+<span class="fc" id="L166">		return currentCart;</span>
+	}
+
+	public Carts delteteProductInCart(Carts currentCart, String cartId, String productId)
+			throws CartNotFoundException, ProductNotFoundException {
+
+<span class="fc" id="L172">		currentCart = this.getACartById(cartId);</span>
+<span class="fc" id="L173">		int prodId = Integer.parseInt(productId);</span>
+
+<span class="fc" id="L175">		List&lt;Quantities&gt; currentProductList = currentCart.getQuantities();</span>
+<span class="fc" id="L176">		int quantityToDelete = 0;</span>
+
+<span class="fc" id="L178">		Iterator&lt;Quantities&gt; iter = currentProductList.iterator();</span>
+<span class="fc" id="L179">		Quantities q1 = null;</span>
+<span class="pc bpc" id="L180" title="1 of 2 branches missed.">		while (iter.hasNext()) {</span>
+<span class="nc" id="L181">			q1 = iter.next();</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">			if (q1.getProduct().getId() == prodId) {</span>
+<span class="nc" id="L183">				iter.remove();</span>
+<span class="nc" id="L184">				quantityToDelete = q1.getQuantityId();</span>
+<span class="nc" id="L185">				break;</span>
+			} else {
+<span class="nc" id="L187">				throw new ProductNotFoundException(&quot;Product not found on this cart&quot;);</span>
+			}
+		}
+<span class="fc" id="L190">		currentCart.setQuantities(currentProductList);</span>
+
+<span class="fc" id="L192">		currentCart = pd.deleteAProductInTheCart(currentCart, quantityToDelete);</span>
+
+<span class="fc" id="L194">		return currentCart;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

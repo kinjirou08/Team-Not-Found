@@ -1,0 +1,96 @@
+26 Dec 2021 - 22:36:16.781 [RMI TCP Connection(28)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+26 Dec 2021 - 22:36:16.800 [RMI TCP Connection(28)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+26 Dec 2021 - 22:36:16.802 [RMI TCP Connection(28)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+26 Dec 2021 - 22:36:16.807 [RMI TCP Connection(28)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+26 Dec 2021 - 22:38:04.653 [main] INFO  c.r.c.CaseClothesApplication - Starting CaseClothesApplication using Java 17 on MSI-Jymm with PID 18132 (D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes\target\classes started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+26 Dec 2021 - 22:38:04.656 [main] INFO  c.r.c.CaseClothesApplication - No active profile set, falling back to default profiles: default
+26 Dec 2021 - 22:38:05.087 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+26 Dec 2021 - 22:38:05.098 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+26 Dec 2021 - 22:38:05.454 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+26 Dec 2021 - 22:38:05.460 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+26 Dec 2021 - 22:38:05.461 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+26 Dec 2021 - 22:38:05.461 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.55]
+26 Dec 2021 - 22:38:05.547 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+26 Dec 2021 - 22:38:05.547 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 855 ms
+26 Dec 2021 - 22:38:05.681 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+26 Dec 2021 - 22:38:05.720 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.1.Final
+26 Dec 2021 - 22:38:05.844 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+26 Dec 2021 - 22:38:05.918 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+26 Dec 2021 - 22:38:07.269 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+26 Dec 2021 - 22:38:07.282 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+26 Dec 2021 - 22:38:08.273 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+26 Dec 2021 - 22:38:08.279 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+26 Dec 2021 - 22:38:08.354 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+26 Dec 2021 - 22:38:08.570 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+26 Dec 2021 - 22:38:08.585 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+26 Dec 2021 - 22:38:08.591 [main] INFO  c.r.c.CaseClothesApplication - Started CaseClothesApplication in 4.19 seconds (JVM running for 4.813)
+26 Dec 2021 - 22:41:50.748 [RMI TCP Connection(8)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+26 Dec 2021 - 22:41:50.781 [RMI TCP Connection(8)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+26 Dec 2021 - 22:41:50.782 [RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+26 Dec 2021 - 22:41:50.795 [RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+26 Dec 2021 - 22:41:52.934 [main] INFO  c.r.c.CaseClothesApplication - Starting CaseClothesApplication using Java 17 on MSI-Jymm with PID 13304 (D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes\target\classes started by jymmm in D:\Curriculum-211018-Jymm\project-2-Team-Not-Found\case-clothes)
+26 Dec 2021 - 22:41:52.936 [main] INFO  c.r.c.CaseClothesApplication - No active profile set, falling back to default profiles: default
+26 Dec 2021 - 22:41:53.375 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+26 Dec 2021 - 22:41:53.387 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 5 ms. Found 0 JPA repository interfaces.
+26 Dec 2021 - 22:41:53.745 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+26 Dec 2021 - 22:41:53.753 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+26 Dec 2021 - 22:41:53.753 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+26 Dec 2021 - 22:41:53.753 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.55]
+26 Dec 2021 - 22:41:53.841 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+26 Dec 2021 - 22:41:53.841 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 870 ms
+26 Dec 2021 - 22:41:53.979 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+26 Dec 2021 - 22:41:54.016 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.1.Final
+26 Dec 2021 - 22:41:54.136 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+26 Dec 2021 - 22:41:54.209 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+26 Dec 2021 - 22:41:55.547 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+26 Dec 2021 - 22:41:55.564 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+26 Dec 2021 - 22:41:56.559 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+26 Dec 2021 - 22:41:56.565 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+26 Dec 2021 - 22:41:56.644 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+26 Dec 2021 - 22:41:56.865 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+26 Dec 2021 - 22:41:56.887 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+26 Dec 2021 - 22:41:56.899 [main] INFO  c.r.c.CaseClothesApplication - Started CaseClothesApplication in 4.218 seconds (JVM running for 4.883)
+26 Dec 2021 - 22:42:12.391 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26 Dec 2021 - 22:42:12.391 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+26 Dec 2021 - 22:42:12.392 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+26 Dec 2021 - 22:42:12.511 [http-nio-8080-exec-1] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 22:48:16.679 [http-nio-8080-exec-8] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 22:48:32.418 [http-nio-8080-exec-7] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:02:13.269 [http-nio-8080-exec-6] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:05:22.155 [http-nio-8080-exec-4] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:05:26.946 [http-nio-8080-exec-1] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:07:14.975 [http-nio-8080-exec-3] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:07:16.697 [http-nio-8080-exec-8] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:08:11.965 [http-nio-8080-exec-10] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:08:14.842 [http-nio-8080-exec-9] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:12:27.906 [http-nio-8080-exec-1] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:12:33.895 [http-nio-8080-exec-3] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:15:01.659 [http-nio-8080-exec-2] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:15:03.470 [http-nio-8080-exec-7] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:15:05.279 [http-nio-8080-exec-3] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:15:41.898 [http-nio-8080-exec-9] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:15:43.653 [http-nio-8080-exec-3] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:15:45.491 [http-nio-8080-exec-8] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:16:32.798 [http-nio-8080-exec-1] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:16:34.516 [http-nio-8080-exec-8] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:16:36.293 [http-nio-8080-exec-5] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:16:57.324 [http-nio-8080-exec-3] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:16:59.216 [http-nio-8080-exec-7] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:17:01.006 [http-nio-8080-exec-1] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:17:54.122 [http-nio-8080-exec-10] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:17:55.753 [http-nio-8080-exec-1] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:17:57.606 [http-nio-8080-exec-8] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:18:14.605 [http-nio-8080-exec-10] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:18:16.455 [http-nio-8080-exec-1] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:18:18.405 [http-nio-8080-exec-8] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:18:48.973 [http-nio-8080-exec-5] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:18:50.605 [http-nio-8080-exec-10] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:18:52.541 [http-nio-8080-exec-1] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:23:32.632 [http-nio-8080-exec-6] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:23:35.826 [http-nio-8080-exec-1] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:24:24.640 [http-nio-8080-exec-5] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:24:27.760 [http-nio-8080-exec-3] INFO  c.r.c.controller.ProductController - getAllProducts() mapping invoked
+26 Dec 2021 - 23:29:21.050 [RMI TCP Connection(51)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+26 Dec 2021 - 23:29:21.077 [RMI TCP Connection(51)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+26 Dec 2021 - 23:29:21.079 [RMI TCP Connection(51)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+26 Dec 2021 - 23:29:21.082 [RMI TCP Connection(51)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

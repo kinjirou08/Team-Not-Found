@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">case-clothes</a> &gt; <a href="index.source.html" class="el_package">com.revature.caseclothes.model</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package com.revature.caseclothes.model;
+
+import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	private String username;
+	private String password; 
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String phoneNumber;
+	private String address;
+	
+	@ManyToOne
+	private UserRole role;
+
+	public User() {
+<span class="fc" id="L29">		super();</span>
+<span class="fc" id="L30">	}</span>
+
+	public User(String username, String password, String firstName, String lastName, String email, String phoneNumber,
+			String address, UserRole role) {
+<span class="fc" id="L34">		super();</span>
+<span class="fc" id="L35">		this.username = username;</span>
+<span class="fc" id="L36">		this.password = password;</span>
+<span class="fc" id="L37">		this.firstName = firstName;</span>
+<span class="fc" id="L38">		this.lastName = lastName;</span>
+<span class="fc" id="L39">		this.email = email;</span>
+<span class="fc" id="L40">		this.phoneNumber = phoneNumber;</span>
+<span class="fc" id="L41">		this.address = address;</span>
+<span class="fc" id="L42">		this.role = role;</span>
+<span class="fc" id="L43">	}</span>
+
+	public int getId() {
+<span class="fc" id="L46">		return id;</span>
+	}
+
+	public void setId(int id) {
+<span class="fc" id="L50">		this.id = id;</span>
+<span class="fc" id="L51">	}</span>
+
+	public String getUsername() {
+<span class="fc" id="L54">		return username;</span>
+	}
+
+	public void setUsername(String username) {
+<span class="fc" id="L58">		this.username = username;</span>
+<span class="fc" id="L59">	}</span>
+
+	public String getPassword() {
+<span class="fc" id="L62">		return password;</span>
+	}
+
+	public void setPassword(String password) {
+<span class="fc" id="L66">		this.password = password;</span>
+<span class="fc" id="L67">	}</span>
+
+	public String getFirstName() {
+<span class="fc" id="L70">		return firstName;</span>
+	}
+
+	public void setFirstName(String firstName) {
+<span class="nc" id="L74">		this.firstName = firstName;</span>
+<span class="nc" id="L75">	}</span>
+
+	public String getLastName() {
+<span class="fc" id="L78">		return lastName;</span>
+	}
+
+	public void setLastName(String lastName) {
+<span class="nc" id="L82">		this.lastName = lastName;</span>
+<span class="nc" id="L83">	}</span>
+
+	public String getEmail() {
+<span class="fc" id="L86">		return email;</span>
+	}
+
+	public void setEmail(String email) {
+<span class="nc" id="L90">		this.email = email;</span>
+<span class="nc" id="L91">	}</span>
+
+	public String getPhoneNumber() {
+<span class="fc" id="L94">		return phoneNumber;</span>
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+<span class="nc" id="L98">		this.phoneNumber = phoneNumber;</span>
+<span class="nc" id="L99">	}</span>
+
+	public String getAddress() {
+<span class="fc" id="L102">		return address;</span>
+	}
+
+	public void setAddress(String address) {
+<span class="nc" id="L106">		this.address = address;</span>
+<span class="nc" id="L107">	}</span>
+
+	public UserRole getRole() {
+<span class="fc" id="L110">		return role;</span>
+	}
+
+	public void setRole(UserRole role) {
+<span class="fc" id="L114">		this.role = role;</span>
+<span class="fc" id="L115">	}</span>
+
+	@Override
+	public int hashCode() {
+<span class="nc" id="L119">		return Objects.hash(address, email, firstName, id, lastName, password, phoneNumber, role, username);</span>
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+<span class="fc bfc" id="L124" title="All 2 branches covered.">		if (this == obj)</span>
+<span class="fc" id="L125">			return true;</span>
+<span class="pc bpc" id="L126" title="1 of 2 branches missed.">		if (obj == null)</span>
+<span class="nc" id="L127">			return false;</span>
+<span class="pc bpc" id="L128" title="1 of 2 branches missed.">		if (getClass() != obj.getClass())</span>
+<span class="nc" id="L129">			return false;</span>
+<span class="fc" id="L130">		User other = (User) obj;</span>
+<span class="pc bpc" id="L131" title="2 of 4 branches missed.">		return Objects.equals(address, other.address) &amp;&amp; Objects.equals(email, other.email)</span>
+<span class="pc bpc" id="L132" title="2 of 4 branches missed.">				&amp;&amp; Objects.equals(firstName, other.firstName) &amp;&amp; id == other.id</span>
+<span class="pc bpc" id="L133" title="2 of 4 branches missed.">				&amp;&amp; Objects.equals(lastName, other.lastName) &amp;&amp; Objects.equals(password, other.password)</span>
+<span class="pc bpc" id="L134" title="2 of 4 branches missed.">				&amp;&amp; Objects.equals(phoneNumber, other.phoneNumber) &amp;&amp; Objects.equals(role, other.role)</span>
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">				&amp;&amp; Objects.equals(username, other.username);</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="fc" id="L140">		return &quot;User [id=&quot; + id + &quot;, username=&quot; + username + &quot;, password=&quot; + password + &quot;, firstName=&quot; + firstName</span>
+				+ &quot;, lastName=&quot; + lastName + &quot;, email=&quot; + email + &quot;, phoneNumber=&quot; + phoneNumber + &quot;, address=&quot;
+				+ address + &quot;, role=&quot; + role + &quot;]&quot;;
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

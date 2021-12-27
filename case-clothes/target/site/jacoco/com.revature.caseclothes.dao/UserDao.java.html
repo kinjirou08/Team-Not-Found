@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">case-clothes</a> &gt; <a href="index.source.html" class="el_package">com.revature.caseclothes.dao</a> &gt; <span class="el_source">UserDao.java</span></div><h1>UserDao.java</h1><pre class="source lang-java linenums">package com.revature.caseclothes.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.revature.caseclothes.dto.AddUserDTO;
+import com.revature.caseclothes.model.Carts;
+import com.revature.caseclothes.model.User;
+import com.revature.caseclothes.model.UserRole;
+
+@Repository
+<span class="fc" id="L18">public class UserDao {</span>
+	@PersistenceContext
+	private EntityManager em;
+
+	// Add a new Customer
+		@Transactional
+		public User addCustomer(AddUserDTO dto, Carts c) {
+<span class="fc" id="L25">			UserRole customer = (UserRole) em.createQuery(&quot;SELECT a FROM UserRole a WHERE a.role = :role&quot;)</span>
+<span class="fc" id="L26">					.setParameter(&quot;role&quot;, &quot;customer&quot;)</span>
+<span class="fc" id="L27">					.getSingleResult();</span>
+
+<span class="fc" id="L29">			User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),</span>
+<span class="fc" id="L30">					dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), customer);</span>
+
+<span class="fc" id="L32">			em.persist(userToAdd);</span>
+			
+<span class="fc" id="L34">			c = new Carts(userToAdd);</span>
+<span class="fc" id="L35">			em.persist(c);</span>
+			
+<span class="fc" id="L37">			return userToAdd;</span>
+		}
+
+		// Add a new Admin
+		@Transactional
+		public User addAdmin(AddUserDTO dto) {
+<span class="fc" id="L43">			UserRole admin = (UserRole) em.createQuery(&quot;SELECT a FROM UserRole a WHERE a.role = :role&quot;)</span>
+<span class="fc" id="L44">					.setParameter(&quot;role&quot;, &quot;admin&quot;)</span>
+<span class="fc" id="L45">					.getSingleResult();</span>
+
+<span class="fc" id="L47">			User userToAdd = new User(dto.getUsername(), dto.getPassword(), dto.getFirstName(), dto.getLastName(),</span>
+<span class="fc" id="L48">					dto.getEmail(), dto.getPhoneNumber(), dto.getAddress(), admin);</span>
+
+<span class="fc" id="L50">			em.persist(userToAdd);</span>
+
+<span class="fc" id="L52">			return userToAdd;</span>
+		}
+
+	// Get all users
+	@Transactional
+	public List&lt;User&gt; getAllUsers() {
+<span class="fc" id="L58">		List&lt;User&gt; users = em.createQuery(&quot;FROM User a&quot;, User.class).getResultList();</span>
+
+<span class="fc" id="L60">		return users;</span>
+	}
+
+	// Get User by ID
+	@Transactional
+	public User getUserByID(int id) {
+<span class="fc" id="L66">		User user = em.createQuery(&quot;SELECT u FROM User u WHERE u.id = :userid&quot;, User.class).setParameter(&quot;userid&quot;, id)</span>
+<span class="fc" id="L67">				.getSingleResult();</span>
+
+<span class="fc" id="L69">		return user;</span>
+	}
+
+	// Get User by Username
+	@Transactional
+	public User getUserByUsername(String username) {
+<span class="fc" id="L75">		User user = em.createQuery(&quot;SELECT u FROM User u WHERE u.username = :user&quot;, User.class).setParameter(&quot;user&quot;, username)</span>
+<span class="fc" id="L76">				.getSingleResult();</span>
+
+<span class="fc" id="L78">		return user;</span>
+	}
+
+	// Delete User by ID
+	@Transactional
+	public void deleteUserByID(int id) {
+		
+<span class="fc" id="L85">		User u = em.find(User.class, id);</span>
+		
+<span class="fc" id="L87">		em.remove(u);</span>
+<span class="fc" id="L88">	}</span>
+
+	// Update current User information
+	@Transactional
+	public User UpdateUser(int id, User updatedUserInfo) {
+		
+<span class="fc" id="L94">		Session session = em.unwrap(Session.class);</span>
+		
+<span class="fc" id="L96">		User currentlyLoggedIn = session.find(User.class, id);</span>
+		
+<span class="fc" id="L98">		currentlyLoggedIn = updatedUserInfo;</span>
+		
+<span class="fc" id="L100">		session.merge(currentlyLoggedIn);</span>
+
+<span class="fc" id="L102">		return currentlyLoggedIn;</span>
+	}
+
+	@Transactional
+	public User getUsernameAndPassword(String username, String password) {
+<span class="fc" id="L107">		User user = em.createQuery(&quot;FROM User u WHERE u.username = :user AND u.password = :pass&quot;, User.class)</span>
+<span class="fc" id="L108">				.setParameter(&quot;user&quot;, username)</span>
+<span class="fc" id="L109">				.setParameter(&quot;pass&quot;, password)</span>
+<span class="fc" id="L110">				.getSingleResult();</span>
+		
+<span class="fc" id="L112">		return user;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

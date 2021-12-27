@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductsDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">case-clothes</a> &gt; <a href="index.source.html" class="el_package">com.revature.caseclothes.dao</a> &gt; <span class="el_source">ProductsDAO.java</span></div><h1>ProductsDAO.java</h1><pre class="source lang-java linenums">package com.revature.caseclothes.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
+import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.revature.caseclothes.model.Carts;
+import com.revature.caseclothes.model.Products;
+import com.revature.caseclothes.model.Quantities;
+
+@Repository
+<span class="fc" id="L18">public class ProductsDAO {</span>
+
+	@PersistenceContext
+	private EntityManager em;
+
+	@Transactional
+	public Products selectProductById(int id) {
+
+<span class="fc" id="L26">		Products p = em.find(Products.class, id);</span>
+
+<span class="fc" id="L28">		return p;</span>
+	}
+
+	@Transactional
+	public List&lt;Products&gt; getAllProducts() {
+
+<span class="fc" id="L34">		String query = &quot;SELECT p FROM Products p&quot;;</span>
+<span class="fc" id="L35">		TypedQuery&lt;Products&gt; typedQuery = em.createQuery(query, Products.class);</span>
+<span class="fc" id="L36">		List&lt;Products&gt; productsList = typedQuery.getResultList();</span>
+
+<span class="fc" id="L38">		return productsList;</span>
+	}
+
+	@Transactional
+	public List&lt;Products&gt; getAllProductThatContains(String name) {
+
+<span class="fc" id="L44">		String sql = &quot;Select p FROM Products p WHERE lower(p.name) LIKE lower(:name)&quot;;</span>
+<span class="fc" id="L45">		TypedQuery&lt;Products&gt; typedQuery = em.createQuery(sql, Products.class).setParameter(&quot;name&quot;, &quot;%&quot; + name + &quot;%&quot;);</span>
+<span class="fc" id="L46">		List&lt;Products&gt; productsList = typedQuery.getResultList();</span>
+<span class="fc" id="L47">		return productsList;</span>
+	}
+
+	@Transactional
+	public Products insertNewProduct(Products productToAdd) {
+
+<span class="fc" id="L53">		em.persist(productToAdd);</span>
+
+<span class="fc" id="L55">		return productToAdd;</span>
+	}
+
+	@Transactional
+	public Products updateAProduct(Products productToBeUpdated) {
+
+<span class="fc" id="L61">		Session session = em.unwrap(Session.class);</span>
+
+<span class="fc" id="L63">		session.merge(productToBeUpdated);</span>
+
+<span class="fc" id="L65">		return productToBeUpdated;</span>
+	}
+
+	@Transactional
+	public void deleteProductById(int id) {
+
+<span class="fc" id="L71">		Products productToDelete = em.find(Products.class, id);</span>
+
+<span class="fc" id="L73">		em.remove(productToDelete);</span>
+
+<span class="fc" id="L75">	}</span>
+
+	@Transactional
+	public Carts selectACartById(int id) {
+
+<span class="fc" id="L80">		String query = &quot;SELECT c FROM Carts c WHERE c.cartId = :id&quot;;</span>
+<span class="fc" id="L81">		TypedQuery&lt;Carts&gt; typedQuery = em.createQuery(query, Carts.class);</span>
+<span class="fc" id="L82">		Carts cart = typedQuery.setParameter(&quot;id&quot;, id).getSingleResult();</span>
+
+<span class="fc" id="L84">		return cart;</span>
+	}
+
+	@Transactional
+	public Carts insertToCart(Carts c, Quantities q) {
+
+<span class="fc" id="L90">		Session session = em.unwrap(Session.class);</span>
+
+<span class="fc" id="L92">		session.saveOrUpdate(q);</span>
+
+<span class="fc" id="L94">		session.saveOrUpdate(c);</span>
+
+<span class="fc" id="L96">		return c;</span>
+
+	}
+
+	@Transactional
+	public Carts updateProductsInTheCart(Carts currentCart) {
+
+<span class="fc" id="L103">		Session session = em.unwrap(Session.class);</span>
+
+<span class="fc" id="L105">		session.saveOrUpdate(currentCart);</span>
+
+<span class="fc" id="L107">		return currentCart;</span>
+	}
+
+	@Transactional
+	public Carts deleteAProductInTheCart(Carts currentCart, int quantityToDelete) {
+
+<span class="fc" id="L113">		Session session = em.unwrap(Session.class);</span>
+
+<span class="fc" id="L115">		Quantities toBeDeleted = session.find(Quantities.class, quantityToDelete);</span>
+
+<span class="fc" id="L117">		session.remove(toBeDeleted);</span>
+
+<span class="fc" id="L119">		session.merge(currentCart);</span>
+
+<span class="fc" id="L121">		return currentCart;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

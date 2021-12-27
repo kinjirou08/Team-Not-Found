@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">case-clothes</a> &gt; <a href="index.source.html" class="el_package">com.revature.caseclothes.controller</a> &gt; <span class="el_source">ProductController.java</span></div><h1>ProductController.java</h1><pre class="source lang-java linenums">package com.revature.caseclothes.controller;
+
+import java.security.InvalidParameterException;
+import java.text.DecimalFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.revature.caseclothes.dao.ProductsDAO;
+import com.revature.caseclothes.exception.CartNotFoundException;
+import com.revature.caseclothes.exception.ProductNotFoundException;
+import com.revature.caseclothes.model.Carts;
+import com.revature.caseclothes.model.Products;
+import com.revature.caseclothes.model.Quantities;
+import com.revature.caseclothes.model.TransactionKeeper;
+import com.revature.caseclothes.service.ProductsService;
+
+@RestController
+@CrossOrigin(originPatterns = &quot;*&quot;, allowCredentials = &quot;true&quot;)
+<span class="fc" id="L32">public class ProductController {</span>
+
+	@Autowired
+	private ProductsService ps;
+
+	@Autowired
+	ProductsDAO pd;
+
+<span class="fc" id="L40">	private final String PATTERN = &quot;[0-9]+&quot;;</span>
+
+	@GetMapping(path = &quot;/products&quot;)
+	public List&lt;Products&gt; getAllProducts() {
+
+<span class="fc" id="L45">		return ps.getAllProducts();</span>
+	}
+
+	@GetMapping(path = &quot;/products/&quot;)
+	public ResponseEntity&lt;Object&gt; getAllProductThatContains(@RequestParam(&quot;name&quot;) String name)
+			throws ProductNotFoundException {
+
+		try {
+<span class="fc" id="L53">			List&lt;Products&gt; p = ps.getAllProductThatContains(name);</span>
+<span class="fc" id="L54">			return ResponseEntity.status(200).body(p);</span>
+
+<span class="fc" id="L56">		} catch (ProductNotFoundException e) {</span>
+<span class="fc" id="L57">			return ResponseEntity.status(404).body(e.getMessage());</span>
+		}
+	}
+
+	@GetMapping(path = &quot;/products/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; getProductById(@PathVariable(&quot;id&quot;) String id) {
+
+		try {
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">			if (id.matches(PATTERN)) {</span>
+<span class="fc" id="L66">				Products p = ps.getProductById(id);</span>
+<span class="fc" id="L67">				return ResponseEntity.status(200).body(p);</span>
+			} else {
+<span class="nc" id="L69">				throw new NumberFormatException(&quot;id must be of type int!&quot;);</span>
+			}
+<span class="fc" id="L71">		} catch (ProductNotFoundException e) {</span>
+<span class="fc" id="L72">			return ResponseEntity.status(404).body(e.getMessage());</span>
+<span class="nc" id="L73">		} catch (NumberFormatException e) {</span>
+<span class="nc" id="L74">			return ResponseEntity.status(400).body(e.getMessage());</span>
+		}
+	}
+
+	@PostMapping(path = &quot;/products&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+	public ResponseEntity&lt;Object&gt; addNewProduct(@RequestBody Products productToAdd) {
+
+		try {
+<span class="nc" id="L82">			Products p = ps.addNewProduct(productToAdd);</span>
+<span class="nc" id="L83">			return ResponseEntity.status(201).body(p);</span>
+<span class="nc" id="L84">		} catch (InvalidParameterException e) {</span>
+<span class="nc" id="L85">			return ResponseEntity.status(404).body(e.getMessage());</span>
+		}
+		
+	}
+
+	@DeleteMapping(path = &quot;/products/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; deleteAProductById(@PathVariable(&quot;id&quot;) String id) {
+
+		try {
+<span class="nc bnc" id="L94" title="All 2 branches missed.">			if (id.matches(PATTERN)) {</span>
+<span class="nc" id="L95">				ps.deleteProductById(id);</span>
+<span class="nc" id="L96">				return ResponseEntity.status(200).body(&quot;Successfully delete the product with the id of &quot; + id);</span>
+			} else {
+<span class="nc" id="L98">				throw new NumberFormatException(&quot;id must be of type int!&quot;);</span>
+			}
+<span class="nc" id="L100">		} catch (NumberFormatException e) {</span>
+<span class="nc" id="L101">			return ResponseEntity.status(400).body(e.getMessage());</span>
+		}
+	}
+
+	@PutMapping(path = &quot;/products/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; updateAProductByid(@PathVariable(&quot;id&quot;) String id,
+			@RequestBody Products productToBeUpdated) throws NumberFormatException {
+
+		try {
+<span class="nc bnc" id="L110" title="All 2 branches missed.">			if (id.matches(PATTERN)) {</span>
+<span class="nc" id="L111">				Products updateProduct = ps.updateAProduct(id, productToBeUpdated);</span>
+<span class="nc" id="L112">				return ResponseEntity.status(200).body(updateProduct);</span>
+			} else {
+<span class="nc" id="L114">				throw new NumberFormatException(&quot;id must be of type int!&quot;);</span>
+			}
+<span class="nc" id="L116">		} catch (NumberFormatException e) {</span>
+<span class="nc" id="L117">			return ResponseEntity.status(400).body(e.getMessage());</span>
+<span class="nc" id="L118">		} catch (ProductNotFoundException e) {</span>
+<span class="nc" id="L119">			return ResponseEntity.status(404).body(e.getMessage());</span>
+<span class="nc" id="L120">		} catch (InvalidParameterException e) {</span>
+<span class="nc" id="L121">			return ResponseEntity.status(400).body(e.getMessage());</span>
+		}
+	}
+
+	@GetMapping(path = &quot;/carts/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; getCartById(@PathVariable(&quot;id&quot;) String id) throws CartNotFoundException {
+		/*
+		 * checkout button -&gt; show list of products, in Angular side just get: Carts: {
+		 * User: { first name, last name } Quantities: { Product: { name: price: }
+		 * quantity: } }
+		 * 
+		 */
+		try {
+<span class="nc bnc" id="L134" title="All 2 branches missed.">			if (id.matches(PATTERN)) {</span>
+<span class="nc" id="L135">				Carts c = ps.getACartById(id);</span>
+<span class="nc" id="L136">				return ResponseEntity.status(201).body(c);</span>
+			} else {
+<span class="nc" id="L138">				throw new NumberFormatException(&quot;id must be of type int!&quot;);</span>
+			}
+<span class="nc" id="L140">		} catch (CartNotFoundException e) {</span>
+<span class="nc" id="L141">			return ResponseEntity.status(404).body(e.getMessage());</span>
+<span class="nc" id="L142">		} catch (NumberFormatException e) {</span>
+<span class="nc" id="L143">			return ResponseEntity.status(404).body(e.getMessage());</span>
+		}
+	}
+
+	@PostMapping(path = &quot;/carts/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; addMoreProductToCart(@PathVariable(&quot;id&quot;) String cartId,
+			@RequestParam(&quot;productId&quot;) String productId, @RequestParam(&quot;quantity&quot;) String quantity)
+			throws ProductNotFoundException, CartNotFoundException {
+
+		try {
+<span class="nc" id="L153">			Carts currentCart = null;</span>
+<span class="nc bnc" id="L154" title="All 6 branches missed.">			if (cartId.matches(PATTERN) || quantity.matches(PATTERN) || productId.matches(PATTERN)) {</span>
+<span class="nc" id="L155">				currentCart = ps.addMoreProductsToCart(currentCart, cartId, productId, quantity);</span>
+<span class="nc" id="L156">				return ResponseEntity.status(200).body(currentCart);</span>
+			} else {
+<span class="nc" id="L158">				throw new NumberFormatException(&quot;product id or quantity must be of type int!&quot;);</span>
+			}
+<span class="nc" id="L160">		} catch (NumberFormatException e) {</span>
+<span class="nc" id="L161">			return ResponseEntity.status(400).body(e.getMessage());</span>
+<span class="nc" id="L162">		} catch (CartNotFoundException e) {</span>
+<span class="nc" id="L163">			return ResponseEntity.status(404).body(e.getMessage());</span>
+<span class="nc" id="L164">		} catch (ProductNotFoundException e) {</span>
+<span class="nc" id="L165">			return ResponseEntity.status(404).body(e.getMessage());</span>
+		}
+	}
+
+	@PutMapping(path = &quot;/carts/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; updateProductQuantityInCart(@PathVariable(&quot;id&quot;) String cartId,
+			@RequestParam(&quot;productId&quot;) String productId, @RequestParam(&quot;quantity&quot;) String quantity)
+			throws ProductNotFoundException, CartNotFoundException {
+
+		try {
+<span class="nc" id="L175">			Carts currentCart = null;</span>
+<span class="nc bnc" id="L176" title="All 6 branches missed.">			if (cartId.matches(PATTERN) || quantity.matches(PATTERN) || productId.matches(PATTERN)) {</span>
+<span class="nc" id="L177">				currentCart = ps.updateProductQuantityInCart(currentCart, cartId, productId, quantity);</span>
+<span class="nc" id="L178">				return ResponseEntity.status(200).body(currentCart);</span>
+			} else {
+<span class="nc" id="L180">				throw new NumberFormatException(&quot;cart id/product id/quantity must be of type int!&quot;);</span>
+			}
+<span class="nc" id="L182">		} catch (NumberFormatException e) {</span>
+<span class="nc" id="L183">			return ResponseEntity.status(400).body(e.getMessage());</span>
+<span class="nc" id="L184">		} catch (ProductNotFoundException e) {</span>
+<span class="nc" id="L185">			return ResponseEntity.status(404).body(e.getMessage());</span>
+		}
+	}
+
+	@DeleteMapping(path = &quot;/carts/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; delteteProductInCart(@PathVariable(&quot;id&quot;) String cartId,
+			@RequestParam(&quot;productId&quot;) String productId) throws ProductNotFoundException, CartNotFoundException {
+
+		try {
+<span class="nc" id="L194">			Carts currentCart = null;</span>
+<span class="nc bnc" id="L195" title="All 4 branches missed.">			if (cartId.matches(PATTERN) || productId.matches(PATTERN)) {</span>
+<span class="nc" id="L196">				currentCart = ps.delteteProductInCart(currentCart, cartId, productId);</span>
+<span class="nc" id="L197">				return ResponseEntity.status(200).body(currentCart);</span>
+			} else {
+<span class="nc" id="L199">				throw new NumberFormatException(&quot;cart id/product id must be of type int!&quot;);</span>
+			}
+<span class="nc" id="L201">		} catch (NumberFormatException e) {</span>
+<span class="nc" id="L202">			return ResponseEntity.status(400).body(e.getMessage());</span>
+<span class="nc" id="L203">		} catch (ProductNotFoundException e) {</span>
+<span class="nc" id="L204">			return ResponseEntity.status(404).body(e.getMessage());</span>
+		}
+	}
+
+	@PostMapping(path = &quot;/cart/{id}/checkout&quot;) // Pay Now button test
+	public ResponseEntity&lt;Object&gt; checkoutTest(@PathVariable(&quot;id&quot;) String id, @RequestParam(&quot;amountPaid&quot;) String amount)
+			throws CartNotFoundException {
+
+<span class="nc" id="L212">		Carts getCartById = ps.getACartById(id);</span>
+
+		// computing for the total price for each product
+<span class="nc" id="L215">		DecimalFormat df = new DecimalFormat(&quot;#.##&quot;);</span>
+<span class="nc" id="L216">		double price = 0.0;</span>
+<span class="nc" id="L217">		double totalPrice = 0.0;</span>
+<span class="nc" id="L218">		List&lt;Quantities&gt; q = getCartById.getQuantities();</span>
+<span class="nc bnc" id="L219" title="All 2 branches missed.">		for (Quantities q1 : q) {</span>
+<span class="nc" id="L220">			price = q1.getProduct().getPrice() * q1.getQuantity();</span>
+<span class="nc" id="L221">			System.out.println(q1.getProduct().getId() + &quot;: &quot; + price);</span>
+<span class="nc" id="L222">			totalPrice = totalPrice + price;</span>
+<span class="nc" id="L223">			System.out.println(df.format(totalPrice));</span>
+<span class="nc" id="L224">		}</span>
+
+<span class="nc" id="L226">		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(&quot;uuuu/MM/dd HH:mm:ss&quot;);</span>
+<span class="nc" id="L227">		LocalDateTime now = LocalDateTime.now();</span>
+
+<span class="nc" id="L229">		String transactionTime = dtf.format(now);</span>
+
+<span class="nc" id="L231">		TransactionKeeper testing = new TransactionKeeper(transactionTime, getCartById,</span>
+<span class="nc" id="L232">				Double.parseDouble(df.format(totalPrice)), Double.parseDouble(amount));</span>
+
+<span class="nc" id="L234">		return ResponseEntity.status(200).body(testing);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
