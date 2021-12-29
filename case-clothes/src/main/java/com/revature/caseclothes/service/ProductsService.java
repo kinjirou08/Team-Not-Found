@@ -74,6 +74,9 @@ public class ProductsService {
 
 		List<Quantities> currentQuantitiesInTheCart = currentCart.getQuantities();
 		
+		//List<Quantities> addToCart = new ArrayList<>();
+		//currentQuantitiesInTheCart.add(q);
+		
 		boolean checkProduct = checkProductInTheCart(currentQuantitiesInTheCart, p);
 		
 		if (checkProduct == false) {
