@@ -22,6 +22,10 @@ public class UserService {
 
 	@Autowired
 	private UserDao ud;
+	
+	public UserService(UserDao ud) {
+		this.ud = ud;
+	}
 
 	// Add Admin if you are logged in as Admin
 	public User addAdmin(User currentlyLoggedInUser, AddUserDTO dto) throws UnAuthorizedException {

@@ -1,13 +1,27 @@
 <h1>Checkout Details for {{ cart.user.firstName }} {{ cart.user.firstName }}</h1>
 <p>Product List</p>
 <div>
-<ng-container *ngFor="let p of cart.quantities">
-    <p> Product Name: {{ p.product.name }}</p>
-    <p> Price: {{ p.product.price }}</p>
-    <p> Quantity: {{ p.quantity }}</p>
-    <p> Total: {{ p.quantity * p.product.price }}</p>
-    <button (click)="onDeleteButtonClick(p.product.id)">Delete me</button>
-</ng-container>
-<p> Total Price of all Products: {{ totalPrice }}</p>
+    <table>
+        <thead>
+            <tr>
+                <td>Product Name</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Total</td>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let p of cart.quantities">
+                <tr>
+                    <td>{{ p.product.name }}</td>
+                    <td>{{ p.product.price }}</td>
+                    <td>{{ p.quantity }}</td>
+                    <td>{{ p.quantity * p.product.price }}</td>
+                    <button (click)="onDeleteButtonClick(p.product.id)">Delete me</button>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+    <p> Total Price of all Products: {{ totalPrice }}</p>
 </div>
 

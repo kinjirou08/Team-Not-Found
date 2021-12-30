@@ -1,17 +1,15 @@
 package com.revature.caseclothes.servicetests;
 
+import static org.mockito.Mockito.mock;
+
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.annotation.DirtiesContext.ClassMode;
-import org.springframework.test.context.ActiveProfiles;
 
 import com.revature.caseclothes.dao.UserDao;
 import com.revature.caseclothes.dto.AddUserDTO;
@@ -24,16 +22,17 @@ import com.revature.caseclothes.model.User;
 import com.revature.caseclothes.model.UserRole;
 import com.revature.caseclothes.service.UserService;
 
-@ActiveProfiles("UserService-test")
-@SpringBootTest
-@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class UserServiceTest {
-	@Autowired
+	
 	private UserService us;
-
-	@Autowired
 	private UserDao ud;
-
+	
+	@BeforeEach
+	public void setUp() {
+		this.us = new UserService(new UserDao());
+		this.ud = mock(UserDao.class);
+	}
+	
 	@Test
 	public void testAddAdminPositive() throws UnAuthorizedException {
 		UserRole admin = new UserRole("admin");
@@ -44,6 +43,8 @@ public class UserServiceTest {
 
 		Mockito.when(ud.addAdmin(dto)).thenReturn(
 				new User("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave", admin));
+		
+		us = new UserService(ud);
 
 		User actual = us.addAdmin(user, dto);
 
@@ -63,7 +64,9 @@ public class UserServiceTest {
 		user.setId(1);
 		AddUserDTO dto = new AddUserDTO("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647",
 				"4043 Ave");
-
+		
+		us = new UserService(ud);
+		
 		Assertions.assertThrows(UnAuthorizedException.class, () -> {
 			us.addAdmin(user, dto);
 		});
@@ -76,6 +79,8 @@ public class UserServiceTest {
 		user.setId(1);
 		AddUserDTO dto = new AddUserDTO("jane_d", "   ", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave");
 
+		us = new UserService(ud);
+		
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addAdmin(user, dto);
 		});
@@ -89,6 +94,8 @@ public class UserServiceTest {
 		user.setId(1);
 		AddUserDTO dto = new AddUserDTO(" ", "password", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave");
 
+		us = new UserService(ud);
+		
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addAdmin(user, dto);
 		});
@@ -103,6 +110,8 @@ public class UserServiceTest {
 		AddUserDTO dto = new AddUserDTO("jane_doe", "password", " ", "Doe", "jane_d@gmail.com", "7369273647",
 				"4043 Ave");
 
+		us = new UserService(ud);		
+		
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addAdmin(user, dto);
 		});
@@ -117,6 +126,8 @@ public class UserServiceTest {
 		AddUserDTO dto = new AddUserDTO("jane_doe", "password", "Jane", " ", "jane_d@gmail.com", "7369273647",
 				"4043 Ave");
 
+		us = new UserService(ud);
+		
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addAdmin(user, dto);
 		});
@@ -129,6 +140,8 @@ public class UserServiceTest {
 		User user = new User("j_doe", "password1", "John", "Doe", "j_doe@gmail.com", "7367486273", "4042 Blvd", admin);
 		user.setId(1);
 		AddUserDTO dto = new AddUserDTO("jane_doe", "password", "Jane", "Doe", " ", "7369273647", "4043 Ave");
+
+		us = new UserService(ud);
 
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addAdmin(user, dto);
@@ -143,6 +156,8 @@ public class UserServiceTest {
 		user.setId(1);
 		AddUserDTO dto = new AddUserDTO("jane_doe", "password", "Jane", "Doe", "jane_d@gmail.com", "", "4043 Ave");
 
+		us = new UserService(ud);
+
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addAdmin(user, dto);
 		});
@@ -155,6 +170,8 @@ public class UserServiceTest {
 		User user = new User("j_doe", "password1", "John", "Doe", "j_doe@gmail.com", "7367486273", "4042 Blvd", admin);
 		user.setId(1);
 		AddUserDTO dto = new AddUserDTO("jane_doe", "password", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "");
+
+		us = new UserService(ud);
 
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addAdmin(user, dto);
@@ -172,6 +189,8 @@ public class UserServiceTest {
 		Mockito.when(ud.addCustomer(dto, c)).thenReturn(
 				new User("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave", customer));
 
+		us = new UserService(ud);
+
 		User actual = us.addCustomer(dto);
 
 		User expected = new User("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Ave",
@@ -186,6 +205,8 @@ public class UserServiceTest {
 		AddUserDTO dto = new AddUserDTO("jane_d", "password2", " ", "Doe", "jane_d@gmail.com", "7369273647",
 				"4043 Ave");
 
+		us = new UserService(ud);
+
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addCustomer(dto);
 		});
@@ -196,6 +217,8 @@ public class UserServiceTest {
 
 		AddUserDTO dto = new AddUserDTO("jane_d", "password2", "Jane", " ", "jane_d@gmail.com", "7369273647",
 				"4043 Ave");
+
+		us = new UserService(ud);
 
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addCustomer(dto);
@@ -208,6 +231,8 @@ public class UserServiceTest {
 		AddUserDTO dto = new AddUserDTO("", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647",
 				"4043 Ave");
 
+		us = new UserService(ud);
+
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addCustomer(dto);
 		});
@@ -218,6 +243,8 @@ public class UserServiceTest {
 
 		AddUserDTO dto = new AddUserDTO("jane_d", " ", "Jane", "Doe", "jane_d@gmail.com", "7369273647",
 				"4043 Ave");
+
+		us = new UserService(ud);
 
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addCustomer(dto);
@@ -230,6 +257,8 @@ public class UserServiceTest {
 		AddUserDTO dto = new AddUserDTO("jane_d", "password2", "Jane", "Doe", " ", "7369273647",
 				"4043 Ave");
 
+		us = new UserService(ud);
+
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addCustomer(dto);
 		});
@@ -241,6 +270,8 @@ public class UserServiceTest {
 		AddUserDTO dto = new AddUserDTO("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "",
 				"4043 Ave");
 
+		us = new UserService(ud);
+
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addCustomer(dto);
 		});
@@ -251,6 +282,8 @@ public class UserServiceTest {
 
 		AddUserDTO dto = new AddUserDTO("jane_d", "password2", "Jane", "Doe", "jane_d@gmail.com", "7369273647",
 				"");
+
+		us = new UserService(ud);
 
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			us.addCustomer(dto);
@@ -278,6 +311,8 @@ public class UserServiceTest {
 		users.add(user2);
 
 		Mockito.when(ud.getAllUsers()).thenReturn(users);
+
+		us = new UserService(ud);
 
 		List<User> actual = us.getAllUsers(user);
 
@@ -310,6 +345,8 @@ public class UserServiceTest {
 				customer);
 		user.setId(1);
 
+		us = new UserService(ud);
+
 		Assertions.assertThrows(UnAuthorizedException.class, () -> {
 			us.getAllUsers(user);
 		});
@@ -331,6 +368,8 @@ public class UserServiceTest {
 
 		Mockito.when(ud.getUserByID(2)).thenReturn(user1);
 
+		us = new UserService(ud);
+
 		User actual = us.getUserByID(user, 2);
 
 		User expected = new User("jane_d", "password1", "Jane", "Doe", "jane_d@gmail.com", "7369273647", "4043 Blvd",
@@ -351,6 +390,8 @@ public class UserServiceTest {
 				customer);
 		user1.setId(2);
 
+		us = new UserService(ud);
+
 		Assertions.assertThrows(UnAuthorizedException.class, () -> {
 			us.getUserByID(user, 2);
 		});
@@ -362,6 +403,8 @@ public class UserServiceTest {
 		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave",
 				new UserRole("admin"));
 		
+		us = new UserService(ud);
+
 		Assertions.assertThrows(UserNotFoundException.class, () -> {
 			us.getUserByID(user, 1);
 		});
@@ -381,6 +424,8 @@ public class UserServiceTest {
 		user1.setId(2);
 
 		Mockito.when(ud.getUserByUsername("jane_d")).thenReturn(user1);
+
+		us = new UserService(ud);
 
 		User actual = us.getUserByUsername(user, "jane_d");
 
@@ -402,6 +447,8 @@ public class UserServiceTest {
 				customer);
 		user1.setId(2);
 
+		us = new UserService(ud);
+
 		Assertions.assertThrows(UnAuthorizedException.class, () -> {
 			us.getUserByUsername(user1, "jane_d");
 			us.getUserByUsername(user, "Bach");
@@ -414,6 +461,8 @@ public class UserServiceTest {
 		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave",
 				new UserRole("admin"));
 		
+		us = new UserService(ud);
+
 		Assertions.assertThrows(UserNotFoundException.class, () -> {
 			us.getUserByUsername(user, "Jymm");
 		});		
@@ -425,7 +474,9 @@ public class UserServiceTest {
 		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave",
 				admin);
 		user.setId(1);
-
+		
+		us = new UserService(ud);
+		
 		us.deleteUserByID(user);
 	}
 
@@ -436,30 +487,16 @@ public class UserServiceTest {
 				customer);
 		user.setId(1);
 
+		us = new UserService(ud);
+
 		us.deleteUserByID(user);
 	}
 
-//	@Test
-//	public void testUpdateUserByID() throws UserNotFoundException {
-//		UserRole customer = new UserRole("customer");
-//		User user = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-//		user.setId(1);
-//		
-//		User updatedUser = new User("bach_tran", "password", "Bruce", "Banner", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-//		updatedUser.setId(1);
-//		
-//		Mockito.when(ud.UpdateUserByID(1, user)).thenReturn(updatedUser);
-//		
-//		User actual = us.UpdateUserByID(user);
-//		
-//		User expected = new User("bach_tran", "password", "Bruce", "Banner", "bach_tran@gmail.com", "0000000001", "5432 Ave", customer);
-//		expected.setId(1);
-//		
-//		Assertions.assertEquals(expected, actual);
-//	}
 	@Test
 	public void testDeleteUserByID_negative() throws UserNotFoundException {
 		User user = null;
+
+		us = new UserService(ud);
 		
 		Assertions.assertThrows(UserNotFoundException.class, () -> {
 			us.deleteUserByID(user);
@@ -478,6 +515,8 @@ public class UserServiceTest {
 		updatedUser.setId(1);
 
 		Mockito.when(ud.UpdateUser(user.getId(), updatedUser)).thenReturn(updatedUser);
+		
+		us = new UserService(ud);
 
 		User actual = us.UpdateUser(user, updatedUser);
 
@@ -497,6 +536,8 @@ public class UserServiceTest {
 		User userToBeUpdated = new User("bach_tran", "password", " ", "Banner", "bach_tran@gmail.com", "0000000001",
 				"5432 Ave", customer);
 		
+		us = new UserService(ud);
+
 		Assertions.assertThrows(InvalidParametersException.class, () -> {
 			us.UpdateUser(user, userToBeUpdated);
 		});
@@ -511,6 +552,8 @@ public class UserServiceTest {
 		User userToBeUpdated = new User("bach_tran", "password", "Bruce", "", "bach_tran@gmail.com", "0000000001",
 				"5432 Ave", customer);
 		
+		us = new UserService(ud);
+
 		Assertions.assertThrows(InvalidParametersException.class, () -> {
 			us.UpdateUser(user, userToBeUpdated);
 		});
@@ -524,7 +567,9 @@ public class UserServiceTest {
 		
 		User userToBeUpdated = new User("bach_tran", "password", "Bruce", "Banner", " ", "0000000001",
 				"5432 Ave", customer);
-		
+
+		us = new UserService(ud);
+
 		Assertions.assertThrows(InvalidParametersException.class, () -> {
 			us.UpdateUser(user, userToBeUpdated);
 		});
@@ -539,6 +584,8 @@ public class UserServiceTest {
 		User userToBeUpdated = new User("bach_tran", "password", "Bruce", "Banner", "bach_tran@gmail.com", "",
 				"5432 Ave", customer);
 		
+		us = new UserService(ud);
+
 		Assertions.assertThrows(InvalidParametersException.class, () -> {
 			us.UpdateUser(user, userToBeUpdated);
 		});
@@ -553,6 +600,8 @@ public class UserServiceTest {
 		User userToBeUpdated = new User("bach_tran", "password", "Bruce", "Banner", "bach_tran@gmail.com", "0000000001",
 				"", customer);
 		
+		us = new UserService(ud);
+
 		Assertions.assertThrows(InvalidParametersException.class, () -> {
 			us.UpdateUser(user, userToBeUpdated);
 		});
@@ -566,12 +615,16 @@ public class UserServiceTest {
 		user.setId(1);
 
 		Mockito.when(ud.getUsernameAndPassword("bach_tran", "password")).thenReturn(user);
+		
+		us = new UserService(ud);
 
 		User actual = us.login("bach_tran", "password");
 
 		User expected = new User("bach_tran", "password", "Bach", "Tran", "bach_tran@gmail.com", "0000000001",
 				"5432 Ave", admin);
 		expected.setId(1);
+
+		us = new UserService(ud);
 
 		Assertions.assertEquals(expected, actual);
 	}
@@ -584,6 +637,8 @@ public class UserServiceTest {
 		user.setId(1);
 
 		Mockito.when(ud.getUsernameAndPassword("bach_tran", "password")).thenReturn(user);
+		
+		us = new UserService(ud);
 
 		User actual = us.login("bach_tran", "password");
 
@@ -591,12 +646,17 @@ public class UserServiceTest {
 				"5432 Ave", customer);
 		expected.setId(1);
 
+		us = new UserService(ud);
+
 		Assertions.assertEquals(expected, actual);
 	}
-
+//
 //	@Test
 //	public void testLogin_negative() throws UserNotFoundException, InvalidLoginException {
-//		Assertions.assertThrows(UserNotFoundException.class, () -> {
+//		
+//		us = new UserService(ud);
+//
+//		Assertions.assertThrows(InvalidLoginException.class, () -> {
 //			us.login("bach_tran", "password");
 //		});
 //	}

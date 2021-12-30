@@ -22,7 +22,7 @@ export class CartService {
     let parameter = new HttpParams();
     parameter = parameter.append('productId', pId);
     parameter = parameter.append('quantity', quantity);
-    return this.http.post(`http://ec2-34-211-207-79.us-west-2.compute.amazonaws.com:8082/carts/${cartId}`, {},
+    return this.http.post(`http://localhost:8082/carts/${cartId}`, {},
       {
         "params": parameter,
         withCredentials: true,
@@ -41,7 +41,7 @@ export class CartService {
 
 
     deleteProductFromCart(pId: string, cartId: String){
-      return this.http.delete(`http:///ec2-34-211-207-79.us-west-2.compute.amazonaws.com:8082/carts/${cartId}`,
+      return this.http.delete(`http://localhost:8082/carts/${cartId}`,
         {
           withCredentials: true,
           observe:'response',

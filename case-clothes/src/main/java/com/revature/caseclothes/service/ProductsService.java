@@ -20,6 +20,10 @@ public class ProductsService {
 
 	@Autowired
 	private ProductsDAO pd;
+	
+	public ProductsService(ProductsDAO pd) {
+		this.pd = pd;
+	}
 
 	public List<Products> getAllProducts() {
 		return pd.getAllProducts();

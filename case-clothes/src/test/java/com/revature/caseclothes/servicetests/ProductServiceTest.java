@@ -1,5 +1,6 @@
 package com.revature.caseclothes.servicetests;
 
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 
 import java.security.InvalidParameterException;
@@ -8,13 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.annotation.DirtiesContext.ClassMode;
-import org.springframework.test.context.ActiveProfiles;
 
 import com.revature.caseclothes.dao.ProductsDAO;
 import com.revature.caseclothes.exception.CartNotFoundException;
@@ -25,16 +22,17 @@ import com.revature.caseclothes.model.Products;
 import com.revature.caseclothes.model.Quantities;
 import com.revature.caseclothes.service.ProductsService;
 
-@ActiveProfiles("ProductService-test")
-@SpringBootTest
-@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class ProductServiceTest {
 
-	@Autowired
-	ProductsService productsService;
+	private ProductsService productsService;
 
-	@Autowired
-	ProductsDAO productsDao;
+	private ProductsDAO productsDao;
+
+	@BeforeEach
+	public void setUp() {
+		this.productsDao = mock(ProductsDAO.class);
+		this.productsService = new ProductsService(new ProductsDAO());
+	}
 
 	/*
 	 * getProductById() test
@@ -46,6 +44,8 @@ public class ProductServiceTest {
 		Mockito.when(productsDao.selectProductById(1)).thenReturn(new Products("tshirt",
 				"Your perfect pack for everyday", 109.95, new Category("Men's Clothing"), "imageURL", 100));
 
+		productsService = new ProductsService(productsDao);
+
 		Products actual = productsService.getProductById("1");
 
 		Assertions.assertEquals(new Products("tshirt", "Your perfect pack for everyday", 109.95,
@@ -54,6 +54,8 @@ public class ProductServiceTest {
 
 	@Test // Sad Path
 	void getProductById_Negative() {
+
+		productsService = new ProductsService(productsDao);
 
 		Assertions.assertThrows(ProductNotFoundException.class, () -> {
 
@@ -81,6 +83,8 @@ public class ProductServiceTest {
 		productList.add(p2);
 
 		Mockito.when(productsDao.getAllProducts()).thenReturn(productList);
+
+		productsService = new ProductsService(productsDao);
 
 		Products expectedp1 = new Products("tshirt", "Your perfect pack for everyday", 109.95,
 				new Category("Men's Clothing"), "imageURL", 100);
@@ -118,6 +122,8 @@ public class ProductServiceTest {
 
 		Mockito.when(productsDao.getAllProductThatContains("shirt")).thenReturn(productList);
 
+		productsService = new ProductsService(productsDao);
+
 		Products expectedp1 = new Products("tshirt", "Your perfect pack for everyday", 109.95,
 				new Category("Men's Clothing"), "imageURL", 100);
 		expectedp1.setId(1);
@@ -136,6 +142,8 @@ public class ProductServiceTest {
 
 	@Test // Sad Path
 	void getAllProductThatContains_NoValidProduct() {
+		
+		productsService = new ProductsService(productsDao);
 
 		Assertions.assertThrows(ProductNotFoundException.class, () -> {
 
@@ -163,6 +171,8 @@ public class ProductServiceTest {
 				.thenReturn(new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
 						15.99, c1, "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100));
 
+		productsService = new ProductsService(productsDao);
+
 		Products actual = productsService.addNewProduct(newProduct);
 		actual.setId(1);
 
@@ -182,6 +192,8 @@ public class ProductServiceTest {
 		Products p = new Products("", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 15.99, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 
+		productsService = new ProductsService(productsDao);
+
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			productsService.addNewProduct(p);
 		});
@@ -196,6 +208,8 @@ public class ProductServiceTest {
 		Products p = new Products("Mens Casual Slim Fit", "", 15.99, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 
+		productsService = new ProductsService(productsDao);
+
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			productsService.addNewProduct(p);
 		});
@@ -209,7 +223,9 @@ public class ProductServiceTest {
 
 		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts", 0, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
-		
+
+		productsService = new ProductsService(productsDao);
+
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			productsService.addNewProduct(p);
 		});
@@ -224,6 +240,8 @@ public class ProductServiceTest {
 		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
 				Double.NaN, c1, "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 
+		productsService = new ProductsService(productsDao);
+
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			productsService.addNewProduct(p);
 		});
@@ -234,6 +252,8 @@ public class ProductServiceTest {
 	 */
 	@Test // Happy Path
 	void deleteAProduct_PositiveTest() {
+		
+		productsService = new ProductsService(productsDao);
 
 		productsService.deleteProductById("1");
 
@@ -260,6 +280,8 @@ public class ProductServiceTest {
 						29.99, new Category("Men's Clothing"),
 						"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100));
 
+		productsService = new ProductsService(productsDao);
+		
 		Products actual = productsService.updateAProduct("1", productToBeUpdated);
 		actual.setId(1);
 
@@ -272,6 +294,8 @@ public class ProductServiceTest {
 
 	@Test // Sad Path
 	void updateAProduct_ProductNotFound_NegativeTest() {
+
+		productsService = new ProductsService(productsDao);
 
 		Products p = null;
 
@@ -290,6 +314,8 @@ public class ProductServiceTest {
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 		Mockito.when(productsDao.selectProductById(1)).thenReturn(p);
 
+		productsService = new ProductsService(productsDao);
+
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			productsService.updateAProduct("1", p);
 		});
@@ -305,7 +331,9 @@ public class ProductServiceTest {
 		Products p = new Products("Mens Casual Slim Fit", "", 15.99, c1,
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 		Mockito.when(productsDao.selectProductById(1)).thenReturn(p);
-		
+
+		productsService = new ProductsService(productsDao);
+
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			productsService.updateAProduct("1", p);
 		});
@@ -321,6 +349,8 @@ public class ProductServiceTest {
 				"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 		Mockito.when(productsDao.selectProductById(1)).thenReturn(p);
 
+		productsService = new ProductsService(productsDao);
+
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			productsService.updateAProduct("1", p);
 		});
@@ -335,6 +365,8 @@ public class ProductServiceTest {
 		Products p = new Products("Mens Casual Slim Fit", "H2H Mens Casual Slim Fit Long Sleeve V-Neck T-Shirts",
 				Double.NaN, c1, "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg", 100);
 		Mockito.when(productsDao.selectProductById(1)).thenReturn(p);
+
+		productsService = new ProductsService(productsDao);
 
 		Assertions.assertThrows(InvalidParameterException.class, () -> {
 			productsService.updateAProduct("1", p);
@@ -369,6 +401,8 @@ public class ProductServiceTest {
 
 		Mockito.when(productsDao.insertToCart(currentCart, q2)).thenReturn(currentCart);
 
+		productsService = new ProductsService(productsDao);
+
 		Carts actual = productsService.addMoreProductsToCart(currentCart, "1", "2", "1");
 
 		Carts expected = currentCart;
@@ -378,6 +412,8 @@ public class ProductServiceTest {
 
 	@Test // Sad Path
 	void addMoreProductsToCart_CartNotFound_NegativeTest() {
+
+		productsService = new ProductsService(productsDao);
 
 		Assertions.assertThrows(CartNotFoundException.class, () -> {
 			productsService.addMoreProductsToCart(null, "1", "1", "1");
@@ -391,6 +427,8 @@ public class ProductServiceTest {
 		Carts currentCart = new Carts(quantityList);
 		currentCart.setCartId(1);
 		Mockito.when(productsDao.selectACartById(1)).thenReturn(currentCart);
+
+		productsService = new ProductsService(productsDao);
 
 		Assertions.assertThrows(ProductNotFoundException.class, () -> {
 			productsService.addMoreProductsToCart(currentCart, "1", "1", "1");
@@ -427,6 +465,8 @@ public class ProductServiceTest {
 		currentCart.setQuantities(currentQuantitiesInTheCart);
 
 		Mockito.when(productsDao.updateProductsInTheCart(currentCart)).thenReturn(currentCart);
+
+		productsService = new ProductsService(productsDao);
 
 		Carts actual = productsService.updateProductQuantityInCart(currentCart, "1", "2", "2");
 
@@ -472,6 +512,8 @@ public class ProductServiceTest {
 		currentCart.setQuantities(currentProductInTheCart);
 
 		Mockito.when(productsDao.deleteAProductInTheCart(currentCart, quantityToDelete)).thenReturn(currentCart);
+
+		productsService = new ProductsService(productsDao);
 
 		Carts actual = productsService.delteteProductInCart(currentCart, "1", "2");
 
