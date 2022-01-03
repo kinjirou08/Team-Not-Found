@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.revature.caseclothes.integrationtest.AuthenticationControllerTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.974 s - in com.revature.caseclothes.integrationtest.AuthenticationControllerTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.423 s - in com.revature.caseclothes.integrationtest.AuthenticationControllerTest

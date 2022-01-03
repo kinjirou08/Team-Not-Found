@@ -68,21 +68,31 @@ A shopping application utilizing https://fakestoreapi.com/ as an external API an
 
 The repository is set as public and anyone could clone it for their production use.
 
---- Use this command in Git Bash to clone the repository
-> ```git clone git@github.com:kinjirou08/Team-Not-Found.git```
+* Use this command, specifically in Git Bash to clone the repository
+    * ```git clone git@github.com:kinjirou08/Team-Not-Found.git```
 
-> (Not sure what to add more yet, should we use Getting Started? -Jymm)
+    * this will automatically create a main/master branch into your local machine
 
-## Usage
-> (Not sure what to add here yet, should we add? -Jymm)
+* To start up development, either create a new branch or continue working on the main branch
+    * It is recommended to make a new branch when working on a feature, this is to comply to CI/CD pipeline.
+    * To create a new branch simply use this command:
+        * ```git branch <branch-name>``` then ```git checkout <branch-name>``` OR
+        * ```git checkout -b <branch-name>``` this is a shortcut for the two commands above.
 
+* To save changes in the development on the current branch:
+    * ```git status``` to check all the changes
+    * ```git add . ``` to add/save all the changes OR
+    * ```git add <file>``` to add/save a specific file
+    * ```git status``` again to check if all the changes have been saved
+    * ```git commit -m "summary of all the changes you did" ```
+    * ``` git push origin <branch-name>``` to push all the changes onto the remote branch
+
+* To merge a branch into the main:
+    * first check if you're on a working branch by using ```git branch```
+    ![This is an image](assets/images/git branch example.PNG)
 ## Contributors
 * Jymm Enriquez
 * Tanveer Signh
 * Allexa Hernandez
 * Cory Hall
 * Alemu Robele
-
-## License
-
-This project uses the following license: [<license_name>](<link>).
