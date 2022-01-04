@@ -89,7 +89,13 @@ The repository is set as public and anyone could clone it for their production u
 
 * To merge a branch into the main:
     * first check if you're on a working branch by using ```git branch```
-    ![This is an image](assets/images/git branch example.PNG)
+    ![This is an image](assets/images/git-branch-example.PNG)
+    * the green text indicates that you're on that branch currently.
+    * Another indicator to know which branch you're on is the cyan-colored text at the upper-right corner of your Git Bash.
+    * So if you're not on the main branch, do ```git checkout main```, then do ```git merge <branch-name>``` to merge that branch to the main branch
+        * if a merge conflict occurs, either open up your IDE to fix those conflicts, or open up Visual Studio Code and open Source Control to see the conflicts.
+        * After fixing the conflicts, do ```git add .``` then do ```git commit``` then do ```git push```
+
 ## Contributors
 * Jymm Enriquez
 * Tanveer Signh
