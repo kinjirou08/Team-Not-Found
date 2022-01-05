@@ -18,7 +18,7 @@ A shopping application utilizing https://fakestoreapi.com/ as an external API an
     * JaCoCo version 0.8.7 (For Code Coverage)
 * Bulma version 0.9.3
 
-#### Fro Testing
+#### For Testing
 * JUnit 5 (Jupiter) API version 5.8.1
 * Mockito version 4.0.0
 * Selenium version 4.1.0
