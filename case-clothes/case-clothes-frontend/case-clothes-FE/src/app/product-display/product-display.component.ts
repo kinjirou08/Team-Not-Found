@@ -12,6 +12,7 @@ import { User } from '../User';
   styleUrls: ['./product-display.component.css']
 })
 export class ProductDisplayComponent implements OnInit {
+
  @Input()
  product!: Products;
  cartId!: number;
@@ -41,15 +42,12 @@ export class ProductDisplayComponent implements OnInit {
 
   }
 
-  onBuyButtonClick(p: number, q:number){
-    console.log("productId>>>",p);
-    console.log("qauntity>>>",q);
-    this.cartService.addToCart(String(p), String(q), String(this.cartId)).subscribe({
+  onBuyButtonClick(productId: number){
+    this.cartService.addToCart(String(productId), String("1"), String(this.cartId)).subscribe({
       next: (res) =>{
         if(res.status === 200) {
           let body = <Cart> res.body;
           console.log(body);
-          console.log(q);
         }
       },
       error: (err) =>{
